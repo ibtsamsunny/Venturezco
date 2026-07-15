@@ -1,0 +1,262 @@
+/* Ported verbatim from source_files/VenturezCo.dc.html <style> block.
+   Do not "clean up" values here — they are the design spec. */
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Satoshi', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a {
+  color: inherit;
+}
+::selection {
+  background: rgba(59, 47, 224, 0.35);
+  color: #fff;
+}
+
+@keyframes vzFlow {
+  0% { left: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+@keyframes vzFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes vzGlow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(59, 47, 224, 0.45), 0 0 42px rgba(59, 47, 224, 0.22); }
+  50% { box-shadow: 0 0 0 1px rgba(59, 47, 224, 0.75), 0 0 62px rgba(59, 47, 224, 0.42); }
+}
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45), 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+@keyframes vzOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.08); }
+}
+@keyframes vzUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes vzDriftA {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(80px, 60px) scale(1.15); }
+}
+@keyframes vzDriftB {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-70px, 40px) scale(1.1); }
+}
+@keyframes vzDriftC {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, -70px) scale(1.2); }
+}
+@keyframes vzMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes vzHue {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes vzFlowV {
+  0% { top: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+@keyframes vzDash {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes vzNodeIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes vzFlowLine {
+  to { stroke-dashoffset: -32; }
+}
+@keyframes vzSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes vzSpinRev {
+  to { transform: rotate(-360deg); }
+}
+@keyframes vzPulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.95; }
+}
+@keyframes auroraDrift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(2.5%, -2%, 0) rotate(4deg); }
+}
+@keyframes meshDrift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-3%, 2.5%, 0) scale(1.08); }
+}
+@keyframes lightA {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(2.5vw, 3vh, 0); }
+}
+@keyframes lightB {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-2.5vw, -2.5vh, 0); }
+}
+@keyframes lightC {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-3vw, 2.5vh, 0); }
+}
+@keyframes bkFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes bkPop {
+  from { opacity: 0; transform: translateY(24px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bkCheck {
+  from { stroke-dashoffset: 40; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@media (max-width: 1080px) {
+  .vz-stage { position: static !important; aspect-ratio: auto !important; display: grid !important; grid-template-columns: 1fr !important; gap: 34px !important; }
+  .vz-wires { display: none !important; }
+  .vz-hub { position: static !important; left: auto !important; top: auto !important; transform: none !important; width: auto !important; margin: 4px auto 10px !important; order: -1; }
+  .vz-card { position: static !important; left: auto !important; top: auto !important; width: auto !important; min-height: 0 !important; }
+  .vz-card .vz-badge { top: -14px !important; }
+}
+@media (min-width: 600px) and (max-width: 1080px) {
+  .vz-stage { grid-template-columns: 1fr 1fr !important; }
+  .vz-hub { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 640px) {
+  .vz-stage { position: static !important; aspect-ratio: auto !important; display: flex !important; flex-direction: column !important; gap: 34px !important; max-width: 360px !important; margin: 0 auto !important; }
+  .vz-node { position: static !important; left: auto !important; top: auto !important; width: 100% !important; height: auto !important; padding: 14px 16px !important; animation-delay: 0s !important; }
+  .vz-wires { display: none !important; }
+}
+
+.prose p { margin: 0 0 22px; color: #c3c8d1; font-size: 18px; line-height: 1.8; }
+.prose h2 { margin: 48px 0 18px; font-weight: 800; font-size: clamp(1.4rem, 2.4vw, 1.8rem); letter-spacing: -0.02em; color: #fff; }
+.prose ul { margin: 0 0 22px; padding-left: 22px; color: #c3c8d1; font-size: 18px; line-height: 1.8; }
+.prose li { margin-bottom: 10px; }
+.bcard { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease; }
+.bcard:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(59, 47, 224, 0.35), 0 0 40px rgba(59, 47, 224, 0.18); border-color: rgba(59, 47, 224, 0.4) !important; }
+.step-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease; }
+.step-card:hover { transform: translateX(6px); border-color: rgba(255, 255, 255, 0.2); }
+.contact-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease; text-decoration: none; display: block; }
+.contact-card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.2); }
+.faq-item { transition: border-color 0.3s ease, background 0.3s ease; }
+.faq-item:hover { border-color: rgba(59, 47, 224, 0.4) !important; }
+.faq-q { transition: color 0.2s ease; }
+.faq-item:hover .faq-q { color: #fff; }
+
+.bk-in input::placeholder, .bk-in textarea::placeholder { color: #6b7280; }
+.bk-in input:focus, .bk-in textarea:focus { border-color: #3b2fe0 !important; box-shadow: 0 0 0 3px rgba(59, 47, 224, 0.16); }
+.bk-chip:hover { border-color: rgba(59, 47, 224, 0.5) !important; }
+.bk-tzitem:hover { background: rgba(255, 255, 255, 0.06) !important; }
+.bk-close:hover { background: rgba(255, 255, 255, 0.1) !important; color: #fff !important; }
+.bk-scroll::-webkit-scrollbar { width: 8px; }
+.bk-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 8px; }
+.bk-dates { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.16) transparent; scroll-snap-type: x proximity; }
+.bk-dates > * { scroll-snap-align: start; }
+.bk-dates::-webkit-scrollbar { height: 6px; }
+.bk-dates::-webkit-scrollbar-track { background: transparent; }
+.bk-dates::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.14); border-radius: 999px; }
+.bk-dates::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.28); }
+
+@media (max-width: 560px) {
+  .bk-form-grid { grid-template-columns: 1fr !important; }
+}
+
+.vz-line { display: block; }
+.vz-hoverable { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease; }
+.vz-hoverable:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(59, 47, 224, 0.35), 0 0 40px rgba(59, 47, 224, 0.18); border-color: rgba(59, 47, 224, 0.4) !important; }
+.vz-spot { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.45s ease; background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(59, 47, 224, 0.18), transparent 60%); }
+.vz-hoverable:hover .vz-spot { opacity: 1; }
+.vz-ic { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.vz-card:hover { transform: translateY(-8px) scale(1.025) !important; }
+.vz-card { min-height: 100px; }
+.vz-card:hover .vz-ic { transform: scale(1.12) rotate(-4deg); }
+.vz-card:hover .vz-badge { border-color: rgba(159, 145, 255, 0.6); color: #fff; }
+.vz-mag { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease; will-change: transform; }
+.vz-marquee-track { display: flex; width: max-content; animation: vzMarquee 34s linear infinite; }
+.vz-marquee-track-reviews { animation-duration: 62s; }
+.vz-social { transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, transform 0.25s ease; }
+.vz-social:hover { color: #fff; background: rgba(59, 47, 224, 0.14); border-color: rgba(59, 47, 224, 0.45); transform: translateY(-2px); }
+.vz-marquee:hover .vz-marquee-track { animation-play-state: paused; }
+
+.nav-svc { position: relative; }
+.svc-dd { position: absolute; top: 100%; left: 50%; padding-top: 16px; transform: translateX(-50%); width: max-content; opacity: 0; visibility: hidden; transition: opacity 0.22s ease, visibility 0.22s; z-index: 60; }
+.nav-svc:hover .svc-dd, .nav-svc:focus-within .svc-dd { opacity: 1; visibility: visible; }
+.svc-dd-inner { display: flex; flex-direction: row; align-items: center; gap: 4px; border-radius: 999px; padding: 8px; background: rgba(14, 14, 18, 0.97); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); }
+.svc-dd a { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; text-decoration: none; color: #c7cbd1; font-size: 14px; font-weight: 500; white-space: nowrap; transition: background 0.2s ease, color 0.2s ease; }
+.svc-dd a:hover { background: rgba(255, 255, 255, 0.06); color: #fff !important; }
+.svc-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.nav-burger { display: none; }
+.mob-acc-ic { transition: transform 0.25s ease; }
+.nav-link { transition: color 0.25s ease; }
+.nav-link:hover { color: #fff !important; }
+.feat-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease; }
+.feat-card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.2); }
+.feat-card-tint:hover { background: rgba(255, 255, 255, 0.045); }
+.flow-node-card { transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease; }
+.flow-node-card:hover { transform: scale(1.06); border-color: rgba(59, 47, 224, 0.55); background: rgba(59, 47, 224, 0.16); }
+.cta-btn { transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 18px 46px rgba(59, 47, 224, 0.55); }
+.float-card { animation: vzFloat 5.5s ease-in-out infinite; }
+.flow-line { stroke-dasharray: 6 10; animation: flowDash 2.4s linear infinite; }
+.flow-node { animation: nodePulse 3.2s ease-in-out infinite; }
+.scatter-chip { animation: scatterDrift 5s ease-in-out infinite; }
+@keyframes flowDash {
+  to { stroke-dashoffset: -48; }
+}
+@keyframes scatterDrift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(6px, -6px) rotate(3deg); }
+}
+@keyframes blinkDot {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+.live-dot { animation: blinkDot 1.4s ease-in-out infinite; }
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes ringSpinRev {
+  to { transform: rotate(-360deg); }
+}
+.ring-outer { animation: ringSpin 70s linear infinite; transform-origin: center; }
+.ring-inner { animation: ringSpinRev 50s linear infinite; transform-origin: center; }
+
+@media (max-width: 900px) {
+  .nav-desktop { display: none !important; }
+  .nav-burger { display: inline-flex !important; }
+}
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-visual { width: 100%; max-width: 420px; margin: 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .vz-reveal { opacity: 1 !important; transform: none !important; }
+}

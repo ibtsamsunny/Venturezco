@@ -1,0 +1,34 @@
+"use client";
+
+import { useBookingModal } from "@/components/booking/BookingModalProvider";
+import { WA_LINK } from "@/content/nav";
+
+export default function FAQCtaButtons() {
+  const { openBooking } = useBookingModal();
+  return (
+    <div style={{ marginTop: 28, display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+      <a
+        href={WA_LINK}
+        target="_blank"
+        rel="noopener"
+        style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 10, background: "#25D366", color: "#06251A", fontSize: 16, fontWeight: 700, padding: "15px 26px", borderRadius: 999, boxShadow: "0 10px 30px rgba(37,211,102,0.28)" }}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.8.37c-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.44 9.44 0 01-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.42 9.42 0 01-1.44-5.02c0-5.21 4.24-9.45 9.46-9.45 2.53 0 4.9.99 6.68 2.78a9.4 9.4 0 012.77 6.68c0 5.21-4.24 9.45-9.46 9.45zm8.05-17.5A11.35 11.35 0 0012.04 0C5.76 0 .66 5.1.66 11.38c0 2 .52 3.96 1.52 5.68L.56 24l7.1-1.86a11.34 11.34 0 005.42 1.38h.01c6.28 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.34-8.05z" />
+        </svg>
+        Chat on WhatsApp
+      </a>
+      <a
+        href="#contact"
+        onClick={openBooking}
+        style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 9, background: "#3B2FE0", color: "#fff", fontSize: 16, fontWeight: 600, padding: "15px 26px", borderRadius: 999, boxShadow: "0 10px 30px rgba(59,47,224,0.35)" }}
+      >
+        Book a strategy call
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M5 12h14" />
+          <path d="M13 6l6 6-6 6" />
+        </svg>
+      </a>
+    </div>
+  );
+}

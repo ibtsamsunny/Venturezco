@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @keyframes bkFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes bkPop { from { opacity: 0; transform: translateY(24px) scale(.985); } to { opacity: 1; transform: none; } }
+  @keyframes bkCheck { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
+  .bk-in input::placeholder, .bk-in textarea::placeholder { color: #6B7280; }
+  .bk-in input:focus, .bk-in textarea:focus { border-color: #3B2FE0 !important; box-shadow: 0 0 0 3px rgba(59,47,224,0.16); }
+  .bk-chip:hover { border-color: rgba(59,47,224,0.5) !important; }
+  .bk-tzitem:hover { background: rgba(255,255,255,0.06) !important; }
+  .bk-close:hover { background: rgba(255,255,255,0.1) !important; color:#fff !important; }
+  .bk-scroll::-webkit-scrollbar { width: 8px; }
+  .bk-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 8px; }
+  .bk-dates { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.16) transparent; scroll-snap-type: x proximity; }
+  .bk-dates > * { scroll-snap-align: start; }
+</style>
+</helmet>
+
+<sc-if value="{{ bkOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeBooking }}" style="position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(6,8,14,0.72); backdrop-filter:blur(8px); animation:bkFade .25s ease; font-family:'Satoshi', system-ui, sans-serif;">
+  <div onClick="{{ bkNoop }}" class="bk-scroll" ref="{{ bkScrollRef }}" style="position:relative; width:100%; max-width:640px; max-height:92vh; overflow-y:auto; border-radius:26px; border:1px solid rgba(96,132,220,0.28); background:linear-gradient(180deg, #12151F, #0B0D14); box-shadow:0 40px 120px rgba(0,0,0,0.6); animation:bkPop .35s cubic-bezier(.16,1,.3,1);">
+    <div style="position:sticky; top:0; z-index:2; padding:22px 26px 16px; background:linear-gradient(180deg, #12151F 70%, rgba(18,21,31,0));">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+        <div style="display:flex; align-items:center; gap:11px;">
+          <div style="width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background:rgba(59,47,224,0.14); border:1px solid rgba(59,47,224,0.3);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9F91FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="17" rx="3"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path></svg></div>
+          <div>
+            <div style="font-size:16px; font-weight:700; color:#fff; letter-spacing:-0.01em;">Book your strategy call</div>
+            <div style="font-size:12.5px; color:#8A93A0;">Free 30-minute session &middot; No commitment</div>
+          </div>
+        </div>
+        <button onClick="{{ closeBooking }}" class="bk-close" aria-label="Close" style="flex:0 0 auto; width:34px; height:34px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); color:#9AA1AD; cursor:pointer; display:grid; place-items:center; transition:all .2s ease;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      </div>
+      <sc-if value="{{ bkStep1 }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:18px; display:flex; align-items:center; gap:10px;">
+        <div style="flex:1; height:4px; border-radius:999px; background:#3B2FE0;"></div>
+        <div style="flex:1; height:4px; border-radius:999px; background:rgba(255,255,255,0.1);"></div>
+        <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#8A93A0; white-space:nowrap;">STEP 1 / 2</span>
+      </div>
+      </sc-if>
+      <sc-if value="{{ bkStep2 }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:18px; display:flex; align-items:center; gap:10px;">
+        <div style="flex:1; height:4px; border-radius:999px; background:#3B2FE0;"></div>
+        <div style="flex:1; height:4px; border-radius:999px; background:#3B2FE0;"></div>
+        <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#8A93A0; white-space:nowrap;">STEP 2 / 2</span>
+      </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ bkStep1 }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:6px 26px 26px;">
+      <div style="font-size:13px; font-weight:600; color:#B7BCC5; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px;">Select a date</div>
+      <div class="bk-dates" style="display:flex; gap:10px; overflow-x:auto; padding-bottom:10px;">
+        <sc-for list="{{ bkDates }}" as="d" hint-placeholder-count="6">
+          <div onClick="{{ d.onClick }}" class="bk-chip" style="{{ d.cardStyle }}">
+            <div style="font-size:11px; font-weight:600; color:#8A93A0; text-transform:uppercase; letter-spacing:0.06em;">{{ d.wd }}</div>
+            <div style="font-size:24px; font-weight:800; color:#fff; line-height:1.1; margin:3px 0;">{{ d.day }}</div>
+            <div style="font-size:11px; color:#8A93A0;">{{ d.mon }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin:24px 0 12px;">
+        <div style="font-size:13px; font-weight:600; color:#B7BCC5; text-transform:uppercase; letter-spacing:0.08em;">Select a time</div>
+        <div style="position:relative;">
+          <button onClick="{{ bkToggleTz }}" style="display:flex; align-items:center; gap:7px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); color:#C7CCD4; font-family:inherit; font-size:13px; font-weight:600; padding:8px 11px; border-radius:10px; cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B3A6FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path></svg>
+            <span>{{ bkTz }}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="{{ bkTzCaret }}"><path d="M6 9l6 6 6-6"></path></svg>
+          </button>
+          <sc-if value="{{ bkTzOpen }}" hint-placeholder-val="{{ false }}">
+          <div class="bk-scroll" style="position:absolute; top:calc(100% + 6px); right:0; z-index:30; width:238px; max-height:230px; overflow-y:auto; background:#141922; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:6px; box-shadow:0 16px 38px rgba(0,0,0,0.55);">
+            <sc-for list="{{ bkTzOpts }}" as="tz" hint-placeholder-count="6">
+              <div onClick="{{ tz.onClick }}" class="bk-tzitem" style="{{ tz.style }}">{{ tz.label }}</div>
+            </sc-for>
+          </div>
+          </sc-if>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:10px;">
+        <sc-for list="{{ bkSlots }}" as="s" hint-placeholder-count="7">
+          <div onClick="{{ s.onClick }}" class="bk-chip" style="{{ s.style }}; text-align:center;">{{ s.label }}</div>
+        </sc-for>
+      </div>
+      <div style="margin-top:26px;">
+        <button onClick="{{ bkToStep2 }}" style="{{ bkContinueStyle }}">Continue <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ bkStep2 }}" hint-placeholder-val="{{ false }}">
+    <div class="bk-in" style="padding:6px 26px 26px;">
+      <div style="display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:12px; background:rgba(59,47,224,0.1); border:1px solid rgba(59,47,224,0.25); margin-bottom:20px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9F91FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="17" rx="3"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path></svg>
+        <span style="font-size:14px; font-weight:600; color:#DCE3F0;">{{ bkSummary }}</span>
+        <button onClick="{{ bkToStep1 }}" style="margin-left:auto; background:none; border:none; color:#B3A6FF; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit;">Change</button>
+      </div>
+
+      <form ref="{{ bkFormRef }}" onSubmit="{{ bkSubmit }}" style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <label style="display:flex; flex-direction:column; gap:6px;">
+            <span style="font-size:13px; font-weight:600; color:#C7CCD4;">Full name <span style="color:#F87171;">*</span></span>
+            <input name="fullName" type="text" placeholder="Jane Doe" style="{{ bkNameStyle }}">
+            <sc-if value="{{ bkErrName }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; color:#F87171;">{{ bkErrName }}</span></sc-if>
+          </label>
+          <label style="display:flex; flex-direction:column; gap:6px;">
+            <span style="font-size:13px; font-weight:600; color:#C7CCD4;">Business name <span style="color:#F87171;">*</span></span>
+            <input name="businessName" type="text" placeholder="Acme Inc." style="{{ bkBizStyle }}">
+            <sc-if value="{{ bkErrBiz }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; color:#F87171;">{{ bkErrBiz }}</span></sc-if>
+          </label>
+          <label style="display:flex; flex-direction:column; gap:6px;">
+            <span style="font-size:13px; font-weight:600; color:#C7CCD4;">Email <span style="color:#F87171;">*</span></span>
+            <input name="email" type="email" placeholder="jane@acme.com" style="{{ bkEmailStyle }}">
+            <sc-if value="{{ bkErrEmail }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; color:#F87171;">{{ bkErrEmail }}</span></sc-if>
+          </label>
+          <label style="display:flex; flex-direction:column; gap:6px;">
+            <span style="font-size:13px; font-weight:600; color:#C7CCD4;">Website URL <span style="color:#F87171;">*</span></span>
+            <input name="website" type="text" placeholder="acme.com" style="{{ bkWebStyle }}">
+            <sc-if value="{{ bkErrWeb }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; color:#F87171;">{{ bkErrWeb }}</span></sc-if>
+          </label>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:9px;">
+          <span style="font-size:13px; font-weight:600; color:#C7CCD4;">What do you need help with? <span style="color:#F87171;">*</span></span>
+          <div style="display:flex; flex-wrap:wrap; gap:9px;">
+            <sc-for list="{{ bkHelpChips }}" as="c" hint-placeholder-count="5">
+              <div onClick="{{ c.onClick }}" class="bk-chip" style="{{ c.style }}">{{ c.label }}</div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ bkErrHelp }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; color:#F87171;">{{ bkErrHelp }}</span></sc-if>
+        </div>
+
+        <label style="display:flex; flex-direction:column; gap:6px;">
+          <span style="font-size:13px; font-weight:600; color:#C7CCD4;">What is your biggest growth challenge right now? <span style="color:#F87171;">*</span></span>
+          <textarea name="challenge" placeholder="e.g. We generate leads but most never get followed up with..." style="{{ bkChalStyle }}"></textarea>
+          <sc-if value="{{ bkErrChal }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; color:#F87171;">{{ bkErrChal }}</span></sc-if>
+        </label>
+
+        <div style="display:flex; flex-direction:column; gap:9px;">
+          <span style="font-size:13px; font-weight:600; color:#C7CCD4;">Monthly marketing budget? <span style="color:#F87171;">*</span></span>
+          <div style="display:flex; flex-wrap:wrap; gap:9px;">
+            <sc-for list="{{ bkBudgetChips }}" as="c" hint-placeholder-count="5">
+              <div onClick="{{ c.onClick }}" class="bk-chip" style="{{ c.style }}">{{ c.label }}</div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ bkErrBudget }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; color:#F87171;">{{ bkErrBudget }}</span></sc-if>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:9px;">
+          <span style="font-size:13px; font-weight:600; color:#C7CCD4;">How soon would you like to start? <span style="color:#F87171;">*</span></span>
+          <div style="display:flex; flex-wrap:wrap; gap:9px;">
+            <sc-for list="{{ bkTimelineChips }}" as="c" hint-placeholder-count="4">
+              <div onClick="{{ c.onClick }}" class="bk-chip" style="{{ c.style }}">{{ c.label }}</div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ bkErrTimeline }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; color:#F87171;">{{ bkErrTimeline }}</span></sc-if>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:6px;">
+          <button type="button" onClick="{{ bkToStep1 }}" style="flex:0 0 auto; padding:16px 20px; border-radius:14px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.03); color:#C7CCD4; font-size:15px; font-weight:600; cursor:pointer; font-family:inherit;">Back</button>
+          <button type="submit" style="flex:1; border:none; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:10px; background:#3B2FE0; color:#fff; font-size:16px; font-weight:600; padding:16px; border-radius:14px; box-shadow:0 12px 34px rgba(59,47,224,0.4);">Confirm Booking <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></button>
+        </div>
+        <p style="margin:2px 0 0; text-align:center; font-size:12px; color:#5B6270;">We'll email a calendar invite &amp; confirmation right away.</p>
+      </form>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ bkDone }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:16px 30px 42px; text-align:center;">
+      <div style="width:76px; height:76px; margin:14px auto 0; border-radius:50%; display:grid; place-items:center; background:rgba(52,211,153,0.14); border:1px solid rgba(52,211,153,0.4);">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" style="stroke-dasharray:40; animation:bkCheck .5s ease .1s both;"></path></svg>
+      </div>
+      <h3 style="margin:22px 0 0; font-size:24px; font-weight:800; color:#fff; letter-spacing:-0.02em;">You're booked in!</h3>
+      <p style="max-width:400px; margin:12px auto 0; color:#9AA1AD; font-size:15px; line-height:1.6;">Your strategy call is set for <strong style="color:#DCE3F0;">{{ bkSummary }}</strong>. Check your inbox for a calendar invite and a short prep note.</p>
+      <button onClick="{{ closeBooking }}" style="margin-top:28px; border:none; cursor:pointer; background:#3B2FE0; color:#fff; font-size:15px; font-weight:600; padding:14px 30px; border-radius:14px; box-shadow:0 12px 34px rgba(59,47,224,0.4);">Done</button>
+    </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:640,&quot;height&quot;:700}}">
+class Component extends DCLogic {
+  state = { bkOpen: false, bkStep: 1, bkDate: null, bkSlot: null, bkDone: false,
+    bkHelp: null, bkBudget: null, bkTimeline: null, bkErrors: {},
+    bkTz: 'Eastern Time (ET)', bkTzOpen: false };
+
+  bkTzOpts = ['Pacific Time (PT)', 'Mountain Time (MT)', 'Central Time (CT)', 'Eastern Time (ET)', 'GMT / London (GMT)', 'Central European (CET)', 'India (IST)', 'Singapore (SGT)', 'Sydney (AEST)'];
+  bkSlotTimes = ['9:00 AM','10:00 AM','11:00 AM','1:00 PM','2:00 PM','3:00 PM','4:00 PM'];
+  bkHelpOpts = ['Lead Generation','Paid Advertising','AI Automation','CRM & Sales System','Growth Strategy'];
+  bkBudgetOpts = ['Under $1k','$1k \u2013 $5k','$5k \u2013 $15k','$15k \u2013 $50k','$50k+'];
+  bkTimelineOpts = ['Immediately','Within 2 weeks','This month','Just exploring'];
+
+  bkGenDates() {
+    if (this._bkDates) return this._bkDates;
+    const wds = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const mons = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const out = []; const d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() + 1);
+    while (out.length < 8) {
+      const dow = d.getDay();
+      if (dow !== 0 && dow !== 6) {
+        out.push({ wd: wds[dow], day: d.getDate(), mon: mons[d.getMonth()], full: wds[dow] + ', ' + mons[d.getMonth()] + ' ' + d.getDate() });
+      }
+      d.setDate(d.getDate() + 1);
+    }
+    this._bkDates = out; return out;
+  }
+
+  openBooking = (e) => { if (e && e.preventDefault) e.preventDefault(); try { document.body.style.overflow = 'hidden'; } catch(e){} this.setState({ bkOpen: true, bkStep: 1, bkDone: false }); };
+  closeBooking = () => { try { document.body.style.overflow = ''; } catch(e){} this.setState({ bkOpen: false }); };
+  bkSelectDate = (i) => this.setState({ bkDate: i });
+  bkSelectSlot = (s) => this.setState({ bkSlot: s });
+  bkToggleTz = () => this.setState(s => ({ bkTzOpen: !s.bkTzOpen }));
+  bkSetTz = (t) => this.setState({ bkTz: t, bkTzOpen: false });
+  bkToStep2 = () => { if (this.state.bkDate != null && this.state.bkSlot) { this.setState({ bkStep: 2 }); try { this._bkScroll && (this._bkScroll.scrollTop = 0); } catch(e){} } };
+  bkToStep1 = () => this.setState({ bkStep: 1 });
+  bkSetHelp = (v) => this.setState(s => ({ bkHelp: v, bkErrors: { ...s.bkErrors, help: null } }));
+  bkSetBudget = (v) => this.setState(s => ({ bkBudget: v, bkErrors: { ...s.bkErrors, budget: null } }));
+  bkSetTimeline = (v) => this.setState(s => ({ bkTimeline: v, bkErrors: { ...s.bkErrors, timeline: null } }));
+  bkFormRef = (el) => { this.bkFormEl = el; };
+  bkScrollRef = (el) => { this._bkScroll = el; };
+  bkClearErr = (k) => { if (this.state.bkErrors[k]) this.setState(s => ({ bkErrors: { ...s.bkErrors, [k]: null } })); };
+
+  bkInput = (err, area) => {
+    const base = 'width:100%; box-sizing:border-box; padding:13px 15px; border-radius:12px; font-family:inherit; font-size:15px; color:#fff; background:rgba(255,255,255,0.03); outline:none; transition:border-color .2s ease, box-shadow .2s ease; border:1px solid ' + (err ? '#F87171' : 'rgba(255,255,255,0.12)') + ';';
+    return area ? base + ' resize:vertical; min-height:92px; line-height:1.5;' : base;
+  };
+
+  bkSubmit = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const f = this.bkFormEl; if (!f) return;
+    const get = (n) => { const el = f.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+    const errs = {};
+    const fullName = get('fullName'); if (!fullName) errs.fullName = 'Please enter your name';
+    const businessName = get('businessName'); if (!businessName) errs.businessName = 'Please enter your business name';
+    const email = get('email');
+    if (!email) errs.email = 'Please enter your email';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = 'Enter a valid email';
+    const website = get('website'); if (!website) errs.website = 'Please enter your website';
+    const challenge = get('challenge'); if (!challenge) errs.challenge = 'Tell us a little about your challenge';
+    if (!this.state.bkHelp) errs.help = 'Pick one';
+    if (!this.state.bkBudget) errs.budget = 'Pick a range';
+    if (!this.state.bkTimeline) errs.timeline = 'Pick one';
+    if (Object.keys(errs).length) { this.setState({ bkErrors: errs }); return; }
+    this.setState({ bkErrors: {}, bkDone: true });
+  };
+
+  _onOpenEvent = () => this.openBooking();
+
+  componentDidMount() {
+    window.addEventListener('vz-open-booking', this._onOpenEvent);
+    try { if (['#book','#contact'].includes((window.location.hash || '').toLowerCase())) setTimeout(() => this.openBooking(), 200); } catch(e){}
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('vz-open-booking', this._onOpenEvent);
+  }
+
+  renderVals() {
+    const st = this.state;
+    const dates = this.bkGenDates().map((d, i) => ({
+      wd: d.wd, day: String(d.day), mon: d.mon,
+      sel: st.bkDate === i,
+      cardStyle: 'flex:0 0 auto; width:78px; padding:14px 8px; border-radius:14px; cursor:pointer; text-align:center; transition:all .2s ease; border:1px solid ' + (st.bkDate === i ? '#3B2FE0' : 'rgba(255,255,255,0.1)') + '; background:' + (st.bkDate === i ? 'rgba(59,47,224,0.16)' : 'rgba(255,255,255,0.03)') + ';' + (st.bkDate === i ? 'box-shadow:0 0 0 3px rgba(59,47,224,0.15);' : ''),
+      onClick: () => this.bkSelectDate(i)
+    }));
+    const slots = this.bkSlotTimes.map((t) => ({
+      label: t, sel: st.bkSlot === t,
+      style: 'padding:13px 10px; border-radius:12px; cursor:pointer; font-size:14.5px; font-weight:600; transition:all .2s ease; border:1px solid ' + (st.bkSlot === t ? '#3B2FE0' : 'rgba(255,255,255,0.1)') + '; background:' + (st.bkSlot === t ? 'rgba(59,47,224,0.16)' : 'rgba(255,255,255,0.03)') + '; color:' + (st.bkSlot === t ? '#fff' : '#C7CCD4') + ';',
+      onClick: () => this.bkSelectSlot(t)
+    }));
+    const chip = (opts, cur, setter) => opts.map((o) => ({
+      label: o, sel: cur === o,
+      style: 'padding:11px 16px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600; transition:all .2s ease; border:1px solid ' + (cur === o ? '#3B2FE0' : 'rgba(255,255,255,0.12)') + '; background:' + (cur === o ? 'rgba(59,47,224,0.18)' : 'rgba(255,255,255,0.03)') + '; color:' + (cur === o ? '#fff' : '#C7CCD4') + ';',
+      onClick: () => setter(o)
+    }));
+    const selDate = st.bkDate != null ? this.bkGenDates()[st.bkDate] : null;
+    const tzOpts = this.bkTzOpts.map((t) => ({
+      label: t,
+      onClick: () => this.bkSetTz(t),
+      style: 'padding:9px 11px; border-radius:8px; cursor:pointer; font-size:13.5px; font-weight:500; transition:background .15s ease; color:' + (st.bkTz === t ? '#fff' : '#B7BCC5') + '; background:' + (st.bkTz === t ? 'rgba(59,47,224,0.18)' : 'transparent') + ';'
+    }));
+    const er = st.bkErrors || {};
+
+    return {
+      bkOpen: st.bkOpen,
+      bkStep1: st.bkStep === 1 && !st.bkDone,
+      bkStep2: st.bkStep === 2 && !st.bkDone,
+      bkDone: st.bkDone,
+      bkContinueStyle: 'width:100%; margin-top:4px; border:none; cursor:' + (st.bkDate != null && st.bkSlot ? 'pointer' : 'not-allowed') + '; display:inline-flex; align-items:center; justify-content:center; gap:10px; background:' + (st.bkDate != null && st.bkSlot ? '#3B2FE0' : 'rgba(59,47,224,0.35)') + '; color:#fff; font-size:16px; font-weight:600; padding:16px; border-radius:14px; box-shadow:0 12px 34px rgba(59,47,224,0.35); transition:all .2s ease; opacity:' + (st.bkDate != null && st.bkSlot ? '1' : '0.55') + ';',
+      bkDates: dates,
+      bkSlots: slots,
+      bkHelpChips: chip(this.bkHelpOpts, st.bkHelp, this.bkSetHelp),
+      bkBudgetChips: chip(this.bkBudgetOpts, st.bkBudget, this.bkSetBudget),
+      bkTimelineChips: chip(this.bkTimelineOpts, st.bkTimeline, this.bkSetTimeline),
+      bkSummary: selDate ? (selDate.full + '  \u00b7  ' + st.bkSlot + '  \u00b7  ' + st.bkTz) : '',
+      bkTz: st.bkTz,
+      bkTzOpen: st.bkTzOpen,
+      bkToggleTz: this.bkToggleTz,
+      bkTzOpts: tzOpts,
+      bkTzCaret: 'transition:transform .2s ease;' + (st.bkTzOpen ? 'transform:rotate(180deg);' : ''),
+      bkErrName: er.fullName, bkErrBiz: er.businessName, bkErrEmail: er.email,
+      bkErrWeb: er.website, bkErrChal: er.challenge,
+      bkErrHelp: er.help, bkErrBudget: er.budget, bkErrTimeline: er.timeline,
+      bkNameStyle: this.bkInput(er.fullName), bkBizStyle: this.bkInput(er.businessName),
+      bkEmailStyle: this.bkInput(er.email), bkWebStyle: this.bkInput(er.website),
+      bkChalStyle: this.bkInput(er.challenge, true),
+      openBooking: this.openBooking,
+      closeBooking: this.closeBooking,
+      bkToStep2: this.bkToStep2,
+      bkToStep1: this.bkToStep1,
+      bkSubmit: this.bkSubmit,
+      bkFormRef: this.bkFormRef,
+      bkScrollRef: this.bkScrollRef,
+      bkNoop: (e) => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>

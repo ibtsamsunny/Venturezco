@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0A0A0A; color: #FFFFFF; font-family: 'Satoshi', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  ::selection { background: rgba(59,47,224,0.35); color: #fff; }
+  a { color: #9F91FF; }
+  a:hover { color: #B3A6FF; }
+  @keyframes auroraDrift { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(2.5%,-2%,0) rotate(4deg); } }
+  @keyframes meshDrift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(-3%,2.5%,0) scale(1.08); } }
+  @keyframes lightA { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(2.5vw,3vh,0); } }
+  @keyframes lightB { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(-2.5vw,-2.5vh,0); } }
+  @keyframes lightC { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(-3vw,2.5vh,0); } }
+  @keyframes waPulse { 0%,100% { box-shadow:0 12px 30px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.4); } 50% { box-shadow:0 12px 30px rgba(37,211,102,0.45), 0 0 0 12px rgba(37,211,102,0); } }
+  .blink { transition: color .25s ease; }
+  .blink:hover { color: #fff !important; }
+  .nav-svc { position: relative; }
+  .svc-dd { position:absolute; top:100%; left:50%; padding-top:16px; transform:translateX(-50%); width:max-content; opacity:0; visibility:hidden; transition:opacity .22s ease, visibility .22s; z-index:60; }
+  .nav-svc:hover .svc-dd, .nav-svc:focus-within .svc-dd { opacity:1; visibility:visible; }
+  .svc-dd-inner { display:flex; flex-direction:row; align-items:center; gap:4px; border-radius:999px; padding:8px; background:rgba(14,14,18,0.97); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.1); box-shadow:0 24px 60px rgba(0,0,0,0.5); }
+  .svc-dd a { display:flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; text-decoration:none; color:#C7CBD1; font-size:14px; font-weight:500; white-space:nowrap; transition:background .2s ease, color .2s ease; }
+  .svc-dd a:hover { background:rgba(255,255,255,0.06); color:#fff !important; }
+  .svc-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+  .bcard { transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .5s ease; }
+  .bcard:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(59,47,224,0.35), 0 0 40px rgba(59,47,224,0.18); border-color: rgba(59,47,224,0.4) !important; }
+  .prose p { margin: 0 0 22px; color: #C3C8D1; font-size: 18px; line-height: 1.8; }
+  .prose h2 { margin: 48px 0 18px; font-weight: 800; font-size: clamp(1.4rem,2.4vw,1.8rem); letter-spacing: -0.02em; color: #fff; }
+  .prose ul { margin: 0 0 22px; padding-left: 22px; color: #C3C8D1; font-size: 18px; line-height: 1.8; }
+  .prose li { margin-bottom: 10px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</helmet>
+
+<div aria-hidden="true" style="position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;">
+  <div data-ambient-depth="10" style="position:absolute; inset:-10%; will-change:transform;">
+    <div style="position:absolute; inset:-20%; opacity:0.06; background:radial-gradient(42% 38% at 22% 28%, #3B2FE0, transparent 70%), radial-gradient(38% 42% at 78% 18%, #22D3EE, transparent 70%), radial-gradient(48% 46% at 50% 88%, #8B5CF6, transparent 70%); filter:blur(120px); animation:auroraDrift 52s ease-in-out infinite;"></div>
+    <div style="position:absolute; inset:-25%; opacity:0.045; background:radial-gradient(36% 36% at 30% 72%, #1E1B8C, transparent 70%), radial-gradient(40% 40% at 72% 32%, #4C1D95, transparent 70%); filter:blur(100px); animation:meshDrift 64s ease-in-out infinite;"></div>
+  </div>
+  <div data-ambient-depth="22" style="position:absolute; inset:0; will-change:transform;">
+    <div style="position:absolute; top:-8%; left:-8%; width:1100px; height:1100px; max-width:72vw; max-height:72vw; border-radius:50%; background:radial-gradient(circle, rgba(59,47,224,0.06), transparent 70%); filter:blur(90px); animation:lightA 56s ease-in-out infinite;"></div>
+    <div style="position:absolute; bottom:-12%; right:-10%; width:960px; height:960px; max-width:66vw; max-height:66vw; border-radius:50%; background:radial-gradient(circle, rgba(34,211,238,0.05), transparent 70%); filter:blur(100px); animation:lightB 63s ease-in-out infinite reverse;"></div>
+    <div style="position:absolute; top:38%; left:58%; width:820px; height:820px; max-width:58vw; max-height:58vw; border-radius:50%; background:radial-gradient(circle, rgba(139,92,246,0.045), transparent 70%); filter:blur(90px); animation:lightC 70s ease-in-out infinite;"></div>
+  </div>
+  <div style="position:absolute; inset:0; opacity:0.015; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>'); background-size:180px 180px;"></div>
+  <div id="ambientGlow" style="position:absolute; inset:0; background:radial-gradient(80% 60% at 50% 40%, rgba(59,47,224,0.05), transparent 70%); opacity:0; transition:opacity 1.6s ease;"></div>
+</div>
+
+<div style="position:fixed; top:0; left:0; right:0; z-index:50; backdrop-filter: blur(14px); background: rgba(10,10,10,0.62); border-bottom: 1px solid rgba(255,255,255,0.06);">
+  <nav style="max-width:1200px; margin:0 auto; padding: 16px clamp(20px,5vw,32px); display:flex; align-items:center; justify-content:space-between; gap:24px;">
+    <a href="VenturezCo.dc.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4 19 L10 12 L14.5 15 L22 6" stroke="#3B2FE0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="19" r="2.4" fill="#3B2FE0"/><circle cx="10" cy="12" r="2.4" fill="#3B2FE0"/><circle cx="14.5" cy="15" r="2.2" fill="#3B2FE0"/><circle cx="22" cy="6" r="3" fill="#fff"/></svg>
+      <span style="font-weight:700; font-size:19px; letter-spacing:-0.02em; color:#fff;">Venturez<span style="color:#3B2FE0;">Co</span></span>
+    </a>
+    <div style="display:flex; align-items:center; gap:clamp(14px,2vw,30px);">
+
+      <div class="nav-svc">
+        <a href="VenturezCo.dc.html#services" class="blink" style="text-decoration:none; color:#B7BCC5; font-size:14.5px; font-weight:500; display:flex; align-items:center; gap:6px;">Services <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="svc-dd">
+          <div class="svc-dd-inner">
+            <a href="ServiceDigitalMarketing.dc.html"><span class="svc-dot" style="background:#3B2FE0;"></span>Digital Marketing</a>
+            <a href="ServiceLeadGeneration.dc.html"><span class="svc-dot" style="background:#8B5CF6;"></span>Lead Generation</a>
+            <a href="ServiceAIAutomation.dc.html"><span class="svc-dot" style="background:#22D3EE;"></span>AI Automation</a>
+            <a href="ServiceGoHighLevel.dc.html"><span class="svc-dot" style="background:#22C55E;"></span>GoHighLevel</a>
+            <a href="ServiceGrowthConsulting.dc.html"><span class="svc-dot" style="background:#F59E0B;"></span>Growth Consulting</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-svc">
+        <a href="javascript:void(0)" class="blink" style="text-decoration:none; color:#B7BCC5; font-size:14.5px; font-weight:500; display:flex; align-items:center; gap:6px;">Industries <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="svc-dd">
+          <div class="svc-dd-inner">
+            <a href="IndustryRealEstate.dc.html"><span class="svc-dot" style="background:#3B2FE0;"></span>Real Estate</a>
+            <a href="IndustryProfessionalServices.dc.html"><span class="svc-dot" style="background:#8B5CF6;"></span>Professional Services</a>
+            <a href="IndustryHealthcare.dc.html"><span class="svc-dot" style="background:#22D3EE;"></span>Healthcare</a>
+            <a href="IndustryEcommerce.dc.html"><span class="svc-dot" style="background:#F59E0B;"></span>Ecommerce</a>
+            <a href="IndustryFinancialServices.dc.html"><span class="svc-dot" style="background:#EC4899;"></span>Financial Services</a>
+          </div>
+        </div>
+      </div>
+      <a href="VenturezCo.dc.html#cases" class="blink" style="text-decoration:none; color:#B7BCC5; font-size:14.5px; font-weight:500;">Case Studies</a>
+      <a href="Insights.dc.html" class="blink" style="text-decoration:none; color:#fff; font-size:14.5px; font-weight:500;">Insights</a>
+      <a href="HowWeWork.dc.html" class="blink" style="text-decoration:none; color:#B7BCC5; font-size:14.5px; font-weight:500;">How We Work</a>
+      <a href="Contact.dc.html" class="blink" style="text-decoration:none; color:#B7BCC5; font-size:14.5px; font-weight:500;">Contact</a>
+      <a href="#" onClick="{{ openBooking }}" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:#3B2FE0; color:#fff; font-size:14px; font-weight:600; padding:10px 18px; border-radius:999px; box-shadow:0 8px 26px rgba(59,47,224,0.35);">Book a Call</a>
+    </div>
+  </nav>
+</div>
+
+<article style="position:relative; z-index:1; max-width:760px; margin:0 auto; padding: clamp(130px,15vw,180px) clamp(20px,5vw,32px) clamp(20px,3vw,32px);">
+  <a href="Insights.dc.html" class="blink" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:#8A93A0; font-size:14px; font-weight:500; margin-bottom:26px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>Back to blog</a>
+  <span style="display:block; font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:{{ post.accent }};">{{ post.category }}</span>
+  <h1 style="margin:16px 0 0; font-weight:900; font-size:clamp(2.2rem,5vw,3.4rem); line-height:1.08; letter-spacing:-0.03em; color:#fff; text-wrap:balance;">{{ post.title }}</h1>
+  <div style="margin-top:20px; display:flex; align-items:center; gap:14px; font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.04em; color:#5B6270;">
+    <span>{{ post.date }}</span>
+    <span>&middot;</span>
+    <span>{{ post.readTime }}</span>
+  </div>
+</article>
+
+<div style="position:relative; z-index:1; max-width:900px; margin:clamp(28px,4vw,40px) auto 0; padding: 0 clamp(20px,5vw,32px);">
+  <div style="position:relative; height:clamp(220px,32vw,360px); border-radius:24px; border:1px solid rgba(255,255,255,0.08); background:{{ post.heroBg }}; overflow:hidden;">
+    <svg viewBox="0 0 900 360" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.6;" dangerouslySetInnerHTML="{{ post.heroSvg }}"></svg>
+  </div>
+</div>
+
+<main style="position:relative; z-index:1; max-width:760px; margin:0 auto; padding: clamp(40px,5vw,56px) clamp(20px,5vw,32px) 0;">
+  <div class="prose" dangerouslySetInnerHTML="{{ post.body }}"></div>
+
+  <div style="margin-top:8px; padding:22px 26px; border-left:3px solid {{ post.accent }}; background:rgba(255,255,255,0.025); border-radius:0 14px 14px 0;">
+    <p style="margin:0; font-size:19px; line-height:1.6; font-weight:600; color:#EDEFF3; font-style:italic;">{{ post.pullQuote }}</p>
+  </div>
+
+  <div style="margin-top:clamp(48px,7vw,72px); border-radius:26px; border:1px solid rgba(96,132,220,0.3); background:radial-gradient(85% 130% at 50% -10%, rgba(38,66,150,0.55), rgba(14,18,34,0.6) 58%), linear-gradient(180deg, rgba(22,30,58,0.5), rgba(9,11,20,0.6)); padding:clamp(32px,5vw,48px); text-align:center;">
+    <h2 style="margin:0 auto; max-width:520px; font-weight:900; font-size:clamp(1.5rem,3vw,2.1rem); line-height:1.15; letter-spacing:-0.02em; color:#fff; text-wrap:balance;">Ready to fix the system behind your growth?</h2>
+    <p style="max-width:460px; margin:16px auto 0; color:#B9C0CC; font-size:16px; line-height:1.6;">Start with a free strategy call — we'll map exactly where your revenue is leaking.</p>
+    <div style="margin-top:26px; display:flex; justify-content:center;">
+      <a href="#" onClick="{{ openBooking }}" style="text-decoration:none; display:inline-flex; align-items:center; gap:10px; background:#3B2FE0; color:#fff; font-size:16px; font-weight:600; padding:15px 28px; border-radius:999px; box-shadow:0 14px 42px rgba(59,47,224,0.45);">Book Your Free Strategy Call <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</main>
+
+<section style="position:relative; z-index:1; max-width:1200px; margin:0 auto; padding: clamp(56px,7vw,84px) clamp(20px,5vw,32px) clamp(80px,10vw,120px);">
+  <h3 style="margin:0 0 24px; font-weight:800; font-size:clamp(1.2rem,2vw,1.5rem); letter-spacing:-0.02em; color:#fff;">More insights</h3>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px;">
+    <sc-for list="{{ related }}" as="r" hint-placeholder-count="2">
+      <a href="{{ r.href }}" class="bcard" style="text-decoration:none; display:flex; flex-direction:column; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px; gap:12px;">
+        <span style="align-self:flex-start; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:{{ r.accent }};">{{ r.category }}</span>
+        <h4 style="margin:0; font-size:18px; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:#fff;">{{ r.title }}</h4>
+        <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.06em; color:#5B6270;">{{ r.readTime }}</span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<footer style="position:relative; z-index:1; border-top:1px solid rgba(255,255,255,0.07); padding: clamp(36px,4vw,52px) 0;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,32px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+    <a href="VenturezCo.dc.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+      <svg width="22" height="22" viewBox="0 0 26 26" fill="none"><path d="M4 19 L10 12 L14.5 15 L22 6" stroke="#3B2FE0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="19" r="2.4" fill="#3B2FE0"/><circle cx="10" cy="12" r="2.4" fill="#3B2FE0"/><circle cx="14.5" cy="15" r="2.2" fill="#3B2FE0"/><circle cx="22" cy="6" r="3" fill="#fff"/></svg>
+      <span style="font-weight:700; font-size:17px; letter-spacing:-0.02em; color:#fff;">Venturez<span style="color:#3B2FE0;">Co</span></span>
+    </a>
+    <div style="display:flex; align-items:center; gap:22px; flex-wrap:wrap;">
+      <a href="#" onClick="{{ openBooking }}" class="blink" style="text-decoration:none; color:#B7BCC5; font-size:14px;">Book a Call</a>
+      <span style="color:#5B6270; font-size:13px;">© 2026 VenturezCo. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/447463361502?text=Hi%20VenturezCo!%20I%20have%20a%20question%20about%20your%20growth%20systems." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="position:fixed; right:24px; bottom:24px; z-index:90; width:60px; height:60px; border-radius:50%; display:grid; place-items:center; background:#25D366; color:#fff; box-shadow:0 12px 30px rgba(37,211,102,0.45); animation:waPulse 2.6s ease-in-out infinite;">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.8.37c-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.44 9.44 0 01-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.42 9.42 0 01-1.44-5.02c0-5.21 4.24-9.45 9.46-9.45 2.53 0 4.9.99 6.68 2.78a9.4 9.4 0 012.77 6.68c0 5.21-4.24 9.45-9.46 9.45zm8.05-17.5A11.35 11.35 0 0012.04 0C5.76 0 .66 5.1.66 11.38c0 2 .52 3.96 1.52 5.68L.56 24l7.1-1.86a11.34 11.34 0 005.42 1.38h.01c6.28 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.34-8.05z"></path></svg>
+</a>
+<dc-import name="BookingModal" hint-size="0,0"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const POSTS = {
+  'crm-follow-up': {
+    category: 'Automation', accent: '#B3A6FF',
+    title: "Why your CRM should run your follow-up, not your team",
+    date: 'Jun 2026', readTime: '6 min read',
+    heroBg: 'radial-gradient(120% 130% at 20% 0%, rgba(59,47,224,0.32), rgba(59,47,224,0.04) 65%), #0C0D11',
+    heroSvg: '<polyline points="0,280 145,220 290,238 435,145 580,166 900,64" fill="none" stroke="#9F91FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="435" cy="145" r="6" fill="#fff"/><circle cx="900" cy="64" r="7" fill="#fff"/>',
+    pullQuote: "The lead didn't go cold because your team didn't care. It went cold because no system was watching the clock.",
+    body: `<p>Every pipeline has a moment where a warm lead turns cold, and it almost never happens because someone made a bad decision. It happens because nobody was watching. A rep gets pulled into a demo, an inbox fills up, and the follow-up that should have gone out in ten minutes goes out in four days — if it goes out at all.</p>
+    <p>That gap is where the majority of enterprise pipeline actually leaks. Not from bad targeting, not from weak messaging, but from response time. And response time is not a people problem. It's a systems problem.</p>
+    <h2>What "the CRM runs it" actually means</h2>
+    <p>We don't mean adding a reminder task. We mean building a follow-up engine that fires the moment a trigger happens — a form fill, a reply, a pricing page visit — without waiting for a human to notice. The rep still writes the message and makes the call. The system decides when, and makes sure it happens.</p>
+    <ul>
+      <li>Instant first response on every inbound lead, day or night</li>
+      <li>Sequenced nurture that adjusts based on engagement, not a fixed calendar</li>
+      <li>Automatic re-engagement when a deal goes quiet for a set number of days</li>
+    </ul>
+    <h2>The result</h2>
+    <p>Clients who put this in place typically see the biggest shift in speed-to-lead, not close rate. The close rate was always there — it just used to arrive on lead number four instead of lead number one.</p>`
+  },
+  'funnel-anatomy': {
+    category: 'Lead Gen', accent: '#C4B5FD',
+    title: "The anatomy of a funnel that actually converts",
+    date: 'May 2026', readTime: '5 min read',
+    heroBg: 'radial-gradient(120% 130% at 20% 0%, rgba(139,92,246,0.32), rgba(139,92,246,0.04) 65%), #0C0B12',
+    heroSvg: '<polygon points="116,58 784,58 662,164 238,164" fill="rgba(196,181,253,0.35)"/><polygon points="248,184 652,184 561,275 339,275" fill="rgba(196,181,253,0.5)"/><polygon points="349,296 551,296 492,380 408,380" fill="rgba(196,181,253,0.7)"/>',
+    pullQuote: "More traffic on a broken funnel just means more people watching it fail.",
+    body: `<p>Most funnels are diagnosed backwards. Something feels off, so the instinct is to buy more traffic and hope volume covers for structure. It rarely does — it just makes the leak bigger and more expensive.</p>
+    <h2>Start at the offer, not the ad</h2>
+    <p>A funnel converts when every step answers the objection the previous step created. The ad earns attention. The landing page earns trust. The offer earns a decision. If any one of those is doing someone else's job, the whole thing collapses under its own weight.</p>
+    <h2>The three checkpoints we audit first</h2>
+    <ul>
+      <li>Message match between ad and landing page headline</li>
+      <li>Time-to-value on the page — how fast a visitor understands what they get</li>
+      <li>Friction in the conversion action itself — form length, page load, next step clarity</li>
+    </ul>
+    <p>Fix those three and most funnels recover more revenue than any new campaign would generate. Traffic amplifies whatever structure is already there — good or bad.</p>`
+  },
+  'systems-beat-tactics': {
+    category: 'Strategy', accent: '#A5F3FC',
+    title: "Systems beat tactics: how to think about growth",
+    date: 'May 2026', readTime: '7 min read',
+    heroBg: 'radial-gradient(120% 130% at 20% 0%, rgba(34,211,238,0.3), rgba(34,211,238,0.04) 65%), #0A0F11',
+    heroSvg: '<g stroke="#22D3EE" stroke-width="2.5" fill="none"><line x1="232" y1="105" x2="450" y2="180"/><line x1="232" y1="255" x2="450" y2="180"/><line x1="450" y1="180" x2="682" y2="180"/></g><g fill="rgba(34,211,238,0.18)" stroke="#22D3EE" stroke-width="2"><circle cx="232" cy="105" r="26"/><circle cx="232" cy="255" r="26"/><circle cx="682" cy="180" r="26"/><circle cx="450" cy="180" r="38"/></g>',
+    pullQuote: "A campaign is a bet. A system is compound interest.",
+    body: `<p>Every quarter brings a new tactic worth trying — a channel, a format, a growth hack someone saw work for another company. Some of them help. None of them, on their own, build a business that keeps growing when you stop paying attention to it.</p>
+    <h2>Tactics are additive. Systems compound.</h2>
+    <p>A tactic gives you a result once. A system gives you that result, then uses the data from it to make the next result better, cheaper, or faster. The difference shows up not in month one, but in month twelve — when the system has learned from eleven months of signal and the tactic is still starting from zero.</p>
+    <h2>What a growth system actually contains</h2>
+    <ul>
+      <li>A single source of truth for every lead and its full history</li>
+      <li>Defined triggers that move a contact from one stage to the next automatically</li>
+      <li>A feedback loop that routes performance data back into targeting and messaging</li>
+    </ul>
+    <p>None of this rules out trying new channels. It just means every new tactic plugs into an engine that was already compounding — instead of becoming one more disconnected experiment competing for attention.</p>`
+  },
+  'ai-lead-qualification': {
+    category: 'AI', accent: '#B3A6FF',
+    title: "Putting AI agents to work on lead qualification",
+    date: 'Apr 2026', readTime: '5 min read',
+    heroBg: 'radial-gradient(120% 130% at 20% 0%, rgba(59,47,224,0.3), rgba(59,47,224,0.04) 65%), #0C0D11',
+    heroSvg: '<rect x="318" y="137" width="264" height="180" rx="20" fill="rgba(59,47,224,0.14)" stroke="#9F91FF" stroke-width="2"/><circle cx="397" cy="227" r="13" fill="#B3A6FF"/><circle cx="503" cy="227" r="13" fill="#B3A6FF"/><path d="M296 227h-37M666 227h-37" stroke="#9F91FF" stroke-width="2"/>',
+    pullQuote: "The best qualification question isn't in your script. It's the one the agent asks based on what the lead just said.",
+    body: `<p>First response used to mean a human, eventually, replying to a form fill. Now it can mean an AI agent that responds in seconds, asks the right qualifying questions in a real conversation, and hands a rep a lead that's already scored and ready — not a name in a spreadsheet.</p>
+    <h2>Where the agent actually adds value</h2>
+    <p>Not in replacing your sales team's judgment — in removing the delay and inconsistency that sits in front of it. The agent asks the same sharp questions every time, at any hour, and routes based on the answers instead of on who happened to be free.</p>
+    <ul>
+      <li>Immediate, natural-language first response on every channel</li>
+      <li>Dynamic qualification that adapts follow-up questions to prior answers</li>
+      <li>Automatic scoring and routing to the right rep, with full context attached</li>
+    </ul>
+    <h2>What changes for the team</h2>
+    <p>Reps stop opening conversations with "so, tell me about your business" and start them already knowing the answer. That single shift changes the tone of the first call — and how fast it closes.</p>`
+  },
+  'tool-consolidation': {
+    category: 'Operations', accent: '#A5F3FC',
+    title: "Replacing 10 tools with one growth platform",
+    date: 'Apr 2026', readTime: '4 min read',
+    heroBg: 'radial-gradient(120% 130% at 20% 0%, rgba(34,211,238,0.28), rgba(34,211,238,0.04) 65%), #0A0F11',
+    heroSvg: '<g fill="none" stroke="#22D3EE" stroke-width="2"><rect x="228" y="122" width="122" height="122" rx="16"/><rect x="389" y="122" width="122" height="122" rx="16"/><rect x="550" y="122" width="122" height="122" rx="16"/></g><rect x="318" y="312" width="264" height="90" rx="16" fill="rgba(34,211,238,0.16)" stroke="#22D3EE" stroke-width="2"/>',
+    pullQuote: "Tool sprawl doesn't show up on the invoice. It shows up in every handoff that quietly drops a lead.",
+    body: `<p>Ten tools rarely means ten times the capability. It usually means ten places data can go stale, ten logins someone forgets to revoke, and ten integrations that break the moment one vendor ships an update.</p>
+    <h2>The real cost isn't the subscriptions</h2>
+    <p>It's the handoffs. Every time a lead's data moves from the ad platform to the form tool to the CRM to the email tool to the calendar tool, there's a chance something doesn't sync — a tag doesn't pass, a status doesn't update, a follow-up doesn't fire.</p>
+    <ul>
+      <li>One system of record for every contact, from first click to closed deal</li>
+      <li>No sync delay between marketing, sales, and fulfillment data</li>
+      <li>A single place to see what's actually working, instead of ten dashboards that disagree</li>
+    </ul>
+    <p>Consolidating rarely means losing capability. It means the capability you already had stops leaking between the seams.</p>`
+  },
+  'compounding-channels': {
+    category: 'Marketing', accent: '#C4B5FD',
+    title: "Compounding demand: channels that feed each other",
+    date: 'Mar 2026', readTime: '6 min read',
+    heroBg: 'radial-gradient(120% 130% at 20% 0%, rgba(139,92,246,0.3), rgba(139,92,246,0.04) 65%), #0C0B12',
+    heroSvg: '<line x1="80" y1="330" x2="820" y2="330" stroke="rgba(255,255,255,0.12)" stroke-width="2"/><rect x="158" y="228" width="90" height="102" rx="8" fill="rgba(196,181,253,0.45)"/><rect x="316" y="163" width="90" height="167" rx="8" fill="rgba(196,181,253,0.55)"/><rect x="474" y="118" width="90" height="212" rx="8" fill="rgba(196,181,253,0.68)"/><rect x="632" y="73" width="90" height="257" rx="8" fill="rgba(196,181,253,0.82)"/>',
+    pullQuote: "One channel gets you a lead. Channels that talk to each other get you a category.",
+    body: `<p>The businesses that keep growing without their acquisition cost climbing every quarter aren't the ones with the single best channel. They're the ones whose channels reinforce each other — where paid search retargets people from organic content, where a case study from a closed deal becomes the next ad, where every touchpoint makes the next one work harder.</p>
+    <h2>What a compounding loop looks like</h2>
+    <p>Content earns attention and trust. Paid amplifies the content that's already proven itself. Outbound reaches people who've already seen the brand somewhere else, so the cold email doesn't feel cold. Each channel lowers the cost of the next.</p>
+    <ul>
+      <li>Retarget engaged content readers with paid before they ever fill out a form</li>
+      <li>Turn every closed-won case study into new top-of-funnel content</li>
+      <li>Feed real conversion data back into targeting instead of guessing at personas</li>
+    </ul>
+    <p>Isolated channels get judged on their own ROI and get cut when that number dips. Compounding channels get judged on the system's ROI — which is a much harder number to shrink.</p>`
+  },
+};
+
+class Component extends DCLogic {
+  state = { slug: null };
+
+  componentDidMount() {
+    const params = new URLSearchParams(window.location.search);
+    this.setState({ slug: params.get('post') || 'crm-follow-up' });
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.startAmbient(reduce);
+  }
+
+  startAmbient(reduce) {
+    if (reduce) return;
+    const layers = Array.from(document.querySelectorAll('[data-ambient-depth]'));
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    const onMove = (e) => { mx = (e.clientX / window.innerWidth - 0.5); my = (e.clientY / window.innerHeight - 0.5); };
+    window.addEventListener('mousemove', onMove, { passive: true });
+    const tick = () => {
+      tx += (mx - tx) * 0.03; ty += (my - ty) * 0.03;
+      layers.forEach((el) => {
+        const f = parseFloat(el.getAttribute('data-ambient-depth')) || 12;
+        el.style.transform = 'translate3d(' + (tx * f).toFixed(1) + 'px,' + (ty * f).toFixed(1) + 'px,0)';
+      });
+      this._ambientRaf = requestAnimationFrame(tick);
+    };
+    this._ambientRaf = requestAnimationFrame(tick);
+    const glow = document.querySelector('#ambientGlow');
+    if (glow) {
+      const sections = Array.from(document.querySelectorAll('section'));
+      if (sections.length) {
+        const gio = new IntersectionObserver((es) => {
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              glow.style.opacity = '1';
+              clearTimeout(this._glowT);
+              this._glowT = setTimeout(() => { glow.style.opacity = '0'; }, 1400);
+            }
+          });
+        }, { threshold: 0.35 });
+        sections.forEach((s) => gio.observe(s));
+      }
+    }
+  }
+
+  openBooking = (e) => { if (e && e.preventDefault) e.preventDefault(); window.dispatchEvent(new CustomEvent('vz-open-booking')); };
+
+  renderVals() {
+    const slugs = Object.keys(POSTS);
+    const slug = this.state.slug && POSTS[this.state.slug] ? this.state.slug : 'crm-follow-up';
+    const post = POSTS[slug];
+    const others = slugs.filter(s => s !== slug);
+    const related = others.slice(0, 2).map(s => ({
+      href: 'BlogPost.dc.html?post=' + s,
+      category: POSTS[s].category,
+      accent: POSTS[s].accent,
+      title: POSTS[s].title,
+      readTime: POSTS[s].readTime,
+    }));
+    return {
+      post: {
+        category: post.category, accent: post.accent, title: post.title, date: post.date, readTime: post.readTime,
+        heroBg: post.heroBg,
+        heroSvg: { __html: post.heroSvg },
+        body: { __html: post.body },
+        pullQuote: post.pullQuote,
+      },
+      related,
+      openBooking: this.openBooking,
+    };
+  }
+}
+</script>
+</body>
+</html>
