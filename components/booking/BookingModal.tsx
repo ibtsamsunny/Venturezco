@@ -6,9 +6,9 @@ import {
   HELP_OPTS,
   TIMELINE_OPTS,
   TZ_OPTS,
-  SLOT_TIMES,
   useBookingModal,
 } from "./BookingModalProvider";
+import { BUSINESS_HOUR_SLOTS, formatClockLabel, formatTimeInZone, ianaForLabel } from "@/lib/timezone";
 
 function inputStyle(err?: string, area = false): CSSProperties {
   return {
@@ -50,7 +50,9 @@ export default function BookingModal() {
   if (!bk.bkOpen) return null;
 
   const selDate = bk.bkDate != null ? bk.dates[bk.bkDate] : null;
-  const summary = selDate ? `${selDate.full}  ·  ${bk.bkSlot}  ·  ${bk.bkTz}` : "";
+  const displayZone = ianaForLabel(bk.bkTz);
+  const slotLabel = bk.bkSlot ? formatTimeInZone(bk.bkSlot, displayZone) : "";
+  const summary = selDate ? `${selDate.full}  ·  ${slotLabel}  ·  ${bk.bkTz}` : "";
   const canContinue = bk.bkDate != null && !!bk.bkSlot;
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -284,24 +286,36 @@ export default function BookingModal() {
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(96px,1fr))", gap: 10, opacity: bk.bkSlotsLoading ? 0.5 : 1, transition: "opacity .2s ease" }}>
-              {SLOT_TIMES.map((t) => {
-                const available = bk.bkAvailableSlots == null || bk.bkAvailableSlots.includes(t);
-                return (
-                  <div
-                    key={t}
-                    onClick={() => available && bk.selectSlot(t)}
-                    className="bk-chip"
-                    style={{
-                      ...chipStyle(bk.bkSlot === t),
-                      textAlign: "center",
-                      ...(available ? {} : { opacity: 0.35, cursor: "not-allowed", textDecoration: "line-through" }),
-                    }}
-                  >
-                    {t}
-                  </div>
-                );
-              })}
+              {bk.bkSlots == null
+                ? // No date picked yet (or a fetch is in flight): a
+                  // non-interactive skeleton in the same fixed business-hour
+                  // shape, labeled plainly since there's no concrete date/zone
+                  // to convert against yet.
+                  BUSINESS_HOUR_SLOTS.map(({ hour, minute }) => (
+                    <div
+                      key={`${hour}:${minute}`}
+                      className="bk-chip"
+                      style={{ ...chipStyle(false), textAlign: "center", opacity: 0.55, cursor: "not-allowed" }}
+                    >
+                      {formatClockLabel(hour, minute)}
+                    </div>
+                  ))
+                : bk.bkSlots.map((s) => (
+                    <div
+                      key={s.iso}
+                      onClick={() => s.available && bk.selectSlot(s.iso)}
+                      className="bk-chip"
+                      style={{
+                        ...chipStyle(bk.bkSlot === s.iso),
+                        textAlign: "center",
+                        ...(s.available ? {} : { opacity: 0.35, cursor: "not-allowed", textDecoration: "line-through" }),
+                      }}
+                    >
+                      {formatTimeInZone(s.iso, displayZone)}
+                    </div>
+                  ))}
             </div>
+            {bk.bkErrors.slot && <p style={{ margin: "10px 0 0", fontSize: 12.5, color: "#F87171" }}>{bk.bkErrors.slot}</p>}
 
             <div style={{ marginTop: 26 }}>
               <button
