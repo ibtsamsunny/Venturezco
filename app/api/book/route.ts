@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { appendLead } from "@/lib/leads";
 import { sendNotificationEmail } from "@/lib/email";
-import { createCalendarBooking, type BookingPayload } from "@/lib/googleCalendar";
+import { createCalendarBooking, SlotUnavailableError, type BookingPayload } from "@/lib/googleCalendar";
 
 function isValidPayload(body: unknown): body is BookingPayload {
   if (!body || typeof body !== "object") return false;
@@ -23,12 +23,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
-  await appendLead("booking", body);
-
-  const calendarResult = await createCalendarBooking(body).catch((err) => {
+  let calendarResult: { htmlLink: string } | null = null;
+  try {
+    calendarResult = await createCalendarBooking(body);
+  } catch (err) {
+    if (err instanceof SlotUnavailableError) {
+      // Someone else booked this slot between selection and submission —
+      // don't record the lead as booked for a time that isn't actually
+      // held; let the client send the visitor back to pick another time.
+      return NextResponse.json(
+        { error: "slot_unavailable", message: "That time was just booked by someone else. Please pick another slot." },
+        { status: 409 }
+      );
+    }
     console.error("[book] Calendar booking failed:", err);
-    return null;
-  });
+  }
+
+  await appendLead("booking", body);
 
   await sendNotificationEmail({
     subject: `New strategy call booked — ${body.fullName} (${body.businessName})`,

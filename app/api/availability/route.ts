@@ -8,12 +8,17 @@ export async function GET(request: Request) {
   }
 
   try {
+    // Always the 7 fixed business-hour slots as real UTC instants, each
+    // flagged with live availability — the client formats them into
+    // whichever timezone the visitor has selected for display.
     const slots = await getAvailableSlots(dateStr);
     return NextResponse.json({ slots });
   } catch (err) {
     console.error("[availability] Failed to fetch availability:", err);
-    // Fail open: let the modal fall back to its default full slot list
-    // rather than blocking the booking flow on a transient API error.
+    // Fail open: let the modal fall back to its default skeleton rather
+    // than blocking the booking flow on a transient API error. The
+    // pre-insert recheck in createCalendarBooking is the real safety net
+    // against double-booking, not this endpoint.
     return NextResponse.json({ slots: null });
   }
 }
