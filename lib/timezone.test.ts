@@ -5,6 +5,8 @@ import {
   ianaForLabel,
   zonedTimeToUtc,
   formatTimeInZone,
+  formatDateInZone,
+  formatDurationLabel,
   formatClockLabel,
   getBusinessSlotInstants,
   parseBookingDateLabel,
@@ -82,6 +84,27 @@ describe("formatTimeInZone — visitor timezone conversion", () => {
     formatTimeInZone(iso, "Asia/Kolkata");
     // Re-parsing the same iso string must still equal the original instant.
     expect(new Date(iso).toISOString()).toBe(iso);
+  });
+});
+
+describe("formatDateInZone — human-readable date labels for emails", () => {
+  it("formats a full weekday/month/day/year label, never a raw ISO string", () => {
+    const iso = zonedTimeToUtc("2026-07-16", 15, 0, "Europe/London").toISOString();
+    expect(formatDateInZone(iso, "Europe/London")).toBe("Thursday, July 16, 2026");
+  });
+
+  it("can roll to a different calendar date in another zone for the same instant", () => {
+    // 8pm PST on Jan 1 is 4am UTC on Jan 2 — reformatting in UTC should
+    // show the rolled-over date, not the original wall-clock date.
+    const iso = zonedTimeToUtc("2026-01-01", 20, 0, "America/Los_Angeles").toISOString();
+    expect(formatDateInZone(iso, "UTC")).toBe("Friday, January 2, 2026");
+  });
+});
+
+describe("formatDurationLabel", () => {
+  it("pluralizes minutes correctly", () => {
+    expect(formatDurationLabel(30)).toBe("30 minutes");
+    expect(formatDurationLabel(1)).toBe("1 minute");
   });
 });
 
