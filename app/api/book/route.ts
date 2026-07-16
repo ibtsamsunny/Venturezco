@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { appendLead } from "@/lib/leads";
-import { sendNotificationEmail } from "@/lib/email";
-import { createCalendarBooking, SlotUnavailableError, type BookingPayload } from "@/lib/googleCalendar";
+import { NOTIFY_EMAIL, sendEmail } from "@/lib/email";
+import { createCalendarBooking, SlotUnavailableError, type BookingPayload, type CalendarBookingResult } from "@/lib/googleCalendar";
+import { ianaForLabel, formatTimeInZone, formatDateInZone, formatDurationLabel, SLOT_DURATION_MINUTES } from "@/lib/timezone";
+import AdminBookingEmail from "@/emails/templates/AdminBookingEmail";
+import CustomerBookingEmail from "@/emails/templates/CustomerBookingEmail";
 
 function isValidPayload(body: unknown): body is BookingPayload {
   if (!body || typeof body !== "object") return false;
@@ -23,7 +26,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
-  let calendarResult: { htmlLink: string } | null = null;
+  let calendarResult: CalendarBookingResult | null = null;
   try {
     calendarResult = await createCalendarBooking(body);
   } catch (err) {
@@ -41,25 +44,59 @@ export async function POST(request: Request) {
 
   await appendLead("booking", body);
 
-  await sendNotificationEmail({
-    subject: `New strategy call booked — ${body.fullName} (${body.businessName})`,
-    text: [
-      `${body.date} · ${body.slot} · ${body.timezone}`,
-      "",
-      `Name: ${body.fullName}`,
-      `Business: ${body.businessName}`,
-      `Email: ${body.email}`,
-      `Website: ${body.website}`,
-      `Help needed: ${body.help}`,
-      `Budget: ${body.budget}`,
-      `Timeline: ${body.timeline}`,
-      "",
-      `Challenge: ${body.challenge}`,
-      calendarResult ? `\nCalendar event: ${calendarResult.htmlLink}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n"),
-  });
+  // The slot is a UTC instant; the visitor's chosen display timezone is
+  // what both confirmation emails should show, matching what they saw in
+  // the modal — never a raw ISO string or the business's own timezone.
+  const zone = ianaForLabel(body.timezone);
+  const dateLabel = formatDateInZone(body.slot, zone);
+  const timeLabel = formatTimeInZone(body.slot, zone);
+  const durationLabel = formatDurationLabel(SLOT_DURATION_MINUTES);
+  const meetUrl = calendarResult?.meetUrl ?? null;
+  const eventUrl = calendarResult?.eventUrl ?? null;
 
-  return NextResponse.json({ ok: true, calendarEvent: calendarResult ? { htmlLink: calendarResult.htmlLink } : null });
+  // Admin and customer sends are independent — logged separately, and
+  // neither one failing reverses the booking that already succeeded above.
+  const adminSent = await sendEmail({
+    to: NOTIFY_EMAIL,
+    subject: `New strategy call booking — ${body.fullName}`,
+    replyTo: body.email,
+    react: AdminBookingEmail({
+      fullName: body.fullName,
+      businessName: body.businessName,
+      email: body.email,
+      website: body.website,
+      help: body.help,
+      challenge: body.challenge,
+      budget: body.budget,
+      timeline: body.timeline,
+      dateLabel,
+      timeLabel,
+      timezoneLabel: body.timezone,
+      durationLabel,
+      meetUrl,
+      eventUrl,
+    }),
+  });
+  if (!adminSent) console.error("[book] Failed to send admin booking notification email");
+
+  const customerSent = await sendEmail({
+    to: body.email,
+    subject: "Your VenturezCo strategy call is confirmed",
+    replyTo: NOTIFY_EMAIL,
+    react: CustomerBookingEmail({
+      fullName: body.fullName,
+      dateLabel,
+      timeLabel,
+      timezoneLabel: body.timezone,
+      durationLabel,
+      meetUrl,
+      eventUrl,
+    }),
+  });
+  if (!customerSent) console.error("[book] Failed to send customer confirmation email");
+
+  return NextResponse.json({
+    ok: true,
+    calendarEvent: calendarResult ? { eventId: calendarResult.eventId, eventUrl, meetUrl } : null,
+  });
 }

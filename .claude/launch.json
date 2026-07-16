@@ -7,6 +7,13 @@
       "runtimeArgs": ["run", "dev", "--", "-p", "4455"],
       "port": 4455,
       "autoPort": false
+    },
+    {
+      "name": "email",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["email", "dev", "--dir", "emails/templates", "-p", "4456"],
+      "port": 4456,
+      "autoPort": false
     }
   ]
 }

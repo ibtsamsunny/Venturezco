@@ -117,13 +117,36 @@ export async function getAvailableSlots(dateStr: string): Promise<AvailableSlot[
   return computeAvailability(candidates, busy, SLOT_DURATION_MINUTES);
 }
 
+export type CalendarBookingResult = {
+  eventId: string;
+  eventUrl: string | null;
+  /** null when the event was created but Google Meet conference generation
+   * didn't return a link — the calendar booking is still valid, there's
+   * just no video link to show. Callers must not claim a Meet link exists
+   * when this is null. */
+  meetUrl: string | null;
+  start: string;
+  end: string;
+};
+
+/** Pulls the Google Meet URL out of an inserted event, trying the
+ * deprecated-but-still-populated `hangoutLink` shortcut first, then the
+ * `conferenceData.entryPoints` video entry — mirrors what the Calendar API
+ * actually returns for a `hangoutsMeet` createRequest. */
+function extractMeetUrl(event: { hangoutLink?: string | null; conferenceData?: { entryPoints?: { entryPointType?: string | null; uri?: string | null }[] | null } | null }): string | null {
+  if (event.hangoutLink) return event.hangoutLink;
+  const videoEntry = event.conferenceData?.entryPoints?.find((e) => e.entryPointType === "video");
+  return videoEntry?.uri ?? null;
+}
+
 /** Creates the calendar event for a confirmed booking, with the lead as an
- * attendee and their answers in the description. Returns null when Google
- * Calendar isn't configured — the booking still succeeds (email + storage
- * still happen), it just won't have a calendar event. Throws
- * SlotUnavailableError if the slot was booked by someone else between
- * selection and submission (checked immediately before insertion). */
-export async function createCalendarBooking(payload: BookingPayload): Promise<{ htmlLink: string } | null> {
+ * attendee, a unique Google Meet conference, and their answers in the
+ * description. Returns null when Google Calendar isn't configured — the
+ * booking still succeeds (email + storage still happen), it just won't have
+ * a calendar event. Throws SlotUnavailableError if the slot was booked by
+ * someone else between selection and submission (checked immediately before
+ * insertion). */
+export async function createCalendarBooking(payload: BookingPayload): Promise<CalendarBookingResult | null> {
   if (!isConfigured()) return null;
 
   const dateStr = parseBookingDateLabel(payload.date);
@@ -143,6 +166,9 @@ export async function createCalendarBooking(payload: BookingPayload): Promise<{ 
   const res = await calendar.events.insert({
     calendarId: getCalendarId(),
     sendUpdates: "all",
+    // Required for the createRequest below to actually generate conference
+    // data — without this the API silently ignores conferenceData.
+    conferenceDataVersion: 1,
     requestBody: {
       summary: `Strategy Call — ${payload.fullName} (${payload.businessName})`,
       description: [
@@ -159,10 +185,27 @@ export async function createCalendarBooking(payload: BookingPayload): Promise<{ 
       start: { dateTime: start.toISOString(), timeZone: BUSINESS_TIMEZONE },
       end: { dateTime: end.toISOString(), timeZone: BUSINESS_TIMEZONE },
       attendees: [{ email: payload.email, displayName: payload.fullName }],
+      conferenceData: {
+        createRequest: {
+          requestId: crypto.randomUUID(),
+          conferenceSolutionKey: { type: "hangoutsMeet" },
+        },
+      },
     },
   });
 
-  return res.data.htmlLink ? { htmlLink: res.data.htmlLink } : null;
+  const meetUrl = extractMeetUrl(res.data);
+  if (!meetUrl) {
+    console.warn(`[calendar] Event ${res.data.id ?? "(unknown id)"} was created without a Google Meet link — conference generation may have failed.`);
+  }
+
+  return {
+    eventId: res.data.id ?? "",
+    eventUrl: res.data.htmlLink ?? null,
+    meetUrl,
+    start: start.toISOString(),
+    end: end.toISOString(),
+  };
 }
 
 export { BUSINESS_TIMEZONE, BUSINESS_HOUR_SLOTS };

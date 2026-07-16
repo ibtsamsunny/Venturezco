@@ -75,6 +75,19 @@ export function formatTimeInZone(iso: string, timeZone: string): string {
   return new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", hour12: true, timeZone }).format(new Date(iso));
 }
 
+/** Formats a UTC instant as a full date label ("Thursday, July 16, 2026")
+ * in the given IANA zone — used for email/confirmation copy where a raw
+ * ISO timestamp would never be shown to a human. */
+export function formatDateInZone(iso: string, timeZone: string): string {
+  return new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone }).format(new Date(iso));
+}
+
+/** "30 minutes" / "1 minute" — the only pluralization this app ever needs,
+ * since every booking slot is a fixed length. */
+export function formatDurationLabel(minutes: number): string {
+  return minutes === 1 ? "1 minute" : `${minutes} minutes`;
+}
+
 /** Zone-agnostic "9:00 AM" style label straight from hour/minute numbers —
  * used only for the pre-date-selection skeleton grid, before any concrete
  * calendar date (and therefore any real instant) exists to convert. */

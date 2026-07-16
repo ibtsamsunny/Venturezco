@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { appendLead } from "@/lib/leads";
-import { sendNotificationEmail } from "@/lib/email";
+import { NOTIFY_EMAIL, sendEmail } from "@/lib/email";
+import AdminContactEmail from "@/emails/templates/AdminContactEmail";
+import CustomerContactEmail from "@/emails/templates/CustomerContactEmail";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -15,22 +17,30 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
+  const nameStr = name.trim();
+  const emailStr = email.trim();
   const companyStr = typeof company === "string" ? company.trim() : "";
+  const messageStr = message.trim();
 
-  await appendLead("contact", { name: name.trim(), email: email.trim(), company: companyStr, message: message.trim() });
+  await appendLead("contact", { name: nameStr, email: emailStr, company: companyStr, message: messageStr });
 
-  await sendNotificationEmail({
-    subject: `New contact form submission from ${name.trim()}`,
-    text: [
-      `Name: ${name.trim()}`,
-      `Email: ${email.trim()}`,
-      companyStr && `Company: ${companyStr}`,
-      "",
-      message.trim(),
-    ]
-      .filter(Boolean)
-      .join("\n"),
+  // Admin and customer sends are independent — logged separately, and
+  // neither one failing reverses the lead capture that already succeeded.
+  const adminSent = await sendEmail({
+    to: NOTIFY_EMAIL,
+    subject: `New website enquiry — ${nameStr}`,
+    replyTo: emailStr,
+    react: AdminContactEmail({ name: nameStr, email: emailStr, company: companyStr, message: messageStr }),
   });
+  if (!adminSent) console.error("[contact] Failed to send admin enquiry notification email");
+
+  const customerSent = await sendEmail({
+    to: emailStr,
+    subject: "We received your message — VenturezCo",
+    replyTo: NOTIFY_EMAIL,
+    react: CustomerContactEmail({ name: nameStr, message: messageStr }),
+  });
+  if (!customerSent) console.error("[contact] Failed to send customer acknowledgement email");
 
   return NextResponse.json({ ok: true });
 }
