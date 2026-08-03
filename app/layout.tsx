@@ -4,6 +4,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import AmbientBackground from "@/components/layout/AmbientBackground";
+import PageLoader from "@/components/layout/PageLoader";
 import SiteHeader from "@/components/layout/SiteHeader";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import { BookingModalProvider } from "@/components/booking/BookingModalProvider";
@@ -34,6 +35,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <PageLoader />
         <BookingModalProvider>
           <AmbientBackground />
           <SiteHeader />

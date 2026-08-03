@@ -260,3 +260,51 @@ a {
   }
   .vz-reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* ---- Page loader (ported from loader.html) ---- */
+#vzpl-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background: #0a0a0a;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+#vzpl-loader.vzpl-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.vzpl-ring-wrap { position: relative; width: 104px; height: 104px; display: flex; align-items: center; justify-content: center; }
+.vzpl-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, #3b2fe0 90deg, #8b5cf6 200deg, #22d3ee 300deg, transparent 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  animation: vzplRing 1.1s linear infinite;
+}
+.vzpl-ring-track { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.06); }
+.vzpl-mark { animation: vzplGlow 2s ease-in-out infinite; }
+.vzpl-mark path { animation: vzplDraw 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate; }
+.vzpl-word { font-weight: 700; font-size: 20px; letter-spacing: -0.02em; color: #fff; animation: vzplWord 1.8s ease-in-out infinite; }
+.vzpl-word span { color: #3b2fe0; }
+.vzpl-bar { width: 200px; height: 3px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+.vzpl-bar-fill { height: 100%; width: 0%; border-radius: 999px; background: linear-gradient(90deg, #3b2fe0, #8b5cf6 55%, #22d3ee); transition: width 0.18s ease; }
+.vzpl-label { font-family: 'Geist Mono', monospace; font-size: 11.5px; letter-spacing: 0.14em; color: #7a7f8a; }
+
+@keyframes vzplRing { to { transform: rotate(360deg); } }
+@keyframes vzplDraw { from { stroke-dashoffset: 30; } to { stroke-dashoffset: 0; } }
+@keyframes vzplGlow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(59, 47, 224, 0.35)); }
+  50% { filter: drop-shadow(0 0 18px rgba(59, 47, 224, 0.75)); }
+}
+@keyframes vzplWord {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
