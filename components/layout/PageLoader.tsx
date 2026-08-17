@@ -2,15 +2,23 @@
 
 import { useEffect, useState } from "react";
 
-const MIN_VISIBLE_MS = 700;
+const MIN_VISIBLE_MS = 900;
 const FADE_MS = 560;
 
-/** Branded full-screen splash shown while the page's initial assets load —
- * ported from the standalone loader.html handoff. Progress is a simulated
- * ramp (no real asset-loading signal in this app), finished by whichever
- * comes first: the ramp reaching 100%, or the window `load` event. Renders
- * in the initial server HTML so it's visible before hydration, then
- * animates out and unmounts once finished. */
+/** Branded full-screen splash shown while the page's initial assets and
+ * client-side animation systems get a chance to initialize — ported from
+ * the standalone loader.html handoff. Progress is a simulated ramp (there's
+ * no single reliable "everything is ready" signal for a page this
+ * animation-heavy), but the loader only actually finishes once ALL of the
+ * following are true: the ramp reached 100%, the browser `load` event
+ * fired, and web fonts are ready. Finishing on `load` alone (or on
+ * `document.readyState === "complete"`) fires almost immediately in an
+ * already-hydrated SPA — well before hydration-gated pieces like the
+ * dynamically-imported hero blob canvas or scroll-reveal observers have
+ * mounted — which was causing the loader to vanish early and flash an
+ * unfinished-looking page underneath. Renders in the initial server HTML so
+ * it's visible before hydration, then animates out and unmounts once every
+ * condition is satisfied. */
 export default function PageLoader() {
   const [progress, setProgress] = useState(0);
   const [fading, setFading] = useState(false);
@@ -21,9 +29,15 @@ export default function PageLoader() {
     const start = Date.now();
     let finished = false;
     let timer: ReturnType<typeof setInterval> | undefined;
+    // Reduced-motion visitors skip the ramp/font wait entirely — the site's
+    // own animations are already disabled for them, so there's nothing for
+    // the loader to protect against.
+    let rampDone = reduce;
+    let pageLoaded = false;
+    let fontsReady = reduce;
 
-    function finish() {
-      if (finished) return;
+    function maybeFinish() {
+      if (finished || !rampDone || !pageLoaded || !fontsReady) return;
       finished = true;
       if (timer) clearInterval(timer);
       setProgress(100);
@@ -34,16 +48,15 @@ export default function PageLoader() {
       }, wait);
     }
 
-    if (reduce) {
-      finish();
-    } else {
+    if (!reduce) {
       timer = setInterval(() => {
         setProgress((p) => {
           if (p >= 100) return p;
           const step = p < 70 ? 6 + Math.random() * 10 : 2 + Math.random() * 5;
           const next = p + step;
           if (next >= 100) {
-            finish();
+            rampDone = true;
+            maybeFinish();
             return 100;
           }
           return next;
@@ -52,10 +65,25 @@ export default function PageLoader() {
     }
 
     function handleLoad() {
-      finish();
+      pageLoaded = true;
+      maybeFinish();
     }
     if (document.readyState === "complete") handleLoad();
     else window.addEventListener("load", handleLoad);
+
+    if (typeof document.fonts !== "undefined") {
+      document.fonts.ready.then(() => {
+        fontsReady = true;
+        maybeFinish();
+      });
+    } else {
+      fontsReady = true;
+    }
+
+    // maybeFinish() sets progress to 100 itself once every condition is
+    // met (including reduced-motion, which starts with rampDone/fontsReady
+    // already true) — no separate setState call needed here.
+    if (reduce) maybeFinish();
 
     return () => {
       if (timer) clearInterval(timer);
