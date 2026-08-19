@@ -12,9 +12,12 @@ const POSTS = [
     tagColor: "#B3A6FF",
     tagBg: "rgba(59,47,224,0.12)",
     tagBorder: "rgba(59,47,224,0.28)",
-    bannerBg: "radial-gradient(120% 130% at 20% 0%, rgba(59,47,224,0.32), rgba(59,47,224,0.04) 65%), #0C0D11",
-    title: "Why your CRM should run your follow-up, not your team",
-    excerpt: "Manual follow-up is where most revenue quietly leaks. Here's how to hand it to a system that never forgets.",
+    bannerBg: "#0C0D11",
+    photo: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80",
+    photoAlt: "Estate agency property",
+    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(59,47,224,0.5), rgba(12,13,17,0.55) 65%)",
+    title: "How estate agencies lose qualified leads",
+    excerpt: "Slow follow-up is where most property enquiries quietly go cold. Here's how to hand it to a system that never forgets.",
     date: "Jun 2026 · 6 min read",
     art: (
       <svg viewBox="0 0 320 160" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.7 }}>
@@ -30,9 +33,12 @@ const POSTS = [
     tagColor: "#C4B5FD",
     tagBg: "rgba(139,92,246,0.12)",
     tagBorder: "rgba(139,92,246,0.28)",
-    bannerBg: "radial-gradient(120% 130% at 20% 0%, rgba(139,92,246,0.32), rgba(139,92,246,0.04) 65%), #0C0B12",
-    title: "The anatomy of a funnel that actually converts",
-    excerpt: "More traffic won't save a leaking funnel. We break down the structure behind pages that turn clicks into calls.",
+    bannerBg: "#0C0B12",
+    photo: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+    photoAlt: "Modern property interior",
+    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(139,92,246,0.5), rgba(12,11,18,0.55) 65%)",
+    title: "How AI books more property viewings",
+    excerpt: "Instant, intelligent replies turn more enquiries into confirmed viewings. We break down the automation behind it.",
     date: "May 2026 · 5 min read",
     art: (
       <svg viewBox="0 0 320 160" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.65 }}>
@@ -48,9 +54,12 @@ const POSTS = [
     tagColor: "#A5F3FC",
     tagBg: "rgba(34,211,238,0.1)",
     tagBorder: "rgba(34,211,238,0.26)",
-    bannerBg: "radial-gradient(120% 130% at 20% 0%, rgba(34,211,238,0.3), rgba(34,211,238,0.04) 65%), #0A0F11",
-    title: "Systems beat tactics: how to think about growth",
-    excerpt: "Campaigns come and go. The businesses that compound are the ones that build a repeatable engine underneath.",
+    bannerBg: "#0A0F11",
+    photo: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+    photoAlt: "Estate agent with client",
+    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(34,211,238,0.46), rgba(10,15,17,0.58) 65%)",
+    title: "Google Ads for estate agencies",
+    excerpt: "Where estate agents waste ad budget — and how to structure campaigns that bring in buyer and seller leads.",
     date: "May 2026 · 7 min read",
     art: (
       <svg viewBox="0 0 320 160" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.7 }}>
@@ -125,6 +134,14 @@ export default function InsightsPreview() {
               style={{ textDecoration: "none", display: "flex", flexDirection: "column", background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 20, overflow: "hidden" }}
             >
               <div style={{ position: "relative", height: 158, background: p.bannerBg, borderBottom: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element -- external Unsplash URL, not worth next/image config for a decorative card banner */}
+                <img
+                  src={p.photo}
+                  alt={p.photoAlt}
+                  loading="lazy"
+                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                />
+                <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: p.scrim }} />
                 {p.art}
               </div>
               <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 12 }}>

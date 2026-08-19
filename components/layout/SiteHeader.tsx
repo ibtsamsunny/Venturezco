@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useBookingModal } from "@/components/booking/BookingModalProvider";
-import { INDUSTRY_LINKS, SERVICE_LINKS } from "@/content/nav";
+import { SERVICE_LINKS } from "@/content/nav";
 
 const navLinkStyle = { textDecoration: "none", color: "#B7BCC5", fontSize: "14.5px", fontWeight: 500 } as const;
 const activeStyle = { ...navLinkStyle, color: "#fff" };
@@ -13,7 +13,6 @@ export default function SiteHeader() {
   const { openBooking } = useBookingModal();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [industriesOpen, setIndustriesOpen] = useState(false);
   const pathname = usePathname();
 
   const linkStyle = (active: boolean) => (active ? activeStyle : navLinkStyle);
@@ -79,24 +78,6 @@ export default function SiteHeader() {
             <div className="svc-dd">
               <div className="svc-dd-inner">
                 {SERVICE_LINKS.map((s) => (
-                  <Link key={s.href} href={s.href}>
-                    <span className="svc-dot" style={{ background: s.dot }}></span>
-                    {s.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="nav-svc">
-            <a href="javascript:void(0)" className="nav-link" style={{ ...linkStyle(pathname.startsWith("/industries")), display: "flex", alignItems: "center", gap: 6 }}>
-              Industries
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </a>
-            <div className="svc-dd">
-              <div className="svc-dd-inner">
-                {INDUSTRY_LINKS.map((s) => (
                   <Link key={s.href} href={s.href}>
                     <span className="svc-dot" style={{ background: s.dot }}></span>
                     {s.label}
@@ -200,56 +181,6 @@ export default function SiteHeader() {
               {servicesOpen && (
                 <div style={{ display: "flex", flexDirection: "column", padding: "0 4px 12px 14px", gap: 2 }}>
                   {SERVICE_LINKS.map((s) => (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      onClick={closeMenu}
-                      style={{ display: "flex", alignItems: "center", gap: 9, textDecoration: "none", color: "#B7BCC5", fontSize: 15, padding: "11px 0" }}
-                    >
-                      <span className="svc-dot" style={{ background: s.dot }} />
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-              <button
-                onClick={() => setIndustriesOpen((o) => !o)}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  background: "none",
-                  border: "none",
-                  padding: "16px 4px",
-                  color: "#fff",
-                  fontSize: 16.5,
-                  fontWeight: 600,
-                  fontFamily: "inherit",
-                  cursor: "pointer",
-                }}
-              >
-                Industries
-                <svg
-                  className="mob-acc-ic"
-                  style={{ transform: industriesOpen ? "rotate(180deg)" : undefined }}
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#9AA1AD"
-                  strokeWidth="2.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-              {industriesOpen && (
-                <div style={{ display: "flex", flexDirection: "column", padding: "0 4px 12px 14px", gap: 2 }}>
-                  {INDUSTRY_LINKS.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}

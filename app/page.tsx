@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import RoadAheadBanner from "@/components/home/RoadAheadBanner";
 import ApproachIntro from "@/components/home/ApproachIntro";
 import LogoMarquee from "@/components/home/LogoMarquee";
 import StickyServiceCards from "@/components/home/StickyServiceCards";
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <main style={{ position: "relative" }}>
         <Hero />
+        <RoadAheadBanner />
         <ApproachIntro />
         <LogoMarquee />
         <StickyServiceCards />

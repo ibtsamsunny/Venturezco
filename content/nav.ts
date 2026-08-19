@@ -6,14 +6,6 @@ export const SERVICE_LINKS = [
   { href: "/services/growth-consulting", label: "Growth Consulting", dot: "#F59E0B" },
 ] as const;
 
-export const INDUSTRY_LINKS = [
-  { href: "/industries/real-estate", label: "Real Estate", dot: "#3B2FE0" },
-  { href: "/industries/professional-services", label: "Professional Services", dot: "#8B5CF6" },
-  { href: "/industries/healthcare", label: "Healthcare", dot: "#22D3EE" },
-  { href: "/industries/ecommerce", label: "Ecommerce", dot: "#F59E0B" },
-  { href: "/industries/financial-services", label: "Financial Services", dot: "#EC4899" },
-] as const;
-
 export const WA_NUMBER = "447463361502";
-export const WA_MESSAGE = "Hi VenturezCo! I have a question about your growth systems.";
+export const WA_MESSAGE = "Hi VenturezCo! I'd like to grow my estate agency with your systems.";
 export const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`;
