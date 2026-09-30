@@ -31,6 +31,52 @@ const CARDS: Card[] = [
   {
     num: "01",
     top: 90,
+    accent: "#EC4899",
+    accentBorder: "rgba(236,72,153,0.24)",
+    bg: "radial-gradient(120% 130% at 100% 0%, rgba(236,72,153,0.16), transparent 55%), #100810",
+    badgeBg: "rgba(236,72,153,0.14)",
+    badgeBorder: "rgba(236,72,153,0.34)",
+    badgeColor: "#F9A8D4",
+    badgeLabel: "Website Development",
+    headline: ["High-end websites that", "convert, not just impress."],
+    gradient: "linear-gradient(100deg,#F9A8D4,#EC4899)",
+    body: "Custom-built, conversion-focused websites for estate agencies — fast, mobile-perfect, and wired straight into your booking and CRM systems from day one.",
+    tags: ["Custom Design", "Listings Integration", "SEO & Speed"],
+    statValue: "<2s",
+    statColor: "#F9A8D4",
+    statLabel: "average page load time across the sites we build",
+    ctaLabel: "Explore Web Development",
+    ctaBg: "rgba(236,72,153,0.16)",
+    ctaBorder: "rgba(236,72,153,0.4)",
+    href: "/services/website-development",
+    art: (
+      <svg viewBox="0 0 340 230" style={{ width: "84%", maxWidth: 390, overflow: "visible", animation: "vzFloat 7.4s ease-in-out infinite" }}>
+        <defs>
+          <linearGradient id="vgw1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#EC4899" stopOpacity="0.35" />
+            <stop offset="1" stopColor="#F9A8D4" stopOpacity="0.08" />
+          </linearGradient>
+        </defs>
+        <rect x="26" y="28" width="220" height="150" rx="10" fill="url(#vgw1)" stroke="#EC4899" strokeWidth="1.5" />
+        <circle cx="42" cy="44" r="3" fill="#EC4899" />
+        <circle cx="54" cy="44" r="3" fill="#F9A8D4" />
+        <circle cx="66" cy="44" r="3" fill="#fff" opacity="0.4" />
+        <line x1="26" y1="56" x2="246" y2="56" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+        <rect x="40" y="70" width="120" height="14" rx="3" fill="rgba(255,255,255,0.5)" />
+        <rect x="40" y="92" width="160" height="8" rx="2" fill="rgba(255,255,255,0.25)" />
+        <rect x="40" y="106" width="140" height="8" rx="2" fill="rgba(255,255,255,0.25)" />
+        <rect x="40" y="126" width="70" height="24" rx="6" fill="#EC4899" />
+        <rect x="196" y="108" width="80" height="140" rx="14" fill="#0C0810" stroke="#F9A8D4" strokeWidth="1.5" />
+        <rect x="208" y="128" width="56" height="8" rx="2" fill="rgba(255,255,255,0.4)" />
+        <rect x="208" y="144" width="56" height="50" rx="6" fill="url(#vgw1)" />
+        <rect x="208" y="202" width="56" height="16" rx="4" fill="#EC4899" />
+        <circle cx="236" cy="234" r="3" fill="rgba(255,255,255,0.4)" />
+      </svg>
+    ),
+  },
+  {
+    num: "02",
+    top: 106,
     accent: "#3B2FE0",
     accentBorder: "rgba(59,47,224,0.22)",
     bg: "radial-gradient(120% 130% at 100% 0%, rgba(59,47,224,0.16), transparent 55%), #0C0D11",
@@ -73,8 +119,8 @@ const CARDS: Card[] = [
     ),
   },
   {
-    num: "02",
-    top: 106,
+    num: "03",
+    top: 122,
     accent: "#8B5CF6",
     accentBorder: "rgba(139,92,246,0.24)",
     bg: "radial-gradient(120% 130% at 100% 0%, rgba(139,92,246,0.16), transparent 55%), #0C0B12",
@@ -107,8 +153,8 @@ const CARDS: Card[] = [
     ),
   },
   {
-    num: "03",
-    top: 122,
+    num: "04",
+    top: 138,
     accent: "#22D3EE",
     accentBorder: "rgba(34,211,238,0.22)",
     bg: "radial-gradient(120% 130% at 100% 0%, rgba(34,211,238,0.14), transparent 55%), #0A0F11",
@@ -146,53 +192,13 @@ const CARDS: Card[] = [
       </svg>
     ),
   },
-  {
-    num: "04",
-    top: 138,
-    accent: "#F59E0B",
-    accentBorder: "rgba(245,158,11,0.24)",
-    bg: "radial-gradient(120% 130% at 100% 0%, rgba(245,158,11,0.14), transparent 55%), #100D08",
-    badgeBg: "rgba(245,158,11,0.14)",
-    badgeBorder: "rgba(245,158,11,0.34)",
-    badgeColor: "#FCD34D",
-    badgeLabel: "Revenue",
-    headline: ["Predict revenue &", "track every deal."],
-    gradient: "linear-gradient(100deg,#FCD34D,#F59E0B)",
-    body: "One property pipeline where every enquiry, viewing, and offer is tracked — so you can forecast revenue and see exactly where each deal stands.",
-    tags: ["Property Pipeline", "Deal Tracking", "Revenue Forecasting"],
-    statValue: "1 dashboard",
-    statColor: "#FCD34D",
-    statLabel: "every enquiry, viewing, and deal tracked in one place",
-    ctaLabel: "Track Every Deal",
-    ctaBg: "rgba(245,158,11,0.14)",
-    ctaBorder: "rgba(245,158,11,0.38)",
-    href: "/services/growth-consulting",
-    art: (
-      <svg viewBox="0 0 340 220" style={{ width: "88%", maxWidth: 400, overflow: "visible", animation: "vzFloat 7.2s ease-in-out infinite" }}>
-        <defs>
-          <linearGradient id="vga4" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#F59E0B" stopOpacity="0.35" />
-            <stop offset="1" stopColor="#F59E0B" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <line x1="20" y1="196" x2="320" y2="196" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-        <path d="M30,180 L90,150 L150,160 L210,110 L270,80 L310,34 L310,196 L30,196 Z" fill="url(#vga4)" />
-        <polyline points="30,180 90,150 150,160 210,110 270,80 310,34" fill="none" stroke="#FCD34D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="90" cy="150" r="4" fill="#fff" />
-        <circle cx="150" cy="160" r="4" fill="#fff" />
-        <circle cx="210" cy="110" r="4" fill="#fff" />
-        <circle cx="270" cy="80" r="4" fill="#fff" />
-        <circle cx="310" cy="34" r="5" fill="#fff" />
-      </svg>
-    ),
-  },
 ];
 
 const DOT_COLORS: Record<string, string> = {
+  "#EC4899": "#EC4899",
   "#3B2FE0": "#3B2FE0",
   "#8B5CF6": "#8B5CF6",
   "#22D3EE": "#22D3EE",
-  "#F59E0B": "#F59E0B",
 };
 
 export default function StickyServiceCards() {

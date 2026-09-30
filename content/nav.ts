@@ -1,4 +1,5 @@
 export const SERVICE_LINKS = [
+  { href: "/services/website-development", label: "Website Development", dot: "#EC4899" },
   { href: "/services/digital-marketing", label: "Digital Marketing", dot: "#3B2FE0" },
   { href: "/services/lead-generation", label: "Lead Generation", dot: "#8B5CF6" },
   { href: "/services/ai-automation", label: "AI Automation", dot: "#22D3EE" },
