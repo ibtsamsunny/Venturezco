@@ -46,10 +46,11 @@ export default function ContactCTA() {
             }}
           />
           <h2 style={{ position: "relative", margin: "0 auto", maxWidth: 780, fontWeight: 900, fontSize: "clamp(2.3rem,5.5vw,4rem)", lineHeight: 1.04, letterSpacing: "-0.03em", color: "#fff", textWrap: "balance" }}>
-            Ready to fix the system behind your growth?
+            Ready to book more property viewings?
           </h2>
           <p style={{ position: "relative", maxWidth: 560, margin: "22px auto 0", color: "#B9C0CC", fontSize: "clamp(1.05rem,1.4vw,1.22rem)", lineHeight: 1.6 }}>
-            Let&apos;s identify what&apos;s slowing your business down and build a scalable growth engine — starting with a free strategy call.
+            Book your free strategy session and discover how automation can help your agency generate more enquiries, schedule more viewings, and close
+            more deals.
           </p>
           <div style={{ position: "relative", marginTop: 38, display: "flex", justifyContent: "center" }}>
             <a

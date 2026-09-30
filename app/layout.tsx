@@ -13,7 +13,19 @@ import BookingModal from "@/components/booking/BookingModal";
 export const metadata: Metadata = {
   title: "VenturezCo — Growth & Automation Systems",
   description:
-    "VenturezCo builds the growth systems that attract leads, automate follow-up, lift conversions, and create predictable revenue.",
+    "VenturezCo builds AI-powered growth systems for estate agencies — estate agent lead generation, property marketing, real estate CRM and estate agency automation that turn buyer and seller leads into booked viewings.",
+  keywords: [
+    "Estate Agency Marketing",
+    "Estate Agent Lead Generation",
+    "Property Marketing",
+    "Real Estate CRM",
+    "Estate Agency Automation",
+    "GoHighLevel Estate Agency",
+    "Real Estate AI",
+    "Property Lead Generation",
+    "Buyer Leads",
+    "Seller Leads",
+  ],
 };
 
 export default function RootLayout({

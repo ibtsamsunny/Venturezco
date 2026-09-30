@@ -7,6 +7,9 @@ import { useBookingModal } from "@/components/booking/BookingModalProvider";
 
 const LABEL = { fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#6B7280", marginBottom: 7 };
 
+const CASE1_PHOTO = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
+const CASE2_PHOTO = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80";
+
 export default function CaseStudies() {
   const { openBooking } = useBookingModal();
   const groupRef = useRevealGroup<HTMLDivElement>();
@@ -22,6 +25,9 @@ export default function CaseStudies() {
           <h2 style={{ margin: "16px 0 0", fontWeight: 900, fontSize: "clamp(2rem,4.6vw,3.4rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#fff", textWrap: "balance" }}>
             Business transformation, not just metrics.
           </h2>
+          <p style={{ margin: "14px 0 0", color: "#7C8492", fontSize: 13.5, lineHeight: 1.5 }}>
+            Illustrative examples based on typical engagements — not specific client outcomes.
+          </p>
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 24, marginBottom: 24 }}>
@@ -38,34 +44,44 @@ export default function CaseStudies() {
               alignItems: "start",
             }}
           >
+            <div style={{ gridColumn: "1/-1", position: "relative", borderRadius: 16, overflow: "hidden", aspectRatio: "21/6", minHeight: 150, border: "1px solid rgba(255,255,255,0.07)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element -- external Unsplash URL, not worth next/image config for a decorative case-study photo */}
+              <img
+                src={CASE1_PHOTO}
+                alt="Luxury London townhouse"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+              <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(8,8,11,0.15), rgba(8,8,11,0.75))" }} />
+            </div>
             <div>
-              <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>B2B Services</span>
+              <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>London Estate Agency</span>
               <h3 style={{ margin: "14px 0 0", fontSize: "clamp(1.5rem,2.4vw,2rem)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em" }}>
-                From scattered tools to one revenue engine
+                From missed enquiries to a full viewing diary
               </h3>
               <div style={{ display: "flex", gap: 26, marginTop: 26, flexWrap: "wrap" }}>
                 <div>
-                  <div style={{ fontFamily: "'Satoshi'", fontWeight: 900, fontSize: "1.9rem", color: "#B3A6FF", letterSpacing: "-0.02em" }}>+218%</div>
-                  <div style={{ color: "#7C8492", fontSize: 12.5, marginTop: 4 }}>qualified pipeline</div>
+                  <div style={{ fontFamily: "'Satoshi'", fontWeight: 900, fontSize: "1.9rem", color: "#B3A6FF", letterSpacing: "-0.02em" }}>+185%</div>
+                  <div style={{ color: "#7C8492", fontSize: 12.5, marginTop: 4 }}>qualified enquiries</div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Satoshi'", fontWeight: 900, fontSize: "1.9rem", color: "#B3A6FF", letterSpacing: "-0.02em" }}>4% → 11%</div>
-                  <div style={{ color: "#7C8492", fontSize: 12.5, marginTop: 4 }}>close rate</div>
+                  <div style={{ fontFamily: "'Satoshi'", fontWeight: 900, fontSize: "1.9rem", color: "#B3A6FF", letterSpacing: "-0.02em" }}>3×</div>
+                  <div style={{ color: "#7C8492", fontSize: 12.5, marginTop: 4 }}>viewings booked</div>
                 </div>
               </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
               <div>
                 <div style={LABEL}>Challenge</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>200+ leads a month but a close rate under 4%. Follow-up lived in inboxes and nothing was tracked.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>200+ portal enquiries a month but under 4% ever booked a viewing. Follow-up lived in inboxes and nothing was tracked.</p>
               </div>
               <div>
                 <div style={LABEL}>Strategy</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>Unified lead capture, built automated multi-touch nurture, and wired the CRM to a defined pipeline with clear stages.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>Unified enquiry capture, built automated instant response and multi-touch nurture, and wired the CRM to a clear viewing-to-offer pipeline.</p>
               </div>
               <div>
                 <div style={LABEL}>Outcome</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>Qualified pipeline nearly tripled, close rate rose to 11%, and 15 hours of manual work vanished from the team&apos;s week.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>Qualified enquiries nearly tripled, viewings booked rose sharply, and 15 hours of manual follow-up vanished from the team&apos;s week.</p>
               </div>
             </div>
           </div>
@@ -73,22 +89,32 @@ export default function CaseStudies() {
 
         <div ref={groupRef} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 24 }}>
           <div style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 24, padding: "clamp(28px,3.5vw,40px)" }}>
-            <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>DTC Brand</span>
+            <div style={{ position: "relative", borderRadius: 14, overflow: "hidden", aspectRatio: "16/9", marginBottom: 22, border: "1px solid rgba(255,255,255,0.07)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element -- external Unsplash URL, not worth next/image config for a decorative case-study photo */}
+              <img
+                src={CASE2_PHOTO}
+                alt="Modern residential property"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+              <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(8,8,11,0.1), rgba(8,8,11,0.6))" }} />
+            </div>
+            <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>Manchester Estate Agency</span>
             <h3 style={{ margin: "14px 0 22px", fontSize: "clamp(1.35rem,2vw,1.7rem)", fontWeight: 800, color: "#fff", lineHeight: 1.2, letterSpacing: "-0.02em" }}>
-              Cutting acquisition cost without cutting spend
+              Turning portal leads into booked valuations
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <div>
                 <div style={{ ...LABEL, marginBottom: 6 }}>Challenge</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Paid costs kept climbing because every channel was optimized in isolation.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Seller enquiries came in fast but replies took hours, so most valuations went to the agent who called first.</p>
               </div>
               <div>
                 <div style={{ ...LABEL, marginBottom: 6 }}>Strategy</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Rebuilt the funnel end to end — landing pages, offer sequencing, and post-purchase automation feeding targeting.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Automated instant response, an AI qualifier, and one-tap valuation booking wired straight into the CRM.</p>
               </div>
               <div>
                 <div style={{ ...LABEL, marginBottom: 6 }}>Outcome</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>38% lower CAC, 2.6x repeat-purchase rate, and revenue that finally became predictable.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Sub-minute response times, more valuations won, and a pipeline that finally became predictable.</p>
               </div>
             </div>
           </div>

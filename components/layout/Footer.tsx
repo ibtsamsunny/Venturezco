@@ -74,7 +74,6 @@ export default function Footer() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
               <Link href="/#services" style={navLink}>Services</Link>
-              <a href="javascript:void(0)" style={navLink}>Industries</a>
               <Link href="/#cases" style={navLink}>Case Studies</Link>
               <Link href="/insights" style={navLink}>Insights</Link>
               <Link href="/how-we-work" style={navLink}>How We Work</Link>

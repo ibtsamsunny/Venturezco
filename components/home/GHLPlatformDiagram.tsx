@@ -23,8 +23,8 @@ const NODES: Node[] = [
     top: "6.25%",
     badgeSide: "left",
     color: "#4A9EFF",
-    title: "Traffic Sources",
-    desc: "Paid Ads, Social, SEO, Referrals & More",
+    title: "Property Enquiries",
+    desc: "Portals, Google Ads, Meta Ads & Referrals",
     tag: "CAPTURE",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -41,8 +41,8 @@ const NODES: Node[] = [
     top: "6.25%",
     badgeSide: "right",
     color: "#5B8DEF",
-    title: "Funnels",
-    desc: "Landing Pages, Forms, Lead Capture Funnels",
+    title: "Buyer Qualification",
+    desc: "Landing Pages, Forms, Enquiry Capture",
     tag: "CONVERT",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -56,7 +56,7 @@ const NODES: Node[] = [
     top: "29.17%",
     badgeSide: "right",
     color: "#4A9EFF",
-    title: "CRM",
+    title: "Buyer & Seller CRM",
     desc: "Contacts, Pipelines, Opportunities",
     tag: "TRACK",
     icon: (
@@ -72,7 +72,7 @@ const NODES: Node[] = [
     top: "52.08%",
     badgeSide: "right",
     color: "#A855F7",
-    title: "Automation",
+    title: "Instant Follow-up",
     desc: "Email, SMS, Workflows, Follow-up Sequences",
     tag: "NURTURE",
     icon: (
@@ -88,7 +88,7 @@ const NODES: Node[] = [
     top: "75%",
     badgeSide: "right",
     color: "#EC4899",
-    title: "AI Agents",
+    title: "AI Property Assistant",
     desc: "Qualification, Replies, Lead Routing",
     tag: "QUALIFY",
     icon: (
@@ -108,7 +108,7 @@ const NODES: Node[] = [
     top: "75%",
     badgeSide: "left",
     color: "#F59E0B",
-    title: "Appointment Booking",
+    title: "Viewing Booking",
     desc: "Calendar, Reminders, Confirmations",
     tag: "BOOK",
     icon: (
@@ -125,8 +125,8 @@ const NODES: Node[] = [
     top: "52.08%",
     badgeSide: "left",
     color: "#22C55E",
-    title: "Sales Pipeline",
-    desc: "Deals, Tasks, Follow-ups, Closing",
+    title: "Property Pipeline",
+    desc: "Offers, Tasks, Follow-ups, Closing",
     tag: "CLOSE",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -142,8 +142,8 @@ const NODES: Node[] = [
     top: "29.17%",
     badgeSide: "left",
     color: "#4A9EFF",
-    title: "Reporting Dashboard",
-    desc: "Revenue, Conversions, Lead Sources",
+    title: "Deal Reporting",
+    desc: "Revenue, Conversions, Enquiry Sources",
     tag: "REPORT",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -410,7 +410,7 @@ export default function GHLPlatformDiagram() {
           One platform. <span style={{ background: "linear-gradient(100deg,#9F91FF,#8B5CF6)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>Every growth system.</span>
         </h2>
         <p style={{ maxWidth: 640, margin: "22px auto 0", color: "#9AA1AD", fontSize: "clamp(1.05rem,1.4vw,1.2rem)", lineHeight: 1.6 }}>
-          We connect your marketing, sales, automation, and reporting into one revenue system — so every lead is captured, followed up, qualified, booked,
+          We connect your marketing, sales, automation, and reporting into one revenue system — so every enquiry is captured, followed up, qualified, booked,
           and tracked.
         </p>
       </Reveal>

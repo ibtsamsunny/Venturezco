@@ -11,15 +11,32 @@ import { useBookingModal } from "@/components/booking/BookingModalProvider";
 
 const HeroBlobCanvas = dynamic(() => import("./HeroBlobCanvas"), { ssr: false });
 
-const HERO_L1 = "Your marketing isn't broken.";
-const HERO_L2 = "Your system is.";
+const HERO_L1 = "More viewings. More listings.";
+const HERO_L2 = "More sales.";
 
-const STATS = [
-  { key: "a", target: 327, label: "Average lead growth", format: (v: number) => `+${Math.round(v)}%` },
-  { key: "b", target: 40, label: "Lower acquisition costs", format: (v: number) => `${Math.round(v)}%` },
-  { key: "c2", target: 2.8, label: "Conversion rate increase", format: (v: number) => `${v.toFixed(1)}x` },
-  { key: "d", target: 100, label: "Growth systems built", format: (v: number) => `${Math.round(v)}+` },
-] as const;
+const HERO_PHOTO = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
+
+type StatEntry =
+  | { kind: "count"; key: "a" | "b" | "c2"; label: string; format: (v: number) => string }
+  | { kind: "static"; label: string; value: string };
+
+const STAT_TARGETS = { a: 185, b: 92, c2: 3 };
+
+const STATS: StatEntry[] = [
+  { kind: "count", key: "a", label: "Qualified property enquiries", format: (v) => `+${Math.round(v)}%` },
+  { kind: "count", key: "b", label: "Lead response rate", format: (v) => `${Math.round(v)}%` },
+  { kind: "static", label: "Automated follow-up", value: "24/7" },
+  { kind: "count", key: "c2", label: "More viewings booked", format: (v) => `${Math.round(v)}×` },
+];
+
+// The left-near floating card cycles through these live "events" every 3.8s.
+const LIVE_EVENTS = [
+  { a: "New buyer enquiry", b: "£850,000 · Qualified", c: "#34D399" },
+  { a: "AI qualified", b: "Ready to view", c: "#A5F3FC" },
+  { a: "Viewing booked", b: "Sat · 11:00 AM", c: "#C4B5FD" },
+  { a: "Offer submitted", b: "£812,000", c: "#FCD34D" },
+  { a: "Offer accepted", b: "Status updated", c: "#34D399" },
+];
 
 function HeroHeadline() {
   const [shown, setShown] = useState(false);
@@ -74,8 +91,7 @@ function HeroHeadline() {
 }
 
 function StatsBand() {
-  const targets = { a: STATS[0].target, b: STATS[1].target, c2: STATS[2].target, d: STATS[3].target };
-  const { values, ref: countUpRef } = useCountUpGroup(targets);
+  const { values, ref: countUpRef } = useCountUpGroup(STAT_TARGETS);
   const revealGroupRef = useRevealGroup<HTMLDivElement>();
   const setGridRef = useCallback(
     (el: HTMLDivElement | null) => {
@@ -93,7 +109,7 @@ function StatsBand() {
       >
         {STATS.map((s) => (
           <div
-            key={s.key}
+            key={s.label}
             style={{
               background: "rgba(255,255,255,0.03)",
               border: "1px solid rgba(255,255,255,0.08)",
@@ -115,7 +131,7 @@ function StatsBand() {
                 color: "transparent",
               }}
             >
-              {s.format(values[s.key])}
+              {s.kind === "static" ? s.value : s.format(values[s.key])}
             </div>
             <div style={{ marginTop: 10, color: "#9AA1AD", fontSize: 14, fontWeight: 500 }}>{s.label}</div>
           </div>
@@ -214,8 +230,8 @@ function GrowthEngine() {
           <FlowStage
             delay={0}
             showArrow
-            title="Lead Generation"
-            sub="attract"
+            title="Property Enquiry"
+            sub="capture"
             icon={
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 20v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1" />
@@ -228,8 +244,8 @@ function GrowthEngine() {
           <FlowStage
             delay={0.6}
             showArrow
-            title="Automation"
-            sub="nurture"
+            title="AI Qualification"
+            sub="qualify"
             icon={
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="3" width="7" height="7" rx="1.6" />
@@ -241,8 +257,8 @@ function GrowthEngine() {
           <FlowStage
             delay={1.2}
             showArrow
-            title="CRM"
-            sub="track"
+            title="Instant Follow-up"
+            sub="respond"
             icon={
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <ellipse cx="12" cy="5" rx="8" ry="3" />
@@ -254,8 +270,8 @@ function GrowthEngine() {
           <FlowStage
             delay={1.8}
             showArrow
-            title="Sales Process"
-            sub="close"
+            title="Viewing Booked"
+            sub="book"
             icon={
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 6l1.8 1.8L8 4.6" />
@@ -274,8 +290,159 @@ function GrowthEngine() {
               </svg>
             </div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: 14.5, color: "#fff" }}>Revenue Growth</div>
-              <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3B2FE0", marginTop: 3 }}>predictable</div>
+              <div style={{ fontWeight: 700, fontSize: 14.5, color: "#fff" }}>Offer Accepted</div>
+              <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3B2FE0", marginTop: 3 }}>closed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FloatingCardIcon({ children, bg, border, color }: { children: React.ReactNode; bg: string; border: string; color: string }) {
+  return (
+    <div style={{ flex: "none", width: 30, height: 30, borderRadius: 9, display: "grid", placeItems: "center", background: bg, border, color }}>
+      {children}
+    </div>
+  );
+}
+
+/** The 4 glass-morphism notification cards floating over the hero photo —
+ * "near" cards (`.re-m`) stay visible on mobile down to 760px, "far" cards
+ * (`.re-d`) are desktop-only and sit dimmed behind the blob. All 4 drift on
+ * a mouse-parallax (eased toward the pointer, same pattern as
+ * AmbientBackground) scaled by each card's own factor, plus a slow
+ * alternating float animation. The left-near card additionally cycles
+ * through live "events" every 3.8s. */
+function FloatingCards() {
+  const leftNearRef = useRef<HTMLDivElement>(null);
+  const leftFarRef = useRef<HTMLDivElement>(null);
+  const rightNearRef = useRef<HTMLDivElement>(null);
+  const rightFarRef = useRef<HTMLDivElement>(null);
+  const [eventIndex, setEventIndex] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setEventIndex((i) => (i + 1) % LIVE_EVENTS.length), 3800);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const cards = [
+      { el: leftNearRef.current, px: -1.4 },
+      { el: leftFarRef.current, px: -0.6 },
+      { el: rightNearRef.current, px: 1.4 },
+      { el: rightFarRef.current, px: 0.6 },
+    ];
+    let mx = 0,
+      my = 0,
+      tx = 0,
+      ty = 0;
+    const onMove = (e: PointerEvent) => {
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    let raf = 0;
+    const tick = () => {
+      tx += (mx - tx) * 0.03;
+      ty += (my - ty) * 0.03;
+      cards.forEach(({ el, px }) => {
+        if (el) el.style.transform = `translate3d(${(tx * px * 40).toFixed(1)}px,${(ty * px * 40).toFixed(1)}px,0)`;
+      });
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  const live = LIVE_EVENTS[eventIndex];
+
+  return (
+    <div aria-hidden="true">
+      {/* LEFT near — mobile-kept, live-cycling */}
+      <div ref={leftNearRef} className="re-float re-m" style={{ top: 400, left: "15%", zIndex: 3 }}>
+        <div className="re-in" style={{ animationDelay: ".15s" }}>
+          <div className="re-card" style={{ animation: "reDriftA 7s ease-in-out infinite alternate" }}>
+            <FloatingCardIcon bg="rgba(59,47,224,0.16)" border="1px solid rgba(59,47,224,0.34)" color="#B3A6FF">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 11l9-7 9 7" />
+                <path d="M5 10v10h14V10" />
+                <path d="M9 20v-6h6v6" />
+              </svg>
+            </FloatingCardIcon>
+            <div style={{ minWidth: 0 }}>
+              <div className="re-t1">{live.a}</div>
+              <div className="re-t2" style={{ color: live.c }}>
+                {live.b}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* LEFT far — desktop only, behind blob */}
+      <div ref={leftFarRef} className="re-float re-d" style={{ top: 240, left: "17%", zIndex: 1, opacity: 0.66 }}>
+        <div className="re-in" style={{ animationDelay: ".8s" }}>
+          <div className="re-card" style={{ animation: "reDriftC 9s ease-in-out infinite alternate" }}>
+            <FloatingCardIcon bg="rgba(52,211,153,0.13)" border="1px solid rgba(52,211,153,0.3)" color="#34D399">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M8.5 12.5l2.4 2.4 4.6-5" />
+              </svg>
+            </FloatingCardIcon>
+            <div style={{ minWidth: 0 }}>
+              <div className="re-t1">Lead qualified</div>
+              <div className="re-t2" style={{ color: "#8A93A0" }}>
+                Ready to view
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT near — mobile-kept */}
+      <div ref={rightNearRef} className="re-float re-m" style={{ top: 400, right: "15%", zIndex: 3 }}>
+        <div className="re-in" style={{ animationDelay: ".3s" }}>
+          <div className="re-card" style={{ animation: "reDriftB 7.8s ease-in-out infinite alternate" }}>
+            <FloatingCardIcon bg="rgba(34,211,238,0.13)" border="1px solid rgba(34,211,238,0.32)" color="#A5F3FC">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="4.5" width="18" height="17" rx="2.5" />
+                <path d="M3 9.5h18M8 2.5v4M16 2.5v4" />
+              </svg>
+            </FloatingCardIcon>
+            <div style={{ minWidth: 0 }}>
+              <div className="re-t1">Viewing booked</div>
+              <div className="re-t2" style={{ color: "#A5F3FC" }}>
+                Tomorrow · 2:30 PM
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT far — desktop only, behind blob */}
+      <div ref={rightFarRef} className="re-float re-d" style={{ top: 240, right: "17%", zIndex: 1, opacity: 0.66 }}>
+        <div className="re-in" style={{ animationDelay: ".92s" }}>
+          <div className="re-card" style={{ animation: "reDriftC 8.2s ease-in-out infinite alternate" }}>
+            <FloatingCardIcon bg="rgba(139,92,246,0.14)" border="1px solid rgba(139,92,246,0.3)" color="#C4B5FD">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 3l1.5 3.5" />
+                <path d="M4 8h16" />
+                <path d="M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
+                <path d="M12 12v3l2 1" />
+              </svg>
+            </FloatingCardIcon>
+            <div style={{ minWidth: 0 }}>
+              <div className="re-t1">AI follow-up sent</div>
+              <div className="re-t2" style={{ color: "#8A93A0" }}>
+                2 seconds ago
+              </div>
             </div>
           </div>
         </div>
@@ -288,10 +455,36 @@ export default function Hero() {
   const { openBooking } = useBookingModal();
   const ctaMagRef = useMagnetic<HTMLAnchorElement>();
   const blobGlowRef = useParallax<HTMLDivElement>(0.12, "translateX(-50%)");
+  const heroPhotoRef = useParallax<HTMLDivElement>(0.03);
   const rootRef = useRef<HTMLElement>(null);
 
   return (
     <section id="top" ref={rootRef} style={{ position: "relative", overflow: "hidden", padding: "clamp(130px,16vw,190px) 0 clamp(60px,7vw,90px)" }}>
+      <div
+        ref={heroPhotoRef}
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          background: `url('${HERO_PHOTO}') center 22%/cover no-repeat`,
+          opacity: 0.14,
+          filter: "blur(6px) saturate(0.85) brightness(0.68)",
+          WebkitMaskImage: "radial-gradient(68% 58% at 50% 34%, #000 0%, rgba(0,0,0,0.32) 55%, transparent 80%)",
+          maskImage: "radial-gradient(68% 58% at 50% 34%, #000 0%, rgba(0,0,0,0.32) 55%, transparent 80%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          background: "linear-gradient(180deg, rgba(8,8,11,0.55) 0%, rgba(8,8,11,0.18) 34%, rgba(8,8,11,0.92) 100%)",
+        }}
+      />
       <div
         ref={blobGlowRef}
         style={{
@@ -325,9 +518,10 @@ export default function Hero() {
           inset: 0,
           zIndex: 1,
           pointerEvents: "none",
-          background: "radial-gradient(62% 58% at 50% 46%, rgba(10,10,12,0.6), rgba(10,10,12,0.28) 55%, rgba(10,10,12,0) 78%)",
+          background: "radial-gradient(62% 58% at 50% 46%, rgba(8,8,11,0.6), rgba(8,8,11,0.28) 55%, rgba(8,8,11,0) 78%)",
         }}
       />
+      <FloatingCards />
       <div style={{ position: "relative", zIndex: 2, maxWidth: 1000, margin: "0 auto", padding: "0 clamp(20px,5vw,32px)", textAlign: "center" }}>
         <div
           style={{
@@ -345,13 +539,13 @@ export default function Hero() {
         >
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#9F91FF", boxShadow: "0 0 10px #9F91FF" }} />
           <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E7ECF8" }}>
-            Growth &amp; Automation Systems
+            Estate Agency Growth Systems
           </span>
         </div>
         <HeroHeadline />
         <p style={{ maxWidth: 640, margin: "26px auto 0", color: "#9AA1AD", fontSize: "clamp(1.05rem,1.5vw,1.28rem)", lineHeight: 1.6 }}>
-          Most businesses stall because marketing, sales, and follow-up don&apos;t work together. VenturezCo builds the growth systems that attract leads,
-          automate follow-up, lift conversions, and create predictable revenue.
+          We help estate agencies generate qualified buyer and seller enquiries, automate follow-ups, nurture every lead, and book more property
+          viewings with AI-powered growth systems.
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center", marginTop: 36 }}>
           <a

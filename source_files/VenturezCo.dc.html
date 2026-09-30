@@ -11,10 +11,12 @@
 <link rel="preconnect" href="https://api.fontshare.com">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="VenturezCo builds AI-powered growth systems for estate agencies — estate agent lead generation, property marketing, real estate CRM and estate agency automation that turn buyer and seller leads into booked viewings.">
+<meta name="keywords" content="Estate Agency Marketing, Estate Agent Lead Generation, Property Marketing, Real Estate CRM, Estate Agency Automation, GoHighLevel Estate Agency, Real Estate AI, Property Lead Generation, Buyer Leads, Seller Leads">
 <style>
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: #0A0A0A; color: #FFFFFF; font-family: 'Satoshi', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { margin: 0; background: #08080B; color: #FFFFFF; font-family: 'Satoshi', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
   ::selection { background: rgba(59,47,224,0.35); color: #fff; }
   @keyframes vzFlow { 0% { left: 0%; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
   @keyframes vzFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
@@ -103,6 +105,19 @@
   @media (max-width: 560px) {
     .bk-form-grid { grid-template-columns: 1fr !important; }
   }
+  .re-float { position:absolute; pointer-events:none; will-change:transform; }
+  .re-in { animation: reIn .7s cubic-bezier(.16,1,.3,1) both; }
+  .re-card { display:flex; align-items:center; gap:9px; max-width:178px; padding:9px 12px; border-radius:13px; background:rgba(10,12,20,0.66); backdrop-filter:blur(11px); -webkit-backdrop-filter:blur(11px); border:1px solid rgba(255,255,255,0.09); box-shadow:0 14px 40px rgba(0,0,0,0.5); }
+  .re-ic { flex:none; width:30px; height:30px; border-radius:9px; display:grid; place-items:center; }
+  .re-t1 { font-size:12.5px; font-weight:700; color:#fff; letter-spacing:-0.01em; line-height:1.18; }
+  .re-t2 { font-family:'Geist Mono',monospace; font-size:10px; letter-spacing:0.03em; margin-top:3px; line-height:1.1; color:#8A93A0; }
+  @keyframes reIn { from { opacity:0; transform:translateY(14px);} to { opacity:1; transform:none;} }
+  @keyframes reDriftA { from{transform:translate(0,3px) rotate(-0.6deg);} to{transform:translate(5px,-11px) rotate(0.6deg);} }
+  @keyframes reDriftB { from{transform:translate(0,2px) rotate(0.5deg);} to{transform:translate(-6px,-10px) rotate(-0.7deg);} }
+  @keyframes reDriftC { from{transform:translate(0,4px) rotate(-0.4deg);} to{transform:translate(4px,-12px) rotate(0.5deg);} }
+  @keyframes reDriftD { from{transform:translate(0,2px) rotate(0.6deg);} to{transform:translate(-5px,-9px) rotate(-0.5deg);} }
+  @media (max-width:1120px) { .re-float { display:none !important; } }
+  @media (max-width:760px) { .re-float:not(.re-m) { display:none !important; } }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .vz-reveal { opacity:1 !important; transform:none !important; } }
 </style>
 </helmet>
@@ -136,21 +151,9 @@
           <div class="svc-dd-inner">
             <a href="ServiceDigitalMarketing.dc.html"><span class="svc-dot" style="background:#3B2FE0;"></span>Digital Marketing</a>
             <a href="ServiceLeadGeneration.dc.html"><span class="svc-dot" style="background:#8B5CF6;"></span>Lead Generation</a>
-            <a href="ServiceAIAutomation.dc.html"><span class="svc-dot" style="background:#22D3EE;"></span>AI Automation</a>
+            <a href="IndustryRealEstate.dc.html"><span class="svc-dot" style="background:#22D3EE;"></span>AI Automation</a>
             <a href="ServiceGoHighLevel.dc.html"><span class="svc-dot" style="background:#22C55E;"></span>GoHighLevel</a>
             <a href="ServiceGrowthConsulting.dc.html"><span class="svc-dot" style="background:#F59E0B;"></span>Growth Consulting</a>
-          </div>
-        </div>
-      </div>
-      <div class="nav-svc">
-        <a href="javascript:void(0)" style="text-decoration:none; color:#B7BCC5; font-size:14.5px; font-weight:500; display:flex; align-items:center; gap:6px;">Industries <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
-        <div class="svc-dd">
-          <div class="svc-dd-inner">
-            <a href="IndustryRealEstate.dc.html"><span class="svc-dot" style="background:#3B2FE0;"></span>Real Estate</a>
-            <a href="IndustryProfessionalServices.dc.html"><span class="svc-dot" style="background:#8B5CF6;"></span>Professional Services</a>
-            <a href="IndustryHealthcare.dc.html"><span class="svc-dot" style="background:#22D3EE;"></span>Healthcare</a>
-            <a href="IndustryEcommerce.dc.html"><span class="svc-dot" style="background:#F59E0B;"></span>Ecommerce</a>
-            <a href="IndustryFinancialServices.dc.html"><span class="svc-dot" style="background:#EC4899;"></span>Financial Services</a>
           </div>
         </div>
       </div>
@@ -180,23 +183,9 @@
         <div style="display:flex; flex-direction:column; padding:0 4px 12px 14px; gap:2px;">
           <a href="ServiceDigitalMarketing.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#3B2FE0;"></span>Digital Marketing</a>
           <a href="ServiceLeadGeneration.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#8B5CF6;"></span>Lead Generation</a>
-          <a href="ServiceAIAutomation.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#22D3EE;"></span>AI Automation</a>
+          <a href="IndustryRealEstate.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#22D3EE;"></span>AI Automation</a>
           <a href="ServiceGoHighLevel.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#22C55E;"></span>GoHighLevel</a>
           <a href="ServiceGrowthConsulting.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#F59E0B;"></span>Growth Consulting</a>
-        </div>
-        </sc-if>
-      </div>
-      <div style="border-top:1px solid rgba(255,255,255,0.06);">
-        <button onClick="{{ toggleMobileIndustries }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; background:none; border:none; padding:16px 4px; color:#fff; font-size:16.5px; font-weight:600; font-family:inherit; cursor:pointer;">Industries
-          <svg class="mob-acc-ic" style="{{ mobileIndustriesCaret }}" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9AA1AD" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <sc-if value="{{ mobileIndustriesOpen }}" hint-placeholder-val="{{ false }}">
-        <div style="display:flex; flex-direction:column; padding:0 4px 12px 14px; gap:2px;">
-          <a href="IndustryRealEstate.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#3B2FE0;"></span>Real Estate</a>
-          <a href="IndustryProfessionalServices.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#8B5CF6;"></span>Professional Services</a>
-          <a href="IndustryHealthcare.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#22D3EE;"></span>Healthcare</a>
-          <a href="IndustryEcommerce.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#F59E0B;"></span>Ecommerce</a>
-          <a href="IndustryFinancialServices.dc.html" onClick="{{ closeMobileMenu }}" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:#B7BCC5; font-size:15px; padding:11px 0;"><span class="svc-dot" style="background:#EC4899;"></span>Financial Services</a>
         </div>
         </sc-if>
       </div>
@@ -211,19 +200,65 @@
 </div>
 
 <section id="top" style="position:relative; overflow:hidden; padding: clamp(130px,16vw,190px) 0 clamp(60px,7vw,90px);">
+  <div aria-hidden="true" data-parallax="0.03" style="position:absolute; inset:0; z-index:0; pointer-events:none; background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center 22%/cover no-repeat; opacity:0.14; filter:blur(6px) saturate(0.85) brightness(0.68); -webkit-mask-image:radial-gradient(68% 58% at 50% 34%, #000 0%, rgba(0,0,0,0.32) 55%, transparent 80%); mask-image:radial-gradient(68% 58% at 50% 34%, #000 0%, rgba(0,0,0,0.32) 55%, transparent 80%);"></div>
+  <div aria-hidden="true" style="position:absolute; inset:0; z-index:0; pointer-events:none; background:linear-gradient(180deg, rgba(8,8,11,0.55) 0%, rgba(8,8,11,0.18) 34%, rgba(8,8,11,0.92) 100%);"></div>
   <div data-parallax="0.12" data-parallax-base="translateX(-50%)" style="position:absolute; top:-140px; left:50%; transform:translateX(-50%); width:900px; height:600px; background:radial-gradient(50% 50% at 50% 40%, rgba(59,47,224,0.20), rgba(59,47,224,0) 70%); pointer-events:none;"></div>
   <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ true }}">
     <div style="position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 75%); pointer-events:none;"></div>
   </sc-if>
   <canvas ref="{{ blobRef }}" aria-hidden="true" style="position:absolute; left:50%; top:min(470px,54%); transform:translate(-50%,-50%); width:min(88vw,760px); height:min(88vw,760px); z-index:1; pointer-events:none; opacity:1; mix-blend-mode:screen; -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 55%, rgba(0,0,0,0) 80%); mask-image:radial-gradient(circle at 50% 50%, #000 55%, rgba(0,0,0,0) 80%);"></canvas>
-  <div aria-hidden="true" style="position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(62% 58% at 50% 46%, rgba(10,10,12,0.6), rgba(10,10,12,0.28) 55%, rgba(10,10,12,0) 78%);"></div>
+  <div aria-hidden="true" style="position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(62% 58% at 50% 46%, rgba(8,8,11,0.6), rgba(8,8,11,0.28) 55%, rgba(8,8,11,0) 78%);"></div>
+
+  <div aria-hidden="true">
+    <!-- LEFT near (mobile-kept, live-updating) -->
+    <div class="re-float re-m" data-px="-1.4" style="top:400px; left:15%; z-index:3;">
+      <div style="animation:reIn .7s cubic-bezier(.16,1,.3,1) both; animation-delay:.15s;">
+        <div class="re-card" style="animation:reDriftA 7s ease-in-out infinite alternate;">
+          <div class="re-ic" style="background:rgba(59,47,224,0.16); border:1px solid rgba(59,47,224,0.34); color:#B3A6FF;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
+          <div style="min-width:0;"><div class="re-t1" data-live-t1>New buyer enquiry</div><div class="re-t2" data-live-t2 style="color:#34D399;">£850,000 · Qualified</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- LEFT near removed (Seller valuation request) -->
+    <!-- LEFT far (desktop only, behind blob) -->
+    <div class="re-float re-d" data-px="-0.6" style="top:240px; left:17%; z-index:1; opacity:0.66;">
+      <div style="animation:reIn .7s cubic-bezier(.16,1,.3,1) both; animation-delay:.8s;">
+        <div class="re-card" style="animation:reDriftC 9s ease-in-out infinite alternate;">
+          <div class="re-ic" style="background:rgba(52,211,153,0.13); border:1px solid rgba(52,211,153,0.3); color:#34D399;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg></div>
+          <div style="min-width:0;"><div class="re-t1">Lead qualified</div><div class="re-t2" style="color:#8A93A0;">Ready to view</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- LEFT far behind removed -->
+
+    <!-- RIGHT near (mobile-kept) -->
+    <div class="re-float re-m" data-px="1.4" style="top:400px; right:15%; z-index:3;">
+      <div style="animation:reIn .7s cubic-bezier(.16,1,.3,1) both; animation-delay:.3s;">
+        <div class="re-card" style="animation:reDriftB 7.8s ease-in-out infinite alternate;">
+          <div class="re-ic" style="background:rgba(34,211,238,0.13); border:1px solid rgba(34,211,238,0.32); color:#A5F3FC;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></div>
+          <div style="min-width:0;"><div class="re-t1">Viewing booked</div><div class="re-t2" style="color:#A5F3FC;">Tomorrow · 2:30 PM</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT near removed (Offer accepted) -->
+    <!-- RIGHT far (desktop only, behind blob) -->
+    <div class="re-float re-d" data-px="0.6" style="top:240px; right:17%; z-index:1; opacity:0.66;">
+      <div style="animation:reIn .7s cubic-bezier(.16,1,.3,1) both; animation-delay:.92s;">
+        <div class="re-card" style="animation:reDriftC 8.2s ease-in-out infinite alternate;">
+          <div class="re-ic" style="background:rgba(139,92,246,0.14); border:1px solid rgba(139,92,246,0.3); color:#C4B5FD;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l1.5 3.5"/><path d="M4 8h16"/><path d="M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="M12 12v3l2 1"/></svg></div>
+          <div style="min-width:0;"><div class="re-t1">AI follow-up sent</div><div class="re-t2" style="color:#8A93A0;">2 seconds ago</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT far behind removed -->
+  </div>
   <div style="position:relative; z-index:2; max-width:1000px; margin:0 auto; padding:0 clamp(20px,5vw,32px); text-align:center;">
     <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border:1px solid rgba(140,120,235,0.28); border-radius:999px; background:rgba(9,12,28,0.62); backdrop-filter:blur(8px); box-shadow:0 4px 20px rgba(0,0,0,0.35); margin-bottom:28px;">
       <span style="width:7px; height:7px; border-radius:50%; background:#9F91FF; box-shadow:0 0 10px #9F91FF;"></span>
-      <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#E7ECF8;">Growth &amp; Automation Systems</span>
+      <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#E7ECF8;">Estate Agency Growth Systems</span>
     </div>
     <h1 style="margin:0; font-weight:900; font-size:clamp(2.6rem,7vw,5.2rem); line-height:1.04; letter-spacing:-0.03em; color:#fff; text-wrap:balance;"><span style="display:block; overflow:hidden; padding-bottom:0.04em;"><span class="vz-line" style="animation-delay:0.05s;">{{ heroL1 }}</span></span><span style="display:block; overflow:hidden; padding-bottom:0.04em;"><span class="vz-line" style="animation-delay:0.17s; background:linear-gradient(100deg,#9F91FF,#8B5CF6,#22D3EE,#9F91FF,#8B5CF6); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:vzHue 6s linear infinite;">{{ heroL2 }}</span></span></h1>
-    <p style="max-width:640px; margin:26px auto 0; color:#9AA1AD; font-size:clamp(1.05rem,1.5vw,1.28rem); line-height:1.6;">Most businesses stall because marketing, sales, and follow-up don't work together. VenturezCo builds the growth systems that attract leads, automate follow-up, lift conversions, and create predictable revenue.</p>
+    <p style="max-width:640px; margin:26px auto 0; color:#9AA1AD; font-size:clamp(1.05rem,1.5vw,1.28rem); line-height:1.6;">We help estate agencies generate qualified buyer and seller enquiries, automate follow-ups, nurture every lead, and book more property viewings with AI-powered growth systems.</p>
     <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:36px;">
       <a href="#contact" onClick="{{ openBooking }}" class="vz-mag" data-magnetic style="text-decoration:none; display:inline-flex; align-items:center; gap:9px; background:#3B2FE0; color:#fff; font-size:16px; font-weight:600; padding:16px 28px; border-radius:999px; box-shadow:0 12px 36px rgba(59,47,224,0.40);">Book Free Strategy Call
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
@@ -235,19 +270,19 @@
     <div data-reveal-group style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;">
       <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px; text-align:center;">
         <div style="font-family:'Satoshi'; font-weight:900; font-size:clamp(2rem,3.4vw,2.8rem); line-height:1; letter-spacing:-0.03em; background:linear-gradient(120deg,#fff,#B3A6FF); -webkit-background-clip:text; background-clip:text; color:transparent;">{{ stat0 }}</div>
-        <div style="margin-top:10px; color:#9AA1AD; font-size:14px; font-weight:500;">Average lead growth</div>
+        <div style="margin-top:10px; color:#9AA1AD; font-size:14px; font-weight:500;">Qualified property enquiries</div>
       </div>
       <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px; text-align:center;">
         <div style="font-family:'Satoshi'; font-weight:900; font-size:clamp(2rem,3.4vw,2.8rem); line-height:1; letter-spacing:-0.03em; background:linear-gradient(120deg,#fff,#B3A6FF); -webkit-background-clip:text; background-clip:text; color:transparent;">{{ stat1 }}</div>
-        <div style="margin-top:10px; color:#9AA1AD; font-size:14px; font-weight:500;">Lower acquisition costs</div>
+        <div style="margin-top:10px; color:#9AA1AD; font-size:14px; font-weight:500;">Lead response rate</div>
       </div>
       <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px; text-align:center;">
         <div style="font-family:'Satoshi'; font-weight:900; font-size:clamp(2rem,3.4vw,2.8rem); line-height:1; letter-spacing:-0.03em; background:linear-gradient(120deg,#fff,#B3A6FF); -webkit-background-clip:text; background-clip:text; color:transparent;">{{ stat2 }}</div>
-        <div style="margin-top:10px; color:#9AA1AD; font-size:14px; font-weight:500;">Conversion rate increase</div>
+        <div style="margin-top:10px; color:#9AA1AD; font-size:14px; font-weight:500;">Automated follow-up</div>
       </div>
       <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px; text-align:center;">
         <div style="font-family:'Satoshi'; font-weight:900; font-size:clamp(2rem,3.4vw,2.8rem); line-height:1; letter-spacing:-0.03em; background:linear-gradient(120deg,#fff,#B3A6FF); -webkit-background-clip:text; background-clip:text; color:transparent;">{{ stat3 }}</div>
-        <div style="margin-top:10px; color:#9AA1AD; font-size:14px; font-weight:500;">Growth systems built</div>
+        <div style="margin-top:10px; color:#9AA1AD; font-size:14px; font-weight:500;">More viewings booked</div>
       </div>
     </div>
   </div>
@@ -271,27 +306,27 @@
       <div style="display:flex; align-items:stretch; gap:0; flex-wrap:wrap;">
         <div style="flex:1 1 150px; min-width:140px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; padding:8px;">
           <div style="width:56px; height:56px; border-radius:16px; display:grid; place-items:center; background:rgba(59,47,224,0.10); border:1px solid rgba(59,47,224,0.22); color:#B3A6FF;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1"/><circle cx="9" cy="7" r="4"/><path d="M22 20v-1a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <div><div style="font-weight:600; font-size:14.5px; color:#fff;">Lead Generation</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6B7280; margin-top:3px;">attract</div></div>
+          <div><div style="font-weight:600; font-size:14.5px; color:#fff;">Property Enquiry</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6B7280; margin-top:3px;">capture</div></div>
         </div>
         <div style="flex:0 0 40px; align-self:center; min-width:40px; position:relative; height:2px; background:linear-gradient(90deg, rgba(59,47,224,0.15), rgba(59,47,224,0.5)); border-radius:2px;"><span style="position:absolute; top:50%; width:7px; height:7px; margin-top:-3.5px; border-radius:50%; background:#9F91FF; box-shadow:0 0 10px #3B2FE0; animation:vzFlow 3s linear infinite;"></span></div>
         <div style="flex:1 1 150px; min-width:140px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; padding:8px;">
           <div style="width:56px; height:56px; border-radius:16px; display:grid; place-items:center; background:rgba(59,47,224,0.10); border:1px solid rgba(59,47,224,0.22); color:#B3A6FF;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/><path d="M10 6.5h3.5a3 3 0 0 1 3 3V14"/></svg></div>
-          <div><div style="font-weight:600; font-size:14.5px; color:#fff;">Automation</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6B7280; margin-top:3px;">nurture</div></div>
+          <div><div style="font-weight:600; font-size:14.5px; color:#fff;">AI Qualification</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6B7280; margin-top:3px;">qualify</div></div>
         </div>
         <div style="flex:0 0 40px; align-self:center; min-width:40px; position:relative; height:2px; background:linear-gradient(90deg, rgba(59,47,224,0.15), rgba(59,47,224,0.5)); border-radius:2px;"><span style="position:absolute; top:50%; width:7px; height:7px; margin-top:-3.5px; border-radius:50%; background:#9F91FF; box-shadow:0 0 10px #3B2FE0; animation:vzFlow 3s linear infinite; animation-delay:0.6s;"></span></div>
         <div style="flex:1 1 150px; min-width:140px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; padding:8px;">
           <div style="width:56px; height:56px; border-radius:16px; display:grid; place-items:center; background:rgba(59,47,224,0.10); border:1px solid rgba(59,47,224,0.22); color:#B3A6FF;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
-          <div><div style="font-weight:600; font-size:14.5px; color:#fff;">CRM</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6B7280; margin-top:3px;">track</div></div>
+          <div><div style="font-weight:600; font-size:14.5px; color:#fff;">Instant Follow-up</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6B7280; margin-top:3px;">respond</div></div>
         </div>
         <div style="flex:0 0 40px; align-self:center; min-width:40px; position:relative; height:2px; background:linear-gradient(90deg, rgba(59,47,224,0.15), rgba(59,47,224,0.5)); border-radius:2px;"><span style="position:absolute; top:50%; width:7px; height:7px; margin-top:-3.5px; border-radius:50%; background:#9F91FF; box-shadow:0 0 10px #3B2FE0; animation:vzFlow 3s linear infinite; animation-delay:1.2s;"></span></div>
         <div style="flex:1 1 150px; min-width:140px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; padding:8px;">
           <div style="width:56px; height:56px; border-radius:16px; display:grid; place-items:center; background:rgba(59,47,224,0.10); border:1px solid rgba(59,47,224,0.22); color:#B3A6FF;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l1.8 1.8L8 4.6"/><path d="M3 14l1.8 1.8L8 12.6"/><line x1="12" y1="6" x2="21" y2="6"/><line x1="12" y1="13" x2="21" y2="13"/><line x1="12" y1="20" x2="21" y2="20"/></svg></div>
-          <div><div style="font-weight:600; font-size:14.5px; color:#fff;">Sales Process</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6B7280; margin-top:3px;">close</div></div>
+          <div><div style="font-weight:600; font-size:14.5px; color:#fff;">Viewing Booked</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6B7280; margin-top:3px;">book</div></div>
         </div>
         <div style="flex:0 0 40px; align-self:center; min-width:40px; position:relative; height:2px; background:linear-gradient(90deg, rgba(59,47,224,0.15), rgba(59,47,224,0.6)); border-radius:2px;"><span style="position:absolute; top:50%; width:7px; height:7px; margin-top:-3.5px; border-radius:50%; background:#9F91FF; box-shadow:0 0 10px #3B2FE0; animation:vzFlow 3s linear infinite; animation-delay:1.8s;"></span></div>
         <div style="flex:1 1 160px; min-width:150px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; padding:8px;">
           <div style="width:60px; height:60px; border-radius:16px; display:grid; place-items:center; background:rgba(59,47,224,0.16); color:#fff; animation:vzGlow 3.4s ease-in-out infinite;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></div>
-          <div><div style="font-weight:700; font-size:14.5px; color:#fff;">Revenue Growth</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#3B2FE0; margin-top:3px;">predictable</div></div>
+          <div><div style="font-weight:700; font-size:14.5px; color:#fff;">Offer Accepted</div><div style="font-family:'Geist Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#3B2FE0; margin-top:3px;">closed</div></div>
         </div>
       </div>
     </div>
@@ -299,12 +334,27 @@
   </sc-if>
 </section>
 
+<section data-reveal style="position:relative; padding: clamp(30px,4vw,52px) 0;">
+  <div style="max-width:1320px; margin:0 auto; padding:0 clamp(20px,5vw,32px);">
+    <div style="position:relative; overflow:hidden; border-radius:32px; border:1px solid rgba(255,255,255,0.08); min-height:clamp(360px,52vh,560px); display:flex; align-items:flex-end; box-shadow:0 40px 120px rgba(0,0,0,0.55);">
+      <div aria-hidden="true" data-parallax="0.06" style="position:absolute; inset:-7%; background:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;"></div>
+      <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,9,14,0.32) 0%, rgba(8,9,14,0.55) 45%, rgba(8,9,14,0.93) 100%);"></div>
+      <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(60% 82% at 12% 100%, rgba(59,47,224,0.30), transparent 60%);"></div>
+      <div style="position:relative; z-index:2; padding:clamp(32px,5vw,64px); max-width:760px;">
+        <span style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:#B3A6FF;">The road ahead</span>
+        <h2 style="margin:16px 0 0; font-weight:900; font-size:clamp(2.1rem,4.8vw,3.6rem); line-height:1.05; letter-spacing:-0.03em; color:#fff; text-wrap:balance;">The future of estate agency growth.</h2>
+        <p style="margin:20px 0 0; max-width:560px; color:#D3D7E0; font-size:clamp(1.05rem,1.4vw,1.25rem); line-height:1.6;">The best estate agencies don't rely on manual follow-ups. They rely on systems that respond instantly, nurture every enquiry, and keep their pipeline moving 24/7.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section style="position:relative; padding: clamp(38px,5vw,64px) 0; overflow:hidden;">
   <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:760px; height:420px; background:radial-gradient(50% 50% at 50% 50%, rgba(59,47,224,0.12), transparent 70%); pointer-events:none;"></div>
   <div data-reveal style="position:relative; max-width:860px; margin:0 auto; padding:0 clamp(20px,5vw,32px); text-align:center;">
     <span style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:#3B2FE0;">The approach</span>
-    <h2 style="margin:16px 0 0; font-weight:900; font-size:clamp(2.1rem,5vw,3.6rem); line-height:1.04; letter-spacing:-0.025em; color:#fff; text-wrap:balance;">We build the systems <span style="background:linear-gradient(100deg,#9F91FF,#8B5CF6); -webkit-background-clip:text; background-clip:text; color:transparent;">behind growth.</span></h2>
-    <p style="max-width:620px; margin:24px auto 0; color:#9AA1AD; font-size:clamp(1.05rem,1.4vw,1.22rem); line-height:1.6;">The businesses that scale fastest aren't the ones with the biggest marketing budgets. They're the ones with the best systems — where every lead, follow-up, and conversion is designed to work together.</p>
+    <h2 style="margin:16px 0 0; font-weight:900; font-size:clamp(2.1rem,5vw,3.6rem); line-height:1.04; letter-spacing:-0.025em; color:#fff; text-wrap:balance;">We build the systems behind <span style="background:linear-gradient(100deg,#9F91FF,#8B5CF6); -webkit-background-clip:text; background-clip:text; color:transparent;">high-performing estate agencies.</span></h2>
+    <p style="max-width:620px; margin:24px auto 0; color:#9AA1AD; font-size:clamp(1.05rem,1.4vw,1.22rem); line-height:1.6;">Every property enquiry deserves an instant response. Every follow-up should happen automatically. Every viewing should be easier to book. Our systems make that happen.</p>
   </div>
 </section>
 
@@ -349,16 +399,16 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:clamp(28px,4vw,52px); align-items:center; height:100%; padding:clamp(30px,4vw,54px);">
           <div style="display:flex; flex-direction:column; gap:22px; position:relative;">
             <span style="position:absolute; top:-6px; right:0; font-family:'Geist Mono',monospace; font-weight:500; font-size:clamp(3rem,5vw,4.4rem); line-height:1; color:rgba(59,47,224,0.16);">01</span>
-            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(59,47,224,0.14); border:1px solid rgba(59,47,224,0.34); color:#B3A6FF; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;"><span style="width:6px;height:6px;border-radius:50%;background:#3B2FE0;box-shadow:0 0 8px #3B2FE0;"></span>Growth Marketing</span>
-            <h3 style="margin:0; font-weight:900; font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.04; letter-spacing:-0.025em; color:#fff;">Demand that compounds,<br><span style="background:linear-gradient(100deg,#B3A6FF,#3B2FE0); -webkit-background-clip:text; background-clip:text; color:transparent;">not resets each month.</span></h3>
-            <p style="margin:0; max-width:460px; color:#9AA1AD; font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6;">Paid, social, and content run as one compounding engine — every channel feeding the next instead of fighting for budget.</p>
+            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(59,47,224,0.14); border:1px solid rgba(59,47,224,0.34); color:#B3A6FF; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;"><span style="width:6px;height:6px;border-radius:50%;background:#3B2FE0;box-shadow:0 0 8px #3B2FE0;"></span>Buyer &amp; Seller Leads</span>
+            <h3 style="margin:0; font-weight:900; font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.04; letter-spacing:-0.025em; color:#fff;">Generate more buyer &amp;<br><span style="background:linear-gradient(100deg,#B3A6FF,#3B2FE0); -webkit-background-clip:text; background-clip:text; color:transparent;">seller leads.</span></h3>
+            <p style="margin:0; max-width:460px; color:#9AA1AD; font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6;">Paid, social, and portal traffic run as one engine — every channel feeding qualified property enquiries into your pipeline instead of fighting for budget.</p>
             <div style="display:flex; flex-wrap:wrap; gap:9px;">
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#3B2FE0;"></span>Paid Advertising</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#3B2FE0;"></span>Social Media</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#3B2FE0;"></span>Content Strategy</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#3B2FE0;"></span>Google Ads</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#3B2FE0;"></span>Meta Ads</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#3B2FE0;"></span>SEO</span>
             </div>
-            <div style="display:flex; align-items:center; gap:12px; padding-top:6px;"><span style="font-family:'Satoshi'; font-weight:900; font-size:1.5rem; color:#B3A6FF; letter-spacing:-0.02em;">3.1x</span><span style="color:#7C8492; font-size:13.5px; line-height:1.4;">average return on ad spend across managed accounts</span></div>
-            <a href="#contact" class="vz-mag" data-magnetic style="align-self:flex-start; text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-top:4px; padding:12px 20px; border-radius:999px; background:rgba(59,47,224,0.16); border:1px solid rgba(59,47,224,0.4); color:#fff; font-size:14.5px; font-weight:600;">Explore Marketing <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <div style="display:flex; align-items:center; gap:12px; padding-top:6px;"><span style="font-family:'Satoshi'; font-weight:900; font-size:1.5rem; color:#B3A6FF; letter-spacing:-0.02em;">+185%</span><span style="color:#7C8492; font-size:13.5px; line-height:1.4;">qualified buyer &amp; seller enquiries for the agencies we work with</span></div>
+            <a href="#contact" class="vz-mag" data-magnetic style="align-self:flex-start; text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-top:4px; padding:12px 20px; border-radius:999px; background:rgba(59,47,224,0.16); border:1px solid rgba(59,47,224,0.4); color:#fff; font-size:14.5px; font-weight:600;">Get More Leads <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
           </div>
           <div style="position:relative; min-height:clamp(240px,34vh,360px); border-radius:20px; overflow:hidden; border:1px solid rgba(59,47,224,0.16); background:radial-gradient(90% 90% at 30% 20%, rgba(59,47,224,0.14), rgba(255,255,255,0.015)); display:grid; place-items:center;">
             <svg viewBox="0 0 340 230" style="width:88%; max-width:400px; overflow:visible; animation:vzFloat 7s ease-in-out infinite;"><defs><linearGradient id="vgm1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#3B2FE0" stop-opacity="0.12"/><stop offset="1" stop-color="#9F91FF" stop-opacity="0.6"/></linearGradient></defs><line x1="20" y1="200" x2="320" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/><rect x="34" y="140" width="38" height="60" rx="6" fill="url(#vgm1)"/><rect x="94" y="108" width="38" height="92" rx="6" fill="url(#vgm1)"/><rect x="154" y="78" width="38" height="122" rx="6" fill="url(#vgm1)"/><rect x="214" y="52" width="38" height="148" rx="6" fill="url(#vgm1)"/><rect x="274" y="26" width="38" height="174" rx="6" fill="url(#vgm1)"/><polyline points="53,132 113,100 173,70 233,44 293,18" fill="none" stroke="#9F91FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="53" cy="132" r="4" fill="#fff"/><circle cx="113" cy="100" r="4" fill="#fff"/><circle cx="173" cy="70" r="4" fill="#fff"/><circle cx="233" cy="44" r="4" fill="#fff"/><circle cx="293" cy="18" r="4.5" fill="#fff"/></svg>
@@ -370,16 +420,16 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:clamp(28px,4vw,52px); align-items:center; height:100%; padding:clamp(30px,4vw,54px);">
           <div style="display:flex; flex-direction:column; gap:22px; position:relative;">
             <span style="position:absolute; top:-6px; right:0; font-family:'Geist Mono',monospace; font-weight:500; font-size:clamp(3rem,5vw,4.4rem); line-height:1; color:rgba(139,92,246,0.18);">02</span>
-            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(139,92,246,0.14); border:1px solid rgba(139,92,246,0.34); color:#C4B5FD; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;"><span style="width:6px;height:6px;border-radius:50%;background:#8B5CF6;box-shadow:0 0 8px #8B5CF6;"></span>Lead Generation</span>
-            <h3 style="margin:0; font-weight:900; font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.04; letter-spacing:-0.025em; color:#fff;">Turn attention into<br><span style="background:linear-gradient(100deg,#C4B5FD,#8B5CF6); -webkit-background-clip:text; background-clip:text; color:transparent;">qualified pipeline.</span></h3>
-            <p style="margin:0; max-width:460px; color:#9AA1AD; font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6;">Landing pages, funnels, and conversion work tuned to turn traffic into sales-ready conversations — not just clicks that leak away.</p>
+            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(139,92,246,0.14); border:1px solid rgba(139,92,246,0.34); color:#C4B5FD; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;"><span style="width:6px;height:6px;border-radius:50%;background:#8B5CF6;box-shadow:0 0 8px #8B5CF6;"></span>Viewings</span>
+            <h3 style="margin:0; font-weight:900; font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.04; letter-spacing:-0.025em; color:#fff;">Turn enquiries into<br><span style="background:linear-gradient(100deg,#C4B5FD,#8B5CF6); -webkit-background-clip:text; background-clip:text; color:transparent;">booked viewings.</span></h3>
+            <p style="margin:0; max-width:460px; color:#9AA1AD; font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6;">Instant responses, qualification, and online calendars tuned to turn property enquiries into confirmed viewings — not leads that go cold in an inbox.</p>
             <div style="display:flex; flex-wrap:wrap; gap:9px;">
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#8B5CF6;"></span>Landing Pages</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#8B5CF6;"></span>Funnels</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#8B5CF6;"></span>Conversion Optimization</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#8B5CF6;"></span>Instant Response</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#8B5CF6;"></span>Online Calendars</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#8B5CF6;"></span>Reminders</span>
             </div>
-            <div style="display:flex; align-items:center; gap:12px; padding-top:6px;"><span style="font-family:'Satoshi'; font-weight:900; font-size:1.5rem; color:#C4B5FD; letter-spacing:-0.02em;">+218%</span><span style="color:#7C8492; font-size:13.5px; line-height:1.4;">qualified pipeline for a B2B services client in one quarter</span></div>
-            <a href="#contact" class="vz-mag" data-magnetic style="align-self:flex-start; text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-top:4px; padding:12px 20px; border-radius:999px; background:rgba(139,92,246,0.16); border:1px solid rgba(139,92,246,0.4); color:#fff; font-size:14.5px; font-weight:600;">Explore Lead Gen <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <div style="display:flex; align-items:center; gap:12px; padding-top:6px;"><span style="font-family:'Satoshi'; font-weight:900; font-size:1.5rem; color:#C4B5FD; letter-spacing:-0.02em;">3×</span><span style="color:#7C8492; font-size:13.5px; line-height:1.4;">more viewings booked once instant response was automated</span></div>
+            <a href="#contact" class="vz-mag" data-magnetic style="align-self:flex-start; text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-top:4px; padding:12px 20px; border-radius:999px; background:rgba(139,92,246,0.16); border:1px solid rgba(139,92,246,0.4); color:#fff; font-size:14.5px; font-weight:600;">Book More Viewings <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
           </div>
           <div style="position:relative; min-height:clamp(240px,34vh,360px); border-radius:20px; overflow:hidden; border:1px solid rgba(139,92,246,0.16); background:radial-gradient(90% 90% at 30% 20%, rgba(139,92,246,0.14), rgba(255,255,255,0.015)); display:grid; place-items:center;">
             <svg viewBox="0 0 340 236" style="width:82%; max-width:380px; overflow:visible; animation:vzFloat 7.6s ease-in-out infinite;"><polygon points="40,28 300,28 278,66 62,66" fill="rgba(139,92,246,0.30)"/><polygon points="66,74 274,74 254,112 86,112" fill="rgba(139,92,246,0.42)"/><polygon points="90,120 250,120 232,158 108,158" fill="rgba(139,92,246,0.56)"/><polygon points="112,166 228,166 212,204 128,204" fill="rgba(139,92,246,0.72)"/><circle cx="170" cy="47" r="3.5" fill="#fff"/><circle cx="170" cy="93" r="3.5" fill="#fff"/><circle cx="170" cy="139" r="3.5" fill="#fff"/><circle cx="170" cy="185" r="3.5" fill="#fff"/></svg>
@@ -391,17 +441,17 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:clamp(28px,4vw,52px); align-items:center; height:100%; padding:clamp(30px,4vw,54px);">
           <div style="display:flex; flex-direction:column; gap:22px; position:relative;">
             <span style="position:absolute; top:-6px; right:0; font-family:'Geist Mono',monospace; font-weight:500; font-size:clamp(3rem,5vw,4.4rem); line-height:1; color:rgba(34,211,238,0.16);">03</span>
-            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(34,211,238,0.12); border:1px solid rgba(34,211,238,0.32); color:#A5F3FC; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;"><span style="width:6px;height:6px;border-radius:50%;background:#22D3EE;box-shadow:0 0 8px #22D3EE;"></span>AI Automation</span>
-            <h3 style="margin:0; font-weight:900; font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.04; letter-spacing:-0.025em; color:#fff;">Systems that sell<br><span style="background:linear-gradient(100deg,#A5F3FC,#22D3EE); -webkit-background-clip:text; background-clip:text; color:transparent;">while you sleep.</span></h3>
-            <p style="margin:0; max-width:460px; color:#9AA1AD; font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6;">We build revenue systems in GoHighLevel that capture, nurture, qualify, and book leads automatically — turning your CRM into a growth engine.</p>
+            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(34,211,238,0.12); border:1px solid rgba(34,211,238,0.32); color:#A5F3FC; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;"><span style="width:6px;height:6px;border-radius:50%;background:#22D3EE;box-shadow:0 0 8px #22D3EE;"></span>Automation</span>
+            <h3 style="margin:0; font-weight:900; font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.04; letter-spacing:-0.025em; color:#fff;">Automate every<br><span style="background:linear-gradient(100deg,#A5F3FC,#22D3EE); -webkit-background-clip:text; background-clip:text; color:transparent;">follow-up.</span></h3>
+            <p style="margin:0; max-width:460px; color:#9AA1AD; font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6;">We build real estate CRM systems in GoHighLevel that capture, qualify, nurture, and book every enquiry automatically — so no buyer or seller lead is ever left waiting.</p>
             <div style="display:flex; flex-wrap:wrap; gap:9px;">
               <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#22D3EE;"></span>GoHighLevel CRM</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#22D3EE;"></span>Lead Nurturing</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#22D3EE;"></span>AI Chatbots</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#22D3EE;"></span>Appointment Booking</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#22D3EE;"></span>SMS &amp; Email</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#22D3EE;"></span>AI Property Assistant</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#22D3EE;"></span>Viewing Booking</span>
             </div>
-            <div style="display:flex; align-items:center; gap:12px; padding-top:6px;"><span style="font-family:'Satoshi'; font-weight:900; font-size:1.5rem; color:#A5F3FC; letter-spacing:-0.02em;">15+ hours</span><span style="color:#7C8492; font-size:13.5px; line-height:1.4;">of manual follow-up eliminated every week.</span></div>
-            <a href="#contact" class="vz-mag" data-magnetic style="align-self:flex-start; text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-top:4px; padding:12px 20px; border-radius:999px; background:rgba(34,211,238,0.14); border:1px solid rgba(34,211,238,0.38); color:#fff; font-size:14.5px; font-weight:600;">Explore Automation <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <div style="display:flex; align-items:center; gap:12px; padding-top:6px;"><span style="font-family:'Satoshi'; font-weight:900; font-size:1.5rem; color:#A5F3FC; letter-spacing:-0.02em;">15+ hours</span><span style="color:#7C8492; font-size:13.5px; line-height:1.4;">of manual follow-up eliminated from your team every week.</span></div>
+            <a href="#contact" class="vz-mag" data-magnetic style="align-self:flex-start; text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-top:4px; padding:12px 20px; border-radius:999px; background:rgba(34,211,238,0.14); border:1px solid rgba(34,211,238,0.38); color:#fff; font-size:14.5px; font-weight:600;">Automate Follow-up <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
           </div>
           <div style="position:relative; min-height:clamp(240px,34vh,360px); border-radius:20px; overflow:hidden; border:1px solid rgba(34,211,238,0.16); background:radial-gradient(90% 90% at 30% 20%, rgba(34,211,238,0.12), rgba(255,255,255,0.015)); display:grid; place-items:center;">
             <svg viewBox="0 0 340 220" style="width:86%; max-width:390px; overflow:visible; animation:vzFloat 8.2s ease-in-out infinite;"><line x1="80" y1="60" x2="170" y2="110" stroke="rgba(34,211,238,0.5)" stroke-width="2"/><line x1="80" y1="160" x2="170" y2="110" stroke="rgba(34,211,238,0.5)" stroke-width="2"/><line x1="170" y1="110" x2="270" y2="110" stroke="rgba(34,211,238,0.5)" stroke-width="2"/><circle cx="80" cy="60" r="16" fill="rgba(34,211,238,0.16)" stroke="#22D3EE" stroke-width="1.5"/><circle cx="80" cy="160" r="16" fill="rgba(34,211,238,0.16)" stroke="#22D3EE" stroke-width="1.5"/><circle cx="270" cy="110" r="16" fill="rgba(34,211,238,0.16)" stroke="#22D3EE" stroke-width="1.5"/><circle cx="170" cy="110" r="26" fill="rgba(34,211,238,0.20)" stroke="#22D3EE" stroke-width="1.8"/><g stroke="#A5F3FC" stroke-width="1.8" fill="none" stroke-linecap="round"><circle cx="170" cy="110" r="7"/><path d="M170 98v-6M170 122v6M158 110h-6M182 110h6M161.5 101.5l-4-4M178.5 101.5l4-4M161.5 118.5l-4 4M178.5 118.5l4 4"/></g><circle cx="125" cy="85" r="3.5" fill="#fff"/><circle cx="125" cy="135" r="3.5" fill="#fff"/><circle cx="220" cy="110" r="3.5" fill="#fff"/></svg>
@@ -413,16 +463,16 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:clamp(28px,4vw,52px); align-items:center; height:100%; padding:clamp(30px,4vw,54px);">
           <div style="display:flex; flex-direction:column; gap:22px; position:relative;">
             <span style="position:absolute; top:-6px; right:0; font-family:'Geist Mono',monospace; font-weight:500; font-size:clamp(3rem,5vw,4.4rem); line-height:1; color:rgba(245,158,11,0.18);">04</span>
-            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(245,158,11,0.14); border:1px solid rgba(245,158,11,0.34); color:#FCD34D; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;"><span style="width:6px;height:6px;border-radius:50%;background:#F59E0B;box-shadow:0 0 8px #F59E0B;"></span>Growth Consulting</span>
-            <h3 style="margin:0; font-weight:900; font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.04; letter-spacing:-0.025em; color:#fff;">A plan that keeps<br><span style="background:linear-gradient(100deg,#FCD34D,#F59E0B); -webkit-background-clip:text; background-clip:text; color:transparent;">growth on course.</span></h3>
-            <p style="margin:0; max-width:460px; color:#9AA1AD; font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6;">The strategy layer: we audit, prioritize, and keep every part of the system aimed squarely at revenue — reviewed and re-cut every sprint.</p>
+            <span style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; background:rgba(245,158,11,0.14); border:1px solid rgba(245,158,11,0.34); color:#FCD34D; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;"><span style="width:6px;height:6px;border-radius:50%;background:#F59E0B;box-shadow:0 0 8px #F59E0B;"></span>Revenue</span>
+            <h3 style="margin:0; font-weight:900; font-size:clamp(1.9rem,3.4vw,3rem); line-height:1.04; letter-spacing:-0.025em; color:#fff;">Predict revenue &amp;<br><span style="background:linear-gradient(100deg,#FCD34D,#F59E0B); -webkit-background-clip:text; background-clip:text; color:transparent;">track every deal.</span></h3>
+            <p style="margin:0; max-width:460px; color:#9AA1AD; font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6;">One property pipeline where every enquiry, viewing, and offer is tracked — so you can forecast revenue and see exactly where each deal stands.</p>
             <div style="display:flex; flex-wrap:wrap; gap:9px;">
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#F59E0B;"></span>Growth Strategy</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#F59E0B;"></span>Sales Process</span>
-              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#F59E0B;"></span>Performance Reporting</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#F59E0B;"></span>Property Pipeline</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#F59E0B;"></span>Deal Tracking</span>
+              <span style="display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); color:#C7CBD1; font-size:13.5px;"><span style="width:5px;height:5px;border-radius:50%;background:#F59E0B;"></span>Revenue Forecasting</span>
             </div>
-            <div style="display:flex; align-items:center; gap:12px; padding-top:6px;"><span style="font-family:'Satoshi'; font-weight:900; font-size:1.5rem; color:#FCD34D; letter-spacing:-0.02em;">1 roadmap</span><span style="color:#7C8492; font-size:13.5px; line-height:1.4;">reviewed and re-prioritized with you every single sprint</span></div>
-            <a href="#contact" class="vz-mag" data-magnetic style="align-self:flex-start; text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-top:4px; padding:12px 20px; border-radius:999px; background:rgba(245,158,11,0.14); border:1px solid rgba(245,158,11,0.38); color:#fff; font-size:14.5px; font-weight:600;">Explore Consulting <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <div style="display:flex; align-items:center; gap:12px; padding-top:6px;"><span style="font-family:'Satoshi'; font-weight:900; font-size:1.5rem; color:#FCD34D; letter-spacing:-0.02em;">1 dashboard</span><span style="color:#7C8492; font-size:13.5px; line-height:1.4;">every enquiry, viewing, and deal tracked in one place</span></div>
+            <a href="#contact" class="vz-mag" data-magnetic style="align-self:flex-start; text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-top:4px; padding:12px 20px; border-radius:999px; background:rgba(245,158,11,0.14); border:1px solid rgba(245,158,11,0.38); color:#fff; font-size:14.5px; font-weight:600;">Track Every Deal <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
           </div>
           <div style="position:relative; min-height:clamp(240px,34vh,360px); border-radius:20px; overflow:hidden; border:1px solid rgba(245,158,11,0.16); background:radial-gradient(90% 90% at 30% 20%, rgba(245,158,11,0.12), rgba(255,255,255,0.015)); display:grid; place-items:center;">
             <svg viewBox="0 0 340 220" style="width:88%; max-width:400px; overflow:visible; animation:vzFloat 7.2s ease-in-out infinite;"><defs><linearGradient id="vga4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.35"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></linearGradient></defs><line x1="20" y1="196" x2="320" y2="196" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/><path d="M30,180 L90,150 L150,160 L210,110 L270,80 L310,34 L310,196 L30,196 Z" fill="url(#vga4)"/><polyline points="30,180 90,150 150,160 210,110 270,80 310,34" fill="none" stroke="#FCD34D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="90" cy="150" r="4" fill="#fff"/><circle cx="150" cy="160" r="4" fill="#fff"/><circle cx="210" cy="110" r="4" fill="#fff"/><circle cx="270" cy="80" r="4" fill="#fff"/><circle cx="310" cy="34" r="5" fill="#fff"/></svg>
@@ -439,7 +489,7 @@
   <div data-reveal style="position:relative; text-align:center; max-width:720px; margin:0 auto; padding:0 clamp(20px,5vw,32px);">
     <span style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:#3B2FE0;">Powered by GoHighLevel</span>
     <h2 style="margin:16px 0 0; font-weight:900; font-size:clamp(2rem,4.6vw,3.4rem); line-height:1.05; letter-spacing:-0.025em; color:#fff; text-wrap:balance;">One platform. <span style="background:linear-gradient(100deg,#9F91FF,#8B5CF6); -webkit-background-clip:text; background-clip:text; color:transparent;">Every growth system.</span></h2>
-    <p style="max-width:640px; margin:22px auto 0; color:#9AA1AD; font-size:clamp(1.05rem,1.4vw,1.2rem); line-height:1.6;">We connect your marketing, sales, automation, and reporting into one revenue system — so every lead is captured, followed up, qualified, booked, and tracked.</p>
+    <p style="max-width:640px; margin:22px auto 0; color:#9AA1AD; font-size:clamp(1.05rem,1.4vw,1.2rem); line-height:1.6;">We connect your marketing, sales, automation, and reporting into one revenue system — so every enquiry is captured, followed up, qualified, booked, and tracked.</p>
   </div>
 
   <div data-reveal style="position:relative; max-width:1320px; margin:clamp(40px,5vw,60px) auto 0; padding:0 clamp(20px,4vw,40px);">
@@ -517,8 +567,8 @@
       <div class="vz-badge" style="position:absolute; top:-13px; left:16px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#0C0D12; border:1px solid rgba(255,255,255,0.16); font-family:'Geist Mono',monospace; font-size:11px; font-weight:500; color:#C7CBD4;">01</div>
       <div class="vz-ic" style="flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#4A9EFF1F; border:1px solid #4A9EFF55; color:#4A9EFF; box-shadow:0 0 20px #4A9EFF22;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a6.5 6.5 0 0 1 11 0"/><circle cx="17.5" cy="9.5" r="2.2"/><path d="M15.8 14.4A5.5 5.5 0 0 1 20.5 20"/></svg></div>
       <div style="min-width:0;">
-        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Traffic Sources</h3>
-        <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Paid Ads, Social, SEO, Referrals & More</p>
+        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Property Enquiries</h3>
+        <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Portals, Google Ads, Meta Ads &amp; Referrals</p>
         <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; font-weight:600; color:#4A9EFF;">CAPTURE</span>
       </div>
     </div>
@@ -526,8 +576,8 @@
       <div class="vz-badge" style="position:absolute; top:-13px; right:16px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#0C0D12; border:1px solid rgba(255,255,255,0.16); font-family:'Geist Mono',monospace; font-size:11px; font-weight:500; color:#C7CBD4;">02</div>
       <div class="vz-ic" style="flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#5B8DEF1F; border:1px solid #5B8DEF55; color:#5B8DEF; box-shadow:0 0 20px #5B8DEF22;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v5l-4 2v-7z"/></svg></div>
       <div style="min-width:0;">
-        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Funnels</h3>
-        <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Landing Pages, Forms, Lead Capture Funnels</p>
+        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Buyer Qualification</h3>
+        <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Landing Pages, Forms, Enquiry Capture</p>
         <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; font-weight:600; color:#5B8DEF;">CONVERT</span>
       </div>
     </div>
@@ -535,7 +585,7 @@
       <div class="vz-badge" style="position:absolute; top:-13px; right:16px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#0C0D12; border:1px solid rgba(255,255,255,0.16); font-family:'Geist Mono',monospace; font-size:11px; font-weight:500; color:#C7CBD4;">03</div>
       <div class="vz-ic" style="flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#4A9EFF1F; border:1px solid #4A9EFF55; color:#4A9EFF; box-shadow:0 0 20px #4A9EFF22;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3"/><path d="M5.5 19a6.5 6.5 0 0 1 13 0"/></svg></div>
       <div style="min-width:0;">
-        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">CRM</h3>
+        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Buyer &amp; Seller CRM</h3>
         <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Contacts, Pipelines, Opportunities</p>
         <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; font-weight:600; color:#4A9EFF;">TRACK</span>
       </div>
@@ -544,7 +594,7 @@
       <div class="vz-badge" style="position:absolute; top:-13px; right:16px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#0C0D12; border:1px solid rgba(255,255,255,0.16); font-family:'Geist Mono',monospace; font-size:11px; font-weight:500; color:#C7CBD4;">04</div>
       <div class="vz-ic" style="flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#A855F71F; border:1px solid #A855F755; color:#A855F7; box-shadow:0 0 20px #A855F722;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
       <div style="min-width:0;">
-        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Automation</h3>
+        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Instant Follow-up</h3>
         <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Email, SMS, Workflows, Follow-up Sequences</p>
         <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; font-weight:600; color:#A855F7;">NURTURE</span>
       </div>
@@ -553,7 +603,7 @@
       <div class="vz-badge" style="position:absolute; top:-13px; right:16px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#0C0D12; border:1px solid rgba(255,255,255,0.16); font-family:'Geist Mono',monospace; font-size:11px; font-weight:500; color:#C7CBD4;">05</div>
       <div class="vz-ic" style="flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#EC48991F; border:1px solid #EC489955; color:#EC4899; box-shadow:0 0 20px #EC489922;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="2.5"/><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7V8"/><circle cx="9.2" cy="13" r="1.1"/><circle cx="14.8" cy="13" r="1.1"/><path d="M4 12.5H2.4M21.6 12.5H20"/></svg></div>
       <div style="min-width:0;">
-        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">AI Agents</h3>
+        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">AI Property Assistant</h3>
         <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Qualification, Replies, Lead Routing</p>
         <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; font-weight:600; color:#EC4899;">QUALIFY</span>
       </div>
@@ -562,7 +612,7 @@
       <div class="vz-badge" style="position:absolute; top:-13px; left:16px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#0C0D12; border:1px solid rgba(255,255,255,0.16); font-family:'Geist Mono',monospace; font-size:11px; font-weight:500; color:#C7CBD4;">06</div>
       <div class="vz-ic" style="flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#F59E0B1F; border:1px solid #F59E0B55; color:#F59E0B; box-shadow:0 0 20px #F59E0B22;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/><path d="M8 14.5l2.4 2.3 4.2-4.4"/></svg></div>
       <div style="min-width:0;">
-        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Appointment Booking</h3>
+        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Viewing Booking</h3>
         <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Calendar, Reminders, Confirmations</p>
         <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; font-weight:600; color:#F59E0B;">BOOK</span>
       </div>
@@ -571,8 +621,8 @@
       <div class="vz-badge" style="position:absolute; top:-13px; left:16px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#0C0D12; border:1px solid rgba(255,255,255,0.16); font-family:'Geist Mono',monospace; font-size:11px; font-weight:500; color:#C7CBD4;">07</div>
       <div class="vz-ic" style="flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#22C55E1F; border:1px solid #22C55E55; color:#22C55E; box-shadow:0 0 20px #22C55E22;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11"/><path d="M14.6 9c-.6-.8-1.6-1.2-2.7-1.2-1.5 0-2.6.9-2.6 2s1 1.7 2.6 2 2.7.9 2.7 2.1-1.1 2-2.7 2c-1.1 0-2.2-.5-2.7-1.3"/></svg></div>
       <div style="min-width:0;">
-        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Sales Pipeline</h3>
-        <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Deals, Tasks, Follow-ups, Closing</p>
+        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Property Pipeline</h3>
+        <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Offers, Tasks, Follow-ups, Closing</p>
         <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; font-weight:600; color:#22C55E;">CLOSE</span>
       </div>
     </div>
@@ -580,8 +630,8 @@
       <div class="vz-badge" style="position:absolute; top:-13px; left:16px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:#0C0D12; border:1px solid rgba(255,255,255,0.16); font-family:'Geist Mono',monospace; font-size:11px; font-weight:500; color:#C7CBD4;">08</div>
       <div class="vz-ic" style="flex:none; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:#4A9EFF1F; border:1px solid #4A9EFF55; color:#4A9EFF; box-shadow:0 0 20px #4A9EFF22;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="3" height="7" rx="1"/><rect x="10.5" y="7" width="3" height="12" rx="1"/><rect x="17" y="10" width="3" height="9" rx="1"/><path d="M3 20.5h18"/></svg></div>
       <div style="min-width:0;">
-        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Reporting Dashboard</h3>
-        <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Revenue, Conversions, Lead Sources</p>
+        <h3 style="margin:0 0 5px; font-size:clamp(15px,1.15vw,18px); font-weight:700; color:#fff; letter-spacing:-0.01em;">Deal Reporting</h3>
+        <p style="margin:0 0 7px; color:#9AA1AD; font-size:clamp(12px,0.95vw,13.5px); line-height:1.45;">Revenue, Conversions, Enquiry Sources</p>
         <span style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; font-weight:600; color:#4A9EFF;">REPORT</span>
       </div>
     </div>
@@ -670,34 +720,43 @@
     <div style="max-width:640px; margin-bottom:clamp(44px,5vw,60px);">
       <span style="font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:#3B2FE0;">Case studies</span>
       <h2 style="margin:16px 0 0; font-weight:900; font-size:clamp(2rem,4.6vw,3.4rem); line-height:1.05; letter-spacing:-0.025em; color:#fff; text-wrap:balance;">Business transformation, not just metrics.</h2>
+      <p style="margin:14px 0 0; color:#7C8492; font-size:13.5px; line-height:1.5;">Illustrative examples based on typical engagements — not specific client outcomes.</p>
     </div>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; margin-bottom:24px;">
       <div style="grid-column:1/-1; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:clamp(28px,3.5vw,44px); display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(24px,3vw,44px); align-items:start;">
+        <div style="grid-column:1/-1; position:relative; border-radius:16px; overflow:hidden; aspect-ratio:21/6; min-height:150px; border:1px solid rgba(255,255,255,0.07);">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Luxury London townhouse" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,8,11,0.15), rgba(8,8,11,0.75));"></div>
+        </div>
         <div>
-          <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#3B2FE0;">B2B Services</span>
-          <h3 style="margin:14px 0 0; font-size:clamp(1.5rem,2.4vw,2rem); font-weight:800; color:#fff; line-height:1.15; letter-spacing:-0.02em;">From scattered tools to one revenue engine</h3>
+          <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#3B2FE0;">London Estate Agency</span>
+          <h3 style="margin:14px 0 0; font-size:clamp(1.5rem,2.4vw,2rem); font-weight:800; color:#fff; line-height:1.15; letter-spacing:-0.02em;">From missed enquiries to a full viewing diary</h3>
           <div style="display:flex; gap:26px; margin-top:26px; flex-wrap:wrap;">
-            <div><div style="font-family:'Satoshi'; font-weight:900; font-size:1.9rem; color:#B3A6FF; letter-spacing:-0.02em;">+218%</div><div style="color:#7C8492; font-size:12.5px; margin-top:4px;">qualified pipeline</div></div>
-            <div><div style="font-family:'Satoshi'; font-weight:900; font-size:1.9rem; color:#B3A6FF; letter-spacing:-0.02em;">4% → 11%</div><div style="color:#7C8492; font-size:12.5px; margin-top:4px;">close rate</div></div>
+            <div><div style="font-family:'Satoshi'; font-weight:900; font-size:1.9rem; color:#B3A6FF; letter-spacing:-0.02em;">+185%</div><div style="color:#7C8492; font-size:12.5px; margin-top:4px;">qualified enquiries</div></div>
+            <div><div style="font-family:'Satoshi'; font-weight:900; font-size:1.9rem; color:#B3A6FF; letter-spacing:-0.02em;">3×</div><div style="color:#7C8492; font-size:12.5px; margin-top:4px;">viewings booked</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:22px;">
-          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:7px;">Challenge</div><p style="margin:0; color:#B7BCC5; font-size:15px; line-height:1.6;">200+ leads a month but a close rate under 4%. Follow-up lived in inboxes and nothing was tracked.</p></div>
-          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:7px;">Strategy</div><p style="margin:0; color:#B7BCC5; font-size:15px; line-height:1.6;">Unified lead capture, built automated multi-touch nurture, and wired the CRM to a defined pipeline with clear stages.</p></div>
-          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:7px;">Outcome</div><p style="margin:0; color:#B7BCC5; font-size:15px; line-height:1.6;">Qualified pipeline nearly tripled, close rate rose to 11%, and 15 hours of manual work vanished from the team's week.</p></div>
+          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:7px;">Challenge</div><p style="margin:0; color:#B7BCC5; font-size:15px; line-height:1.6;">200+ portal enquiries a month but under 4% ever booked a viewing. Follow-up lived in inboxes and nothing was tracked.</p></div>
+          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:7px;">Strategy</div><p style="margin:0; color:#B7BCC5; font-size:15px; line-height:1.6;">Unified enquiry capture, built automated instant response and multi-touch nurture, and wired the CRM to a clear viewing-to-offer pipeline.</p></div>
+          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:7px;">Outcome</div><p style="margin:0; color:#B7BCC5; font-size:15px; line-height:1.6;">Qualified enquiries nearly tripled, viewings booked rose sharply, and 15 hours of manual follow-up vanished from the team's week.</p></div>
         </div>
       </div>
     </div>
 
     <div data-reveal-group style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;">
       <div style="background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:clamp(28px,3.5vw,40px);">
-        <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#3B2FE0;">DTC Brand</span>
-        <h3 style="margin:14px 0 22px; font-size:clamp(1.35rem,2vw,1.7rem); font-weight:800; color:#fff; line-height:1.2; letter-spacing:-0.02em;">Cutting acquisition cost without cutting spend</h3>
+        <div style="position:relative; border-radius:14px; overflow:hidden; aspect-ratio:16/9; margin-bottom:22px; border:1px solid rgba(255,255,255,0.07);">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Modern residential property" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,8,11,0.1), rgba(8,8,11,0.6));"></div>
+        </div>
+        <span style="font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#3B2FE0;">Manchester Estate Agency</span>
+        <h3 style="margin:14px 0 22px; font-size:clamp(1.35rem,2vw,1.7rem); font-weight:800; color:#fff; line-height:1.2; letter-spacing:-0.02em;">Turning portal leads into booked valuations</h3>
         <div style="display:flex; flex-direction:column; gap:16px;">
-          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:6px;">Challenge</div><p style="margin:0; color:#B7BCC5; font-size:14.5px; line-height:1.6;">Paid costs kept climbing because every channel was optimized in isolation.</p></div>
-          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:6px;">Strategy</div><p style="margin:0; color:#B7BCC5; font-size:14.5px; line-height:1.6;">Rebuilt the funnel end to end — landing pages, offer sequencing, and post-purchase automation feeding targeting.</p></div>
-          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:6px;">Outcome</div><p style="margin:0; color:#B7BCC5; font-size:14.5px; line-height:1.6;">38% lower CAC, 2.6x repeat-purchase rate, and revenue that finally became predictable.</p></div>
+          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:6px;">Challenge</div><p style="margin:0; color:#B7BCC5; font-size:14.5px; line-height:1.6;">Seller enquiries came in fast but replies took hours, so most valuations went to the agent who called first.</p></div>
+          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:6px;">Strategy</div><p style="margin:0; color:#B7BCC5; font-size:14.5px; line-height:1.6;">Automated instant response, an AI qualifier, and one-tap valuation booking wired straight into the CRM.</p></div>
+          <div><div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#6B7280; margin-bottom:6px;">Outcome</div><p style="margin:0; color:#B7BCC5; font-size:14.5px; line-height:1.6;">Sub-minute response times, more valuations won, and a pipeline that finally became predictable.</p></div>
         </div>
       </div>
       <div style="background:linear-gradient(160deg, rgba(59,47,224,0.14), rgba(139,92,246,0.06)); border:1px solid rgba(59,47,224,0.22); border-radius:24px; padding:clamp(28px,3.5vw,40px); display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
@@ -768,35 +827,41 @@
     </div>
     <div data-reveal-group style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px;">
       <a href="Insights.dc.html" style="text-decoration:none; display:flex; flex-direction:column; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:20px; overflow:hidden;">
-        <div style="position:relative; height:158px; background:radial-gradient(120% 130% at 20% 0%, rgba(59,47,224,0.32), rgba(59,47,224,0.04) 65%), #0C0D11; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+        <div style="position:relative; height:158px; background:#0C0D11; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80" alt="Estate agency property" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+          <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(120% 130% at 20% 0%, rgba(59,47,224,0.5), rgba(12,13,17,0.55) 65%);"></div>
           <svg viewBox="0 0 320 160" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.7;"><polyline points="0,120 60,96 120,104 180,64 240,72 320,28" fill="none" stroke="#9F91FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="180" cy="64" r="3" fill="#fff"/><circle cx="320" cy="28" r="3.5" fill="#fff"/></svg>
         </div>
         <div style="padding:24px; display:flex; flex-direction:column; gap:12px;">
           <span style="align-self:flex-start; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#B3A6FF; padding:5px 11px; border-radius:999px; background:rgba(59,47,224,0.12); border:1px solid rgba(59,47,224,0.28);">Automation</span>
-          <h3 style="margin:0; font-size:20px; font-weight:700; line-height:1.25; letter-spacing:-0.015em; color:#fff;">Why your CRM should run your follow-up, not your team</h3>
-          <p style="margin:0; color:#9AA1AD; font-size:14.5px; line-height:1.6;">Manual follow-up is where most revenue quietly leaks. Here's how to hand it to a system that never forgets.</p>
+          <h3 style="margin:0; font-size:20px; font-weight:700; line-height:1.25; letter-spacing:-0.015em; color:#fff;">How estate agencies lose qualified leads</h3>
+          <p style="margin:0; color:#9AA1AD; font-size:14.5px; line-height:1.6;">Slow follow-up is where most property enquiries quietly go cold. Here's how to hand it to a system that never forgets.</p>
           <div style="margin-top:4px; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.06em; color:#5B6270;">Jun 2026 &middot; 6 min read</div>
         </div>
       </a>
       <a href="Insights.dc.html" style="text-decoration:none; display:flex; flex-direction:column; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:20px; overflow:hidden;">
-        <div style="position:relative; height:158px; background:radial-gradient(120% 130% at 20% 0%, rgba(139,92,246,0.32), rgba(139,92,246,0.04) 65%), #0C0B12; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+        <div style="position:relative; height:158px; background:#0C0B12; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Modern property interior" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+          <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(120% 130% at 20% 0%, rgba(139,92,246,0.5), rgba(12,11,18,0.55) 65%);"></div>
           <svg viewBox="0 0 320 160" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.65;"><polygon points="40,26 280,26 236,58 84,58" fill="rgba(196,181,253,0.35)"/><polygon points="88,66 232,66 200,98 120,98" fill="rgba(196,181,253,0.5)"/><polygon points="124,106 196,106 176,134 144,134" fill="rgba(196,181,253,0.7)"/></svg>
         </div>
         <div style="padding:24px; display:flex; flex-direction:column; gap:12px;">
           <span style="align-self:flex-start; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#C4B5FD; padding:5px 11px; border-radius:999px; background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.28);">Lead Gen</span>
-          <h3 style="margin:0; font-size:20px; font-weight:700; line-height:1.25; letter-spacing:-0.015em; color:#fff;">The anatomy of a funnel that actually converts</h3>
-          <p style="margin:0; color:#9AA1AD; font-size:14.5px; line-height:1.6;">More traffic won't save a leaking funnel. We break down the structure behind pages that turn clicks into calls.</p>
+          <h3 style="margin:0; font-size:20px; font-weight:700; line-height:1.25; letter-spacing:-0.015em; color:#fff;">How AI books more property viewings</h3>
+          <p style="margin:0; color:#9AA1AD; font-size:14.5px; line-height:1.6;">Instant, intelligent replies turn more enquiries into confirmed viewings. We break down the automation behind it.</p>
           <div style="margin-top:4px; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.06em; color:#5B6270;">May 2026 &middot; 5 min read</div>
         </div>
       </a>
       <a href="Insights.dc.html" style="text-decoration:none; display:flex; flex-direction:column; background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.08); border-radius:20px; overflow:hidden;">
-        <div style="position:relative; height:158px; background:radial-gradient(120% 130% at 20% 0%, rgba(34,211,238,0.3), rgba(34,211,238,0.04) 65%), #0A0F11; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+        <div style="position:relative; height:158px; background:#0A0F11; border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" alt="Estate agent with client" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+          <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(120% 130% at 20% 0%, rgba(34,211,238,0.46), rgba(10,15,17,0.58) 65%);"></div>
           <svg viewBox="0 0 320 160" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.7;"><g stroke="#22D3EE" stroke-width="2" fill="none"><line x1="80" y1="46" x2="160" y2="80"/><line x1="80" y1="114" x2="160" y2="80"/><line x1="160" y1="80" x2="244" y2="80"/></g><g fill="rgba(34,211,238,0.18)" stroke="#22D3EE" stroke-width="1.5"><circle cx="80" cy="46" r="12"/><circle cx="80" cy="114" r="12"/><circle cx="244" cy="80" r="12"/><circle cx="160" cy="80" r="18"/></g></svg>
         </div>
         <div style="padding:24px; display:flex; flex-direction:column; gap:12px;">
           <span style="align-self:flex-start; font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#A5F3FC; padding:5px 11px; border-radius:999px; background:rgba(34,211,238,0.1); border:1px solid rgba(34,211,238,0.26);">Strategy</span>
-          <h3 style="margin:0; font-size:20px; font-weight:700; line-height:1.25; letter-spacing:-0.015em; color:#fff;">Systems beat tactics: how to think about growth</h3>
-          <p style="margin:0; color:#9AA1AD; font-size:14.5px; line-height:1.6;">Campaigns come and go. The businesses that compound are the ones that build a repeatable engine underneath.</p>
+          <h3 style="margin:0; font-size:20px; font-weight:700; line-height:1.25; letter-spacing:-0.015em; color:#fff;">Google Ads for estate agencies</h3>
+          <p style="margin:0; color:#9AA1AD; font-size:14.5px; line-height:1.6;">Where estate agents waste ad budget — and how to structure campaigns that bring in buyer and seller leads.</p>
           <div style="margin-top:4px; font-family:'Geist Mono',monospace; font-size:12px; letter-spacing:0.06em; color:#5B6270;">May 2026 &middot; 7 min read</div>
         </div>
       </a>
@@ -809,8 +874,8 @@
     <div style="position:relative; overflow:hidden; border-radius:32px; border:1px solid rgba(96,132,220,0.3); background:radial-gradient(85% 130% at 50% -10%, rgba(38,66,150,0.6), rgba(14,18,34,0.6) 58%), linear-gradient(180deg, rgba(22,30,58,0.55), rgba(9,11,20,0.6)); box-shadow:0 40px 120px rgba(0,0,0,0.5); padding:clamp(52px,8vw,104px) clamp(24px,5vw,60px); text-align:center;">
       <div aria-hidden="true" style="position:absolute; inset:-20%; background:conic-gradient(from 0deg, rgba(59,47,224,0.35), rgba(139,92,246,0.28), rgba(34,211,238,0.22), rgba(59,47,224,0.35)); filter:blur(60px); opacity:0.55; animation:vzSpin 16s linear infinite; pointer-events:none;"></div>
       <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(58% 68% at 50% 6%, rgba(59,47,224,0.24), transparent 62%); pointer-events:none;"></div>
-      <h2 style="position:relative; margin:0 auto; max-width:780px; font-weight:900; font-size:clamp(2.3rem,5.5vw,4rem); line-height:1.04; letter-spacing:-0.03em; color:#fff; text-wrap:balance;">Ready to fix the system behind your growth?</h2>
-      <p style="position:relative; max-width:560px; margin:22px auto 0; color:#B9C0CC; font-size:clamp(1.05rem,1.4vw,1.22rem); line-height:1.6;">Let's identify what's slowing your business down and build a scalable growth engine — starting with a free strategy call.</p>
+      <h2 style="position:relative; margin:0 auto; max-width:780px; font-weight:900; font-size:clamp(2.3rem,5.5vw,4rem); line-height:1.04; letter-spacing:-0.03em; color:#fff; text-wrap:balance;">Ready to book more property viewings?</h2>
+      <p style="position:relative; max-width:560px; margin:22px auto 0; color:#B9C0CC; font-size:clamp(1.05rem,1.4vw,1.22rem); line-height:1.6;">Book your free strategy session and discover how automation can help your agency generate more enquiries, schedule more viewings, and close more deals.</p>
       <div style="position:relative; margin-top:38px; display:flex; justify-content:center;">
         <a href="#top" onClick="{{ openBooking }}" class="vz-mag" data-magnetic style="text-decoration:none; display:inline-flex; align-items:center; gap:10px; background:#3B2FE0; color:#fff; font-size:17px; font-weight:600; padding:18px 34px; border-radius:999px; box-shadow:0 14px 42px rgba(59,47,224,0.45);">Book Your Free Strategy Call
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
@@ -846,7 +911,6 @@
         <div style="font-family:'Geist Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#5B6270; margin-bottom:16px;">Navigate</div>
         <div style="display:flex; flex-direction:column; gap:11px;">
           <a href="#services" style="text-decoration:none; color:#B7BCC5; font-size:14.5px;">Services</a>
-          <a href="javascript:void(0)" style="text-decoration:none; color:#B7BCC5; font-size:14.5px;">Industries</a>
           <a href="#cases" style="text-decoration:none; color:#B7BCC5; font-size:14.5px;">Case Studies</a>
           <a href="Insights.dc.html" style="text-decoration:none; color:#B7BCC5; font-size:14.5px;">Insights</a>
           <a href="HowWeWork.dc.html" style="text-decoration:none; color:#B7BCC5; font-size:14.5px;">How We Work</a>
@@ -1065,10 +1129,10 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;heroHeadline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;system&quot;,&quot;options&quot;:[&quot;system&quot;,&quot;traffic&quot;,&quot;leads&quot;,&quot;systems&quot;,&quot;hustle&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showEngine&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
 class Component extends DCLogic {
-  T = { a: 327, b: 40, c2: 2.8, d: 100 };
+  T = { a: 185, b: 92, c2: 3, d: 100 };
   WA_NUMBER = '447463361502';
-  WA_MESSAGE = "Hi VenturezCo! I have a question about your growth systems.";
-  state = { c: { a: 327, b: 40, c2: 2.8, d: 100 }, started: false, ti: 0,
+  WA_MESSAGE = "Hi VenturezCo! I'd like to grow my estate agency with your systems.";
+  state = { c: { a: 185, b: 92, c2: 3, d: 100 }, started: false, ti: 0,
     bkOpen: false, bkStep: 1, bkDate: null, bkSlot: null, bkDone: false,
     bkHelp: null, bkBudget: null, bkTimeline: null, bkErrors: {},
     bkTz: 'Eastern Time (ET)', bkTzOpen: false,
@@ -1146,12 +1210,12 @@ class Component extends DCLogic {
   };
 
   testimonials = [
-    { quote: "We stopped guessing. VenturezCo rebuilt our follow-up as a system \u2014 our team now closes deals that used to quietly disappear.", name: "Sarah Lin", role: "Founder, Northwind Labs" },
-    { quote: "The audit alone paid for itself. They found revenue leaking in three places we never thought to look, then fixed it in a month.", name: "Marcus Reed", role: "Director of Growth, Tandem" },
-    { quote: "It was never about more traffic \u2014 it was better systems. Our conversion rate nearly tripled without raising ad spend.", name: "Priya Nair", role: "Business Owner, Atlas & Co" },
-    { quote: "Every lead used to hit a spreadsheet and go cold. Now follow-up happens automatically and our close rate has never been higher.", name: "Daniel Ortiz", role: "CEO, Halcyon Group" },
-    { quote: "VenturezCo gave us one dashboard instead of six disconnected tools. Our sales team finally trusts the numbers.", name: "Emily Chao", role: "VP Sales, Vantage" },
-    { quote: "They didn't just build automations \u2014 they rebuilt how we think about growth. Predictable pipeline, every month.", name: "Ben Whitfield", role: "Founder, Meridian" }
+    { quote: "VenturezCo rebuilt our follow-up as a system \u2014 every property enquiry now gets an instant response and our viewing diary is finally full.", name: "Sarah Lin", role: "Director, Prime London Estates" },
+    { quote: "The audit alone paid for itself. They found enquiries leaking in three places we never checked, then fixed it inside a month.", name: "Marcus Reed", role: "Managing Director, Reed & Co" },
+    { quote: "It was never about more leads \u2014 it was better systems. We book almost three times the viewings without spending more on ads.", name: "Priya Nair", role: "Owner, Nair Residential" },
+    { quote: "Every portal lead used to go cold in a spreadsheet. Now qualification and follow-up happen automatically and our valuations are up.", name: "Daniel Ortiz", role: "Founder, Ortiz Property Group" },
+    { quote: "One dashboard instead of six disconnected tools. My negotiators finally trust the pipeline and nothing slips.", name: "Emily Chao", role: "Sales Manager, Meridian Homes" },
+    { quote: "They didn't just build automations \u2014 they rebuilt how our agency handles enquiries. Predictable viewings, every single week.", name: "Ben Whitfield", role: "Director, Whitfield & Partners" }
   ];
 
   tPrev = () => this.setState(s => ({ ti: (s.ti - 1 + this.testimonials.length) % this.testimonials.length }));
@@ -1185,12 +1249,14 @@ class Component extends DCLogic {
     requestAnimationFrame(() => this.setupMotion(root, reduce));
     this.startBlob(reduce);
     this.startAmbient(reduce);
+    this.startLiveEvents(reduce);
   }
 
   startAmbient(reduce) {
     const root = this.root || document;
     if (reduce) return;
     const layers = Array.from(root.querySelectorAll('[data-ambient-depth]'));
+    const cards = Array.from(root.querySelectorAll('.re-float[data-px]'));
     let mx = 0, my = 0, tx = 0, ty = 0;
     const onMove = (e) => { mx = (e.clientX / window.innerWidth - 0.5); my = (e.clientY / window.innerHeight - 0.5); };
     window.addEventListener('mousemove', onMove, { passive: true });
@@ -1199,6 +1265,10 @@ class Component extends DCLogic {
       layers.forEach((el) => {
         const f = parseFloat(el.getAttribute('data-ambient-depth')) || 12;
         el.style.transform = 'translate3d(' + (tx * f).toFixed(1) + 'px,' + (ty * f).toFixed(1) + 'px,0)';
+      });
+      cards.forEach((el) => {
+        const p = parseFloat(el.getAttribute('data-px')) || 1;
+        el.style.transform = 'translate3d(' + (tx * p * 16).toFixed(1) + 'px,' + (ty * p * 12).toFixed(1) + 'px,0)';
       });
       this._ambientRaf = requestAnimationFrame(tick);
     };
@@ -1221,8 +1291,39 @@ class Component extends DCLogic {
     }
   }
 
+  startLiveEvents(reduce) {
+    if (reduce) return;
+    const root = this.root || document;
+    const t1 = root.querySelector('[data-live-t1]');
+    const t2 = root.querySelector('[data-live-t2]');
+    if (!t1 || !t2) return;
+    const seq = [
+      { a: 'New buyer enquiry', b: '\u00A3850,000 \u00B7 Qualified', c: '#34D399' },
+      { a: 'AI qualified', b: 'Ready to view', c: '#A5F3FC' },
+      { a: 'Viewing booked', b: 'Sat \u00B7 11:00 AM', c: '#C4B5FD' },
+      { a: 'Offer submitted', b: '\u00A3812,000', c: '#FCD34D' },
+      { a: 'Offer accepted', b: 'Status updated', c: '#34D399' }
+    ];
+    let i = 0;
+    const card = t1.closest('.re-card');
+    this._liveInt = setInterval(() => {
+      i = (i + 1) % seq.length;
+      const s = seq[i];
+      if (card) card.style.transition = 'opacity .3s ease';
+      if (card) card.style.opacity = '0.35';
+      clearTimeout(this._liveT);
+      this._liveT = setTimeout(() => {
+        t1.textContent = s.a; t2.textContent = s.b; t2.style.color = s.c;
+        if (card) card.style.opacity = '';
+      }, 320);
+    }, 3800);
+  }
+
   componentWillUnmount() {
     clearTimeout(this._safety);
+    clearInterval(this._liveInt);
+    clearTimeout(this._liveT);
+    if (this._ambientRaf) cancelAnimationFrame(this._ambientRaf);
     if (this._threeCtrl) { try { this._threeCtrl.dispose(); } catch (e) {} this._threeCtrl = null; }
     if (this._blobRAF) cancelAnimationFrame(this._blobRAF);
     if (this._blobResize) window.removeEventListener('resize', this._blobResize);
@@ -1613,11 +1714,11 @@ class Component extends DCLogic {
       onClick: clicks[i]
     }));
     const heads = {
-      'system': ["Your marketing isn't broken.", "Your system is."],
-      'traffic': ["More traffic won't fix", "a leaking sales process."],
-      'leads': ["You're not losing leads.", "You're losing the system."],
-      'systems': ["Most businesses don't need more leads.", "They need better systems."],
-      'hustle': ["Growth shouldn't depend", "on constant hustle."]
+      'system': ["More viewings. More listings.", "More sales."],
+      'traffic': ["The growth system behind", "high-performing estate agencies."],
+      'leads': ["You're not losing enquiries.", "You're losing the system."],
+      'systems': ["Estate agencies don't need more leads.", "They need better systems."],
+      'hustle': ["Growth shouldn't depend", "on manual follow-up."]
     };
     const h = heads[this.props.heroHeadline] || heads['system'];
 
@@ -1696,8 +1797,8 @@ class Component extends DCLogic {
       showEngine: this.props.showEngine !== false,
       stat0: '+' + Math.round(c.a) + '%',
       stat1: Math.round(c.b) + '%',
-      stat2: c.c2.toFixed(1) + 'x',
-      stat3: Math.round(c.d) + '+',
+      stat2: '24/7',
+      stat3: Math.round(c.c2) + '\u00D7',
       tQuote: cur.quote,
       tName: cur.name,
       tRole: cur.role,

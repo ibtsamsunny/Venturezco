@@ -6,39 +6,39 @@ import Reveal from "@/components/shared/Reveal";
 const TESTIMONIALS = [
   {
     quote:
-      "We stopped guessing. VenturezCo rebuilt our follow-up as a system — our team now closes deals that used to quietly disappear.",
+      "VenturezCo rebuilt our follow-up as a system — every property enquiry now gets an instant response and our viewing diary is finally full.",
     name: "Sarah Lin",
-    role: "Founder, Northwind Labs",
+    role: "Director, Prime London Estates",
     photo: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
-    quote: "The audit alone paid for itself. They found revenue leaking in three places we never thought to look, then fixed it in a month.",
+    quote: "The audit alone paid for itself. They found enquiries leaking in three places we never checked, then fixed it inside a month.",
     name: "Marcus Reed",
-    role: "Director of Growth, Tandem",
+    role: "Managing Director, Reed & Co",
     photo: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
-    quote: "It was never about more traffic — it was better systems. Our conversion rate nearly tripled without raising ad spend.",
+    quote: "It was never about more leads — it was better systems. We book almost three times the viewings without spending more on ads.",
     name: "Priya Nair",
-    role: "Business Owner, Atlas & Co",
+    role: "Owner, Nair Residential",
     photo: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
-    quote: "Every lead used to hit a spreadsheet and go cold. Now follow-up happens automatically and our close rate has never been higher.",
+    quote: "Every portal lead used to go cold in a spreadsheet. Now qualification and follow-up happen automatically and our valuations are up.",
     name: "Daniel Ortiz",
-    role: "CEO, Halcyon Group",
+    role: "Founder, Ortiz Property Group",
     photo: "https://randomuser.me/api/portraits/men/54.jpg",
   },
   {
-    quote: "VenturezCo gave us one dashboard instead of six disconnected tools. Our sales team finally trusts the numbers.",
+    quote: "One dashboard instead of six disconnected tools. My negotiators finally trust the pipeline and nothing slips.",
     name: "Emily Chao",
-    role: "VP Sales, Vantage",
+    role: "Sales Manager, Meridian Homes",
     photo: "https://randomuser.me/api/portraits/women/21.jpg",
   },
   {
-    quote: "They didn't just build automations — they rebuilt how we think about growth. Predictable pipeline, every month.",
+    quote: "They didn't just build automations — they rebuilt how our agency handles enquiries. Predictable viewings, every single week.",
     name: "Ben Whitfield",
-    role: "Founder, Meridian",
+    role: "Director, Whitfield & Partners",
     photo: "https://randomuser.me/api/portraits/men/71.jpg",
   },
 ];
