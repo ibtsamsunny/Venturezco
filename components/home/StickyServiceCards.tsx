@@ -37,105 +37,70 @@ const CARDS: Card[] = [
     badgeBg: "rgba(236,72,153,0.14)",
     badgeBorder: "rgba(236,72,153,0.34)",
     badgeColor: "#F9A8D4",
-    badgeLabel: "Website Development",
-    headline: ["High-end websites that", "convert, not just impress."],
+    badgeLabel: "Custom Website Development",
+    headline: ["Websites built to turn property searches", "into enquiries."],
     gradient: "linear-gradient(100deg,#F9A8D4,#EC4899)",
-    body: "Custom-built, conversion-focused websites for estate agencies — fast, mobile-perfect, and wired straight into your booking and CRM systems from day one.",
-    tags: ["Custom Design", "Listings Integration", "SEO & Speed"],
-    statValue: "<2s",
+    body: "We design and develop bespoke, high-performance websites for estate agencies that combine premium design, fast performance, property search, lead capture, SEO foundations, and conversion-focused user journeys.",
+    tags: ["Bespoke Design", "Custom Development", "Property Integrations", "Lead Capture", "Technical SEO"],
+    statValue: "Built For",
     statColor: "#F9A8D4",
-    statLabel: "average page load time across the sites we build",
+    statLabel: "speed, search, and conversion — engineered in from day one",
     ctaLabel: "Explore Web Development",
     ctaBg: "rgba(236,72,153,0.16)",
     ctaBorder: "rgba(236,72,153,0.4)",
-    href: "/services/website-development",
+    href: "/real-estate-website-development",
     art: (
-      <svg viewBox="0 0 340 230" style={{ width: "84%", maxWidth: 390, overflow: "visible", animation: "vzFloat 7.4s ease-in-out infinite" }}>
+      // A premium estate agency website inside a browser frame — hero photo,
+      // a property search bar, and two listing cards. Deliberately not a
+      // generic "code"/wireframe graphic.
+      <svg viewBox="0 0 340 230" style={{ width: "88%", maxWidth: 400, overflow: "visible", animation: "vzFloat 7.4s ease-in-out infinite" }}>
         <defs>
-          <linearGradient id="vgw1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#EC4899" stopOpacity="0.35" />
-            <stop offset="1" stopColor="#F9A8D4" stopOpacity="0.08" />
+          <linearGradient id="vgw1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#EC4899" stopOpacity="0.5" />
+            <stop offset="1" stopColor="#1A0E16" stopOpacity="0.9" />
+          </linearGradient>
+          <linearGradient id="vgw2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#F9A8D4" stopOpacity="0.4" />
+            <stop offset="1" stopColor="#EC4899" stopOpacity="0.15" />
           </linearGradient>
         </defs>
-        <rect x="26" y="28" width="220" height="150" rx="10" fill="url(#vgw1)" stroke="#EC4899" strokeWidth="1.5" />
-        <circle cx="42" cy="44" r="3" fill="#EC4899" />
-        <circle cx="54" cy="44" r="3" fill="#F9A8D4" />
-        <circle cx="66" cy="44" r="3" fill="#fff" opacity="0.4" />
-        <line x1="26" y1="56" x2="246" y2="56" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-        <rect x="40" y="70" width="120" height="14" rx="3" fill="rgba(255,255,255,0.5)" />
-        <rect x="40" y="92" width="160" height="8" rx="2" fill="rgba(255,255,255,0.25)" />
-        <rect x="40" y="106" width="140" height="8" rx="2" fill="rgba(255,255,255,0.25)" />
-        <rect x="40" y="126" width="70" height="24" rx="6" fill="#EC4899" />
-        <rect x="196" y="108" width="80" height="140" rx="14" fill="#0C0810" stroke="#F9A8D4" strokeWidth="1.5" />
-        <rect x="208" y="128" width="56" height="8" rx="2" fill="rgba(255,255,255,0.4)" />
-        <rect x="208" y="144" width="56" height="50" rx="6" fill="url(#vgw1)" />
-        <rect x="208" y="202" width="56" height="16" rx="4" fill="#EC4899" />
-        <circle cx="236" cy="234" r="3" fill="rgba(255,255,255,0.4)" />
+        <rect x="20" y="16" width="300" height="196" rx="12" fill="#120A10" stroke="#EC4899" strokeWidth="1.5" />
+        <circle cx="38" cy="32" r="3" fill="#EC4899" />
+        <circle cx="50" cy="32" r="3" fill="#F9A8D4" />
+        <circle cx="62" cy="32" r="3" fill="#fff" opacity="0.35" />
+        <line x1="20" y1="44" x2="320" y2="44" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <rect x="32" y="56" width="276" height="92" rx="8" fill="url(#vgw1)" />
+        <rect x="48" y="118" width="180" height="20" rx="10" fill="rgba(10,6,9,0.8)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <circle cx="60" cy="128" r="3" fill="#F9A8D4" />
+        <rect x="68" y="124" width="90" height="8" rx="4" fill="rgba(255,255,255,0.3)" />
+        <rect x="236" y="118" width="40" height="20" rx="10" fill="#EC4899" />
+        <rect x="32" y="160" width="128" height="40" rx="8" fill="url(#vgw2)" stroke="rgba(255,255,255,0.1)" />
+        <rect x="42" y="168" width="60" height="7" rx="3" fill="rgba(255,255,255,0.5)" />
+        <rect x="42" y="180" width="40" height="12" rx="6" fill="#F9A8D4" opacity="0.8" />
+        <rect x="180" y="160" width="128" height="40" rx="8" fill="url(#vgw2)" stroke="rgba(255,255,255,0.1)" />
+        <rect x="190" y="168" width="60" height="7" rx="3" fill="rgba(255,255,255,0.5)" />
+        <rect x="190" y="180" width="40" height="12" rx="6" fill="#F9A8D4" opacity="0.8" />
       </svg>
     ),
   },
   {
     num: "02",
     top: 106,
-    accent: "#3B2FE0",
-    accentBorder: "rgba(59,47,224,0.22)",
-    bg: "radial-gradient(120% 130% at 100% 0%, rgba(59,47,224,0.16), transparent 55%), #0C0D11",
-    badgeBg: "rgba(59,47,224,0.14)",
-    badgeBorder: "rgba(59,47,224,0.34)",
-    badgeColor: "#B3A6FF",
-    badgeLabel: "Buyer & Seller Leads",
-    headline: ["Generate more buyer &", "seller leads."],
-    gradient: "linear-gradient(100deg,#B3A6FF,#3B2FE0)",
-    body: "Paid, social, and portal traffic run as one engine — every channel feeding qualified property enquiries into your pipeline instead of fighting for budget.",
-    tags: ["Google Ads", "Meta Ads", "SEO"],
-    statValue: "+185%",
-    statColor: "#B3A6FF",
-    statLabel: "qualified buyer & seller enquiries for the agencies we work with",
-    ctaLabel: "Get More Leads",
-    ctaBg: "rgba(59,47,224,0.16)",
-    ctaBorder: "rgba(59,47,224,0.4)",
-    href: "/services/digital-marketing",
-    art: (
-      <svg viewBox="0 0 340 230" style={{ width: "88%", maxWidth: 400, overflow: "visible", animation: "vzFloat 7s ease-in-out infinite" }}>
-        <defs>
-          <linearGradient id="vgm1" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0" stopColor="#3B2FE0" stopOpacity="0.12" />
-            <stop offset="1" stopColor="#9F91FF" stopOpacity="0.6" />
-          </linearGradient>
-        </defs>
-        <line x1="20" y1="200" x2="320" y2="200" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-        <rect x="34" y="140" width="38" height="60" rx="6" fill="url(#vgm1)" />
-        <rect x="94" y="108" width="38" height="92" rx="6" fill="url(#vgm1)" />
-        <rect x="154" y="78" width="38" height="122" rx="6" fill="url(#vgm1)" />
-        <rect x="214" y="52" width="38" height="148" rx="6" fill="url(#vgm1)" />
-        <rect x="274" y="26" width="38" height="174" rx="6" fill="url(#vgm1)" />
-        <polyline points="53,132 113,100 173,70 233,44 293,18" fill="none" stroke="#9F91FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="53" cy="132" r="4" fill="#fff" />
-        <circle cx="113" cy="100" r="4" fill="#fff" />
-        <circle cx="173" cy="70" r="4" fill="#fff" />
-        <circle cx="233" cy="44" r="4" fill="#fff" />
-        <circle cx="293" cy="18" r="4.5" fill="#fff" />
-      </svg>
-    ),
-  },
-  {
-    num: "03",
-    top: 122,
     accent: "#8B5CF6",
     accentBorder: "rgba(139,92,246,0.24)",
     bg: "radial-gradient(120% 130% at 100% 0%, rgba(139,92,246,0.16), transparent 55%), #0C0B12",
     badgeBg: "rgba(139,92,246,0.14)",
     badgeBorder: "rgba(139,92,246,0.34)",
     badgeColor: "#C4B5FD",
-    badgeLabel: "Viewings",
-    headline: ["Turn enquiries into", "booked viewings."],
+    badgeLabel: "Lead Generation",
+    headline: ["Turn attention into qualified property", "enquiries."],
     gradient: "linear-gradient(100deg,#C4B5FD,#8B5CF6)",
-    body: "Instant responses, qualification, and online calendars tuned to turn property enquiries into confirmed viewings — not leads that go cold in an inbox.",
-    tags: ["Instant Response", "Online Calendars", "Reminders"],
-    statValue: "3×",
+    body: "Google Ads, paid social, landing pages and conversion systems designed to put your agency in front of buyers, sellers, landlords and investors.",
+    tags: ["Google Ads", "Meta Ads", "Landing Pages", "Local SEO"],
+    statValue: "Full-Funnel",
     statColor: "#C4B5FD",
-    statLabel: "more viewings booked once instant response was automated",
-    ctaLabel: "Book More Viewings",
+    statLabel: "campaigns built to reach buyers, sellers, landlords and investors",
+    ctaLabel: "Explore Lead Generation",
     ctaBg: "rgba(139,92,246,0.16)",
     ctaBorder: "rgba(139,92,246,0.4)",
     href: "/services/lead-generation",
@@ -153,23 +118,23 @@ const CARDS: Card[] = [
     ),
   },
   {
-    num: "04",
-    top: 138,
+    num: "03",
+    top: 122,
     accent: "#22D3EE",
     accentBorder: "rgba(34,211,238,0.22)",
     bg: "radial-gradient(120% 130% at 100% 0%, rgba(34,211,238,0.14), transparent 55%), #0A0F11",
     badgeBg: "rgba(34,211,238,0.12)",
     badgeBorder: "rgba(34,211,238,0.32)",
     badgeColor: "#A5F3FC",
-    badgeLabel: "Automation",
-    headline: ["Automate every", "follow-up."],
+    badgeLabel: "CRM & AI Automation",
+    headline: ["Every enquiry. Followed up.", "Automatically."],
     gradient: "linear-gradient(100deg,#A5F3FC,#22D3EE)",
-    body: "We build real estate CRM systems in GoHighLevel that capture, qualify, nurture, and book every enquiry automatically — so no buyer or seller lead is ever left waiting.",
-    tags: ["GoHighLevel CRM", "SMS & Email", "AI Property Assistant", "Viewing Booking"],
-    statValue: "15+ hours",
+    body: "We connect your website and marketing directly to your CRM so new enquiries are captured, qualified, nurtured and followed up automatically.",
+    tags: ["GoHighLevel CRM", "AI Follow-Up", "Lead Nurturing", "Viewing Booking"],
+    statValue: "Zero Delay",
     statColor: "#A5F3FC",
-    statLabel: "of manual follow-up eliminated from your team every week.",
-    ctaLabel: "Automate Follow-up",
+    statLabel: "enquiries qualified and routed the moment they arrive",
+    ctaLabel: "Explore Automation",
     ctaBg: "rgba(34,211,238,0.14)",
     ctaBorder: "rgba(34,211,238,0.38)",
     href: "/services/ai-automation",
@@ -192,13 +157,53 @@ const CARDS: Card[] = [
       </svg>
     ),
   },
+  {
+    num: "04",
+    top: 138,
+    accent: "#F59E0B",
+    accentBorder: "rgba(245,158,11,0.24)",
+    bg: "radial-gradient(120% 130% at 100% 0%, rgba(245,158,11,0.14), transparent 55%), #100D08",
+    badgeBg: "rgba(245,158,11,0.14)",
+    badgeBorder: "rgba(245,158,11,0.34)",
+    badgeColor: "#FCD34D",
+    badgeLabel: "Growth Strategy",
+    headline: ["A growth plan built around", "your agency."],
+    gradient: "linear-gradient(100deg,#FCD34D,#F59E0B)",
+    body: "We connect your website, marketing, CRM and sales process into one measurable strategy focused on sustainable agency growth.",
+    tags: ["Growth Strategy", "Conversion Strategy", "Performance Reporting"],
+    statValue: "One Plan",
+    statColor: "#FCD34D",
+    statLabel: "tying your website, marketing, CRM and sales process together",
+    ctaLabel: "Explore Strategy",
+    ctaBg: "rgba(245,158,11,0.14)",
+    ctaBorder: "rgba(245,158,11,0.38)",
+    href: "/services/growth-consulting",
+    art: (
+      <svg viewBox="0 0 340 220" style={{ width: "88%", maxWidth: 400, overflow: "visible", animation: "vzFloat 7.2s ease-in-out infinite" }}>
+        <defs>
+          <linearGradient id="vga4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#F59E0B" stopOpacity="0.35" />
+            <stop offset="1" stopColor="#F59E0B" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <line x1="20" y1="196" x2="320" y2="196" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
+        <path d="M30,180 L90,150 L150,160 L210,110 L270,80 L310,34 L310,196 L30,196 Z" fill="url(#vga4)" />
+        <polyline points="30,180 90,150 150,160 210,110 270,80 310,34" fill="none" stroke="#FCD34D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="90" cy="150" r="4" fill="#fff" />
+        <circle cx="150" cy="160" r="4" fill="#fff" />
+        <circle cx="210" cy="110" r="4" fill="#fff" />
+        <circle cx="270" cy="80" r="4" fill="#fff" />
+        <circle cx="310" cy="34" r="5" fill="#fff" />
+      </svg>
+    ),
+  },
 ];
 
 const DOT_COLORS: Record<string, string> = {
   "#EC4899": "#EC4899",
-  "#3B2FE0": "#3B2FE0",
   "#8B5CF6": "#8B5CF6",
   "#22D3EE": "#22D3EE",
+  "#F59E0B": "#F59E0B",
 };
 
 export default function StickyServiceCards() {

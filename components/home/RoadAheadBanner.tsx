@@ -54,8 +54,8 @@ export default function RoadAheadBanner() {
               The future of estate agency growth.
             </h2>
             <p style={{ margin: "20px 0 0", maxWidth: 560, color: "#D3D7E0", fontSize: "clamp(1.05rem,1.4vw,1.25rem)", lineHeight: 1.6 }}>
-              The best estate agencies don&apos;t rely on manual follow-ups. They rely on systems that respond instantly, nurture every enquiry, and keep
-              their pipeline moving 24/7.
+              Your website should do more than showcase properties. We build digital experiences that attract buyers and sellers, capture enquiries, and
+              connect directly into the systems that turn interest into business.
             </p>
           </div>
         </div>

@@ -1,11 +1,10 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/shared/Reveal";
 import { useMagnetic } from "@/hooks/useMagnetic";
 import { useParallax } from "@/hooks/useParallax";
-import { useCountUpGroup } from "@/hooks/useCountUpGroup";
 import { useRevealGroup } from "@/hooks/useRevealGroup";
 import { useBookingModal } from "@/components/booking/BookingModalProvider";
 
@@ -16,17 +15,13 @@ const HERO_L2 = "More sales.";
 
 const HERO_PHOTO = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
 
-type StatEntry =
-  | { kind: "count"; key: "a" | "b" | "c2"; label: string; format: (v: number) => string }
-  | { kind: "static"; label: string; value: string };
-
-const STAT_TARGETS = { a: 185, b: 92, c2: 3 };
-
-const STATS: StatEntry[] = [
-  { kind: "count", key: "a", label: "Qualified property enquiries", format: (v) => `+${Math.round(v)}%` },
-  { kind: "count", key: "b", label: "Lead response rate", format: (v) => `${Math.round(v)}%` },
-  { kind: "static", label: "Automated follow-up", value: "24/7" },
-  { kind: "count", key: "c2", label: "More viewings booked", format: (v) => `${Math.round(v)}×` },
+// Capability statements, not performance claims — these aren't backed by
+// client data (yet), so they describe what we do, not a fabricated result.
+const STATS: { value: string; label: string }[] = [
+  { value: "High-End", label: "Custom Websites" },
+  { value: "24/7", label: "Lead Capture" },
+  { value: "Instant", label: "Automated Follow-Up" },
+  { value: "One System", label: "Website to Closing" },
 ];
 
 // The left-near floating card cycles through these live "events" every 3.8s.
@@ -91,20 +86,12 @@ function HeroHeadline() {
 }
 
 function StatsBand() {
-  const { values, ref: countUpRef } = useCountUpGroup(STAT_TARGETS);
   const revealGroupRef = useRevealGroup<HTMLDivElement>();
-  const setGridRef = useCallback(
-    (el: HTMLDivElement | null) => {
-      countUpRef(el);
-      revealGroupRef(el);
-    },
-    [countUpRef, revealGroupRef]
-  );
   return (
     <Reveal style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "clamp(48px,6vw,72px) auto 0", padding: "0 clamp(20px,5vw,32px)" }}>
       <div
         id="vz-results"
-        ref={setGridRef}
+        ref={revealGroupRef}
         style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16 }}
       >
         {STATS.map((s) => (
@@ -131,7 +118,7 @@ function StatsBand() {
                 color: "transparent",
               }}
             >
-              {s.kind === "static" ? s.value : s.format(values[s.key])}
+              {s.value}
             </div>
             <div style={{ marginTop: 10, color: "#9AA1AD", fontSize: 14, fontWeight: 500 }}>{s.label}</div>
           </div>
@@ -193,17 +180,17 @@ function GrowthEngine() {
     <div ref={parallaxRef} style={{ position: "relative", zIndex: 2, maxWidth: 1160, margin: "clamp(56px,7vw,84px) auto 0", padding: "0 clamp(20px,5vw,32px)" }}>
       <div style={{ position: "relative", border: "1px solid rgba(255,255,255,0.09)", borderRadius: 26, background: "linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012))", padding: "clamp(22px,3.5vw,40px)", overflow: "hidden" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, marginBottom: 26 }}>
-          <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#7C8492" }}>The VenturezCo Growth Engine</span>
+          <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#7C8492" }}>The VenturezCo Real Estate Growth Engine</span>
           <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>● live pipeline</span>
         </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 26 }}>
           <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6B7280", alignSelf: "center", marginRight: 4 }}>Before —</span>
           {[
-            ["Lost leads", "6s"],
-            ["Missed follow-ups", "6.6s"],
-            ["Scattered tools", "5.4s"],
-            ["Manual work", "6.2s"],
+            ["Outdated Website", "6s"],
+            ["Lost Enquiries", "6.6s"],
+            ["Slow Follow-Up", "5.4s"],
+            ["Disconnected Tools", "6.2s"],
           ].map(([label, dur]) => (
             <span
               key={label}
@@ -230,22 +217,23 @@ function GrowthEngine() {
           <FlowStage
             delay={0}
             showArrow
-            title="Property Enquiry"
-            sub="capture"
+            title="High-Performance Website"
+            sub="build"
             icon={
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 20v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M22 20v-1a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+                <line x1="2.5" y1="9" x2="21.5" y2="9" />
+                <circle cx="5.3" cy="6.7" r="0.6" fill="currentColor" stroke="none" />
+                <circle cx="7.3" cy="6.7" r="0.6" fill="currentColor" stroke="none" />
+                <path d="M6 13.5h6M6 16.5h9" />
               </svg>
             }
           />
           <FlowStage
             delay={0.6}
             showArrow
-            title="AI Qualification"
-            sub="qualify"
+            title="Qualified Enquiry"
+            sub="capture"
             icon={
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="3" width="7" height="7" rx="1.6" />
@@ -257,8 +245,8 @@ function GrowthEngine() {
           <FlowStage
             delay={1.2}
             showArrow
-            title="Instant Follow-up"
-            sub="respond"
+            title="AI Follow-Up"
+            sub="nurture"
             icon={
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <ellipse cx="12" cy="5" rx="8" ry="3" />
@@ -290,8 +278,8 @@ function GrowthEngine() {
               </svg>
             </div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: 14.5, color: "#fff" }}>Offer Accepted</div>
-              <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3B2FE0", marginTop: 3 }}>closed</div>
+              <div style={{ fontWeight: 700, fontSize: 14.5, color: "#fff" }}>Deal Progressed</div>
+              <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3B2FE0", marginTop: 3 }}>close</div>
             </div>
           </div>
         </div>
@@ -539,13 +527,13 @@ export default function Hero() {
         >
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#9F91FF", boxShadow: "0 0 10px #9F91FF" }} />
           <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#E7ECF8" }}>
-            Estate Agency Growth Systems
+            Websites &middot; Marketing &middot; Automation
           </span>
         </div>
         <HeroHeadline />
         <p style={{ maxWidth: 640, margin: "26px auto 0", color: "#9AA1AD", fontSize: "clamp(1.05rem,1.5vw,1.28rem)", lineHeight: 1.6 }}>
-          We help estate agencies generate qualified buyer and seller enquiries, automate follow-ups, nurture every lead, and book more property
-          viewings with AI-powered growth systems.
+          We build high-performance websites and growth systems for estate agencies — designed to attract more buyers and sellers, generate qualified
+          enquiries, automate follow-ups, and book more viewings.
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center", marginTop: 36 }}>
           <a

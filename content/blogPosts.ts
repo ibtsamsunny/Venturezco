@@ -170,6 +170,91 @@ export const BLOG_POSTS: BlogPost[] = [
     </ul>
     <p>Isolated channels get judged on their own ROI and get cut when that number dips. Compounding channels get judged on the system's ROI — which is a much harder number to shrink.</p>`,
   },
+  {
+    slug: "why-estate-agency-websites-dont-convert",
+    category: "Website Development",
+    accent: "#F9A8D4",
+    title: "Why Most Estate Agency Websites Don't Convert",
+    excerpt: "Most estate agency websites are built to look nice, not to convert. Here's what's actually costing you enquiries.",
+    date: "Sep 2026",
+    readTime: "6 min read",
+    heroBg: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.32), rgba(236,72,153,0.04) 65%), #130A10",
+    heroSvg:
+      '<rect x="60" y="60" width="780" height="200" rx="16" fill="rgba(236,72,153,0.14)" stroke="rgba(236,72,153,0.4)" stroke-width="2"/><rect x="100" y="100" width="300" height="24" rx="6" fill="rgba(249,168,212,0.5)"/><rect x="100" y="140" width="460" height="14" rx="4" fill="rgba(249,168,212,0.25)"/><rect x="100" y="166" width="380" height="14" rx="4" fill="rgba(249,168,212,0.25)"/><rect x="100" y="200" width="160" height="40" rx="10" fill="#EC4899"/><circle cx="760" cy="90" r="8" fill="#F9A8D4"/>',
+    cardBg: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.32), rgba(236,72,153,0.04) 65%), #130A10",
+    cardSvg:
+      '<rect x="20" y="18" width="300" height="100" rx="10" fill="rgba(236,72,153,0.14)" stroke="rgba(236,72,153,0.4)" stroke-width="1.5"/><rect x="38" y="36" width="130" height="12" rx="4" fill="rgba(249,168,212,0.55)"/><rect x="38" y="58" width="200" height="7" rx="3" fill="rgba(249,168,212,0.28)"/><rect x="38" y="72" width="160" height="7" rx="3" fill="rgba(249,168,212,0.28)"/><rect x="38" y="92" width="70" height="18" rx="6" fill="#EC4899"/>',
+    pullQuote: "A beautiful website that doesn't capture the enquiry isn't a website — it's a brochure with a domain name.",
+    body: `<p>Most estate agency websites look fine. Clean photography, a tidy logo, maybe a property search bar. And yet, for most agencies, the website is the weakest part of the growth system — not because it looks bad, but because it was never built to convert.</p>
+    <h2>Looking good isn't the same as working</h2>
+    <p>A website can be visually polished and still fail at its one real job: turning a visitor who's thinking about buying, selling, or renting into an enquiry your team can follow up on. That gap — between "looks professional" and "generates business" — is where most agency websites quietly lose money every month.</p>
+    <h2>The three most common leaks</h2>
+    <ul>
+      <li>No clear path from a listing to an enquiry — just a generic "contact us" page buried in the nav</li>
+      <li>Slow load times on mobile, where most property searches now start</li>
+      <li>Forms that ask for too much, too early, before trust has been built</li>
+    </ul>
+    <p>None of these are design problems in the aesthetic sense. They're conversion problems — and they're exactly what a website built specifically for how buyers and sellers actually search for property is designed to fix.</p>`,
+  },
+  {
+    slug: "estate-agency-website-features",
+    category: "Website Development",
+    accent: "#F9A8D4",
+    title: "7 Features Every Modern Estate Agency Website Needs",
+    excerpt: "From property search to instant lead capture — the features that separate a modern agency site from a digital brochure.",
+    date: "Sep 2026",
+    readTime: "7 min read",
+    heroBg: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.32), rgba(236,72,153,0.04) 65%), #130A10",
+    heroSvg:
+      '<rect x="78" y="52" width="340" height="156" rx="20" fill="rgba(236,72,153,0.16)" stroke="rgba(236,72,153,0.35)" stroke-width="2"/><rect x="470" y="52" width="340" height="156" rx="20" fill="rgba(249,168,212,0.14)" stroke="rgba(236,72,153,0.3)" stroke-width="2"/><rect x="78" y="232" width="340" height="156" rx="20" fill="rgba(249,168,212,0.14)" stroke="rgba(236,72,153,0.3)" stroke-width="2"/><rect x="470" y="232" width="340" height="156" rx="20" fill="rgba(236,72,153,0.16)" stroke="rgba(236,72,153,0.35)" stroke-width="2"/><circle cx="248" cy="130" r="22" fill="#F9A8D4"/><circle cx="640" cy="130" r="22" fill="#EC4899"/><circle cx="248" cy="310" r="22" fill="#EC4899"/><circle cx="640" cy="310" r="22" fill="#F9A8D4"/>',
+    cardBg: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.32), rgba(236,72,153,0.04) 65%), #130A10",
+    cardSvg:
+      '<rect x="30" y="20" width="130" height="60" rx="10" fill="rgba(236,72,153,0.16)" stroke="rgba(236,72,153,0.35)" stroke-width="1.5"/><rect x="180" y="20" width="130" height="60" rx="10" fill="rgba(249,168,212,0.14)" stroke="rgba(236,72,153,0.3)" stroke-width="1.5"/><rect x="30" y="92" width="130" height="60" rx="10" fill="rgba(249,168,212,0.14)" stroke="rgba(236,72,153,0.3)" stroke-width="1.5"/><rect x="180" y="92" width="130" height="60" rx="10" fill="rgba(236,72,153,0.16)" stroke="rgba(236,72,153,0.35)" stroke-width="1.5"/><circle cx="95" cy="50" r="10" fill="#F9A8D4"/><circle cx="245" cy="50" r="10" fill="#EC4899"/><circle cx="95" cy="122" r="10" fill="#EC4899"/><circle cx="245" cy="122" r="10" fill="#F9A8D4"/>',
+    pullQuote: "A property website without instant lead capture is just a digital version of a printed brochure.",
+    body: `<p>Not every estate agency website needs the same features, but the best-performing ones share a common foundation. Here are the seven that matter most.</p>
+    <h2>1. Fast, accurate property search</h2>
+    <p>Buyers filter by area, price, and bedrooms before they do anything else. If search is slow or inaccurate, they leave before seeing a single listing.</p>
+    <h2>2. Mobile-first layouts</h2>
+    <p>Most property searches start on a phone. A site that was "made responsive" after the fact rarely performs as well as one built mobile-first from day one.</p>
+    <h2>3. Instant enquiry capture on every listing</h2>
+    <p>Every property page should make it effortless to ask a question or book a viewing — not funnel visitors to a single generic contact form.</p>
+    <h2>4. Local SEO foundations</h2>
+    <p>Agencies win or lose on local search visibility. That means structured data, location pages, and fast technical performance, not just good copy.</p>
+    <h2>5. CRM integration</h2>
+    <p>An enquiry that lands in an inbox and nowhere else is an enquiry that's likely to go cold. It should land directly in your CRM, ready for follow-up.</p>
+    <h2>6. Clear valuation and seller pathways</h2>
+    <p>Sellers are a different audience with different intent. They need their own clear, dedicated journey — not an afterthought tab in the main menu.</p>
+    <h2>7. Genuine page speed</h2>
+    <p>Every feature above is undermined if the site is slow. Speed isn't a nice-to-have; it's the foundation everything else sits on.</p>`,
+  },
+  {
+    slug: "website-speed-property-enquiries",
+    category: "Website Development",
+    accent: "#F9A8D4",
+    title: "How Website Speed Affects Property Enquiries",
+    excerpt: "A slow website doesn't just frustrate visitors — it quietly costs you enquiries before a buyer even sees a listing.",
+    date: "Sep 2026",
+    readTime: "5 min read",
+    heroBg: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.32), rgba(236,72,153,0.04) 65%), #130A10",
+    heroSvg:
+      '<line x1="60" y1="110" x2="400" y2="110" stroke="#F9A8D4" stroke-width="8" stroke-linecap="round" opacity="0.3"/><line x1="60" y1="170" x2="580" y2="170" stroke="#F9A8D4" stroke-width="10" stroke-linecap="round" opacity="0.5"/><line x1="60" y1="230" x2="760" y2="230" stroke="#EC4899" stroke-width="12" stroke-linecap="round" opacity="0.75"/><line x1="60" y1="290" x2="830" y2="290" stroke="#EC4899" stroke-width="14" stroke-linecap="round"/><circle cx="830" cy="290" r="14" fill="#fff"/>',
+    cardBg: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.32), rgba(236,72,153,0.04) 65%), #130A10",
+    cardSvg:
+      '<line x1="20" y1="40" x2="140" y2="40" stroke="#F9A8D4" stroke-width="4" stroke-linecap="round" opacity="0.3"/><line x1="20" y1="66" x2="220" y2="66" stroke="#F9A8D4" stroke-width="5" stroke-linecap="round" opacity="0.5"/><line x1="20" y1="92" x2="300" y2="92" stroke="#EC4899" stroke-width="6" stroke-linecap="round" opacity="0.75"/><line x1="20" y1="118" x2="320" y2="118" stroke="#EC4899" stroke-width="7" stroke-linecap="round"/><circle cx="320" cy="118" r="6" fill="#fff"/>',
+    pullQuote: "Every extra second of load time is a buyer deciding your competitor's site is worth trying instead.",
+    body: `<p>Website speed sounds like a technical detail best left to developers. For estate agencies, it's closer to a revenue metric.</p>
+    <h2>Why speed matters more for property sites</h2>
+    <p>Property websites are image-heavy by nature — listings live and die by photography. That makes them especially vulnerable to slow load times if the underlying site isn't built to handle high-quality images without dragging down performance.</p>
+    <h2>The enquiry you never see</h2>
+    <p>A slow page doesn't usually generate a complaint. It generates silence — a visitor who simply leaves before the listing finishes loading, and an enquiry that never happens. Because there's no error message, slow performance is one of the easiest leaks to miss entirely.</p>
+    <h2>What actually makes a difference</h2>
+    <ul>
+      <li>Properly optimized, responsively sized property images</li>
+      <li>A technical foundation built for speed, not bolted onto a template after launch</li>
+      <li>Minimal reliance on heavy third-party scripts that block rendering</li>
+    </ul>
+    <p>None of this requires sacrificing the premium look an agency needs. It requires building the site correctly from the start — which is exactly where most template-based agency websites fall short.</p>`,
+  },
 ];
 
 export function getBlogPost(slug: string) {
