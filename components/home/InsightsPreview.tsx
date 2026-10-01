@@ -7,73 +7,74 @@ import { useMagnetic } from "@/hooks/useMagnetic";
 
 const POSTS = [
   {
-    slug: "crm-follow-up",
-    tag: "Automation",
-    tagColor: "#B3A6FF",
-    tagBg: "rgba(59,47,224,0.12)",
-    tagBorder: "rgba(59,47,224,0.28)",
-    bannerBg: "#0C0D11",
-    photo: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80",
-    photoAlt: "Estate agency property",
-    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(59,47,224,0.5), rgba(12,13,17,0.55) 65%)",
-    title: "How estate agencies lose qualified leads",
-    excerpt: "Slow follow-up is where most property enquiries quietly go cold. Here's how to hand it to a system that never forgets.",
-    date: "Jun 2026 · 6 min read",
+    slug: "why-estate-agency-websites-dont-convert",
+    tag: "Website Development",
+    tagColor: "#F9A8D4",
+    tagBg: "rgba(236,72,153,0.12)",
+    tagBorder: "rgba(236,72,153,0.28)",
+    bannerBg: "#130A10",
+    photo: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    photoAlt: "Luxury property exterior",
+    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.5), rgba(19,10,16,0.55) 65%)",
+    title: "Why Most Estate Agency Websites Don't Convert",
+    excerpt: "Most estate agency websites are built to look nice, not to convert. Here's what's actually costing you enquiries.",
+    date: "Sep 2026 · 6 min read",
     art: (
       <svg viewBox="0 0 320 160" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.7 }}>
-        <polyline points="0,120 60,96 120,104 180,64 240,72 320,28" fill="none" stroke="#9F91FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="180" cy="64" r="3" fill="#fff" />
-        <circle cx="320" cy="28" r="3.5" fill="#fff" />
+        <rect x="20" y="18" width="280" height="90" rx="10" fill="rgba(236,72,153,0.14)" stroke="rgba(236,72,153,0.4)" strokeWidth="1.5" />
+        <rect x="36" y="34" width="120" height="11" rx="4" fill="rgba(249,168,212,0.55)" />
+        <rect x="36" y="54" width="180" height="7" rx="3" fill="rgba(249,168,212,0.28)" />
+        <rect x="36" y="66" width="150" height="7" rx="3" fill="rgba(249,168,212,0.28)" />
+        <rect x="36" y="84" width="64" height="16" rx="6" fill="#EC4899" />
       </svg>
     ),
   },
   {
-    slug: "funnel-anatomy",
-    tag: "Lead Gen",
-    tagColor: "#C4B5FD",
-    tagBg: "rgba(139,92,246,0.12)",
-    tagBorder: "rgba(139,92,246,0.28)",
-    bannerBg: "#0C0B12",
-    photo: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-    photoAlt: "Modern property interior",
-    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(139,92,246,0.5), rgba(12,11,18,0.55) 65%)",
-    title: "How AI books more property viewings",
-    excerpt: "Instant, intelligent replies turn more enquiries into confirmed viewings. We break down the automation behind it.",
-    date: "May 2026 · 5 min read",
+    slug: "estate-agency-website-features",
+    tag: "Website Development",
+    tagColor: "#F9A8D4",
+    tagBg: "rgba(236,72,153,0.12)",
+    tagBorder: "rgba(236,72,153,0.28)",
+    bannerBg: "#130A10",
+    photo: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    photoAlt: "Modern residential property",
+    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.5), rgba(19,10,16,0.55) 65%)",
+    title: "7 Features Every Modern Estate Agency Website Needs",
+    excerpt: "From property search to instant lead capture — the features that separate a modern agency site from a digital brochure.",
+    date: "Sep 2026 · 7 min read",
     art: (
       <svg viewBox="0 0 320 160" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.65 }}>
-        <polygon points="40,26 280,26 236,58 84,58" fill="rgba(196,181,253,0.35)" />
-        <polygon points="88,66 232,66 200,98 120,98" fill="rgba(196,181,253,0.5)" />
-        <polygon points="124,106 196,106 176,134 144,134" fill="rgba(196,181,253,0.7)" />
+        <rect x="26" y="16" width="118" height="56" rx="9" fill="rgba(236,72,153,0.16)" stroke="rgba(236,72,153,0.35)" strokeWidth="1.5" />
+        <rect x="160" y="16" width="118" height="56" rx="9" fill="rgba(249,168,212,0.14)" stroke="rgba(236,72,153,0.3)" strokeWidth="1.5" />
+        <rect x="26" y="84" width="118" height="56" rx="9" fill="rgba(249,168,212,0.14)" stroke="rgba(236,72,153,0.3)" strokeWidth="1.5" />
+        <rect x="160" y="84" width="118" height="56" rx="9" fill="rgba(236,72,153,0.16)" stroke="rgba(236,72,153,0.35)" strokeWidth="1.5" />
+        <circle cx="85" cy="44" r="9" fill="#F9A8D4" />
+        <circle cx="219" cy="44" r="9" fill="#EC4899" />
+        <circle cx="85" cy="112" r="9" fill="#EC4899" />
+        <circle cx="219" cy="112" r="9" fill="#F9A8D4" />
       </svg>
     ),
   },
   {
-    slug: "systems-beat-tactics",
-    tag: "Strategy",
-    tagColor: "#A5F3FC",
-    tagBg: "rgba(34,211,238,0.1)",
-    tagBorder: "rgba(34,211,238,0.26)",
-    bannerBg: "#0A0F11",
-    photo: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
-    photoAlt: "Estate agent with client",
-    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(34,211,238,0.46), rgba(10,15,17,0.58) 65%)",
-    title: "Google Ads for estate agencies",
-    excerpt: "Where estate agents waste ad budget — and how to structure campaigns that bring in buyer and seller leads.",
-    date: "May 2026 · 7 min read",
+    slug: "website-speed-property-enquiries",
+    tag: "Website Development",
+    tagColor: "#F9A8D4",
+    tagBg: "rgba(236,72,153,0.12)",
+    tagBorder: "rgba(236,72,153,0.28)",
+    bannerBg: "#130A10",
+    photo: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
+    photoAlt: "Estate agent at a property",
+    scrim: "radial-gradient(120% 130% at 20% 0%, rgba(236,72,153,0.5), rgba(19,10,16,0.55) 65%)",
+    title: "How Website Speed Affects Property Enquiries",
+    excerpt: "A slow website doesn't just frustrate visitors — it quietly costs you enquiries before a buyer even sees a listing.",
+    date: "Sep 2026 · 5 min read",
     art: (
       <svg viewBox="0 0 320 160" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.7 }}>
-        <g stroke="#22D3EE" strokeWidth="2" fill="none">
-          <line x1="80" y1="46" x2="160" y2="80" />
-          <line x1="80" y1="114" x2="160" y2="80" />
-          <line x1="160" y1="80" x2="244" y2="80" />
-        </g>
-        <g fill="rgba(34,211,238,0.18)" stroke="#22D3EE" strokeWidth="1.5">
-          <circle cx="80" cy="46" r="12" />
-          <circle cx="80" cy="114" r="12" />
-          <circle cx="244" cy="80" r="12" />
-          <circle cx="160" cy="80" r="18" />
-        </g>
+        <line x1="20" y1="40" x2="140" y2="40" stroke="#F9A8D4" strokeWidth="4" strokeLinecap="round" opacity="0.3" />
+        <line x1="20" y1="66" x2="220" y2="66" stroke="#F9A8D4" strokeWidth="5" strokeLinecap="round" opacity="0.5" />
+        <line x1="20" y1="92" x2="300" y2="92" stroke="#EC4899" strokeWidth="6" strokeLinecap="round" opacity="0.75" />
+        <line x1="20" y1="118" x2="320" y2="118" stroke="#EC4899" strokeWidth="7" strokeLinecap="round" />
+        <circle cx="320" cy="118" r="6" fill="#fff" />
       </svg>
     ),
   },

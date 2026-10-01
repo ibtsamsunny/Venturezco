@@ -7,6 +7,30 @@ import { useBookingModal } from "@/components/booking/BookingModalProvider";
 
 const LABEL = { fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#6B7280", marginBottom: 7 };
 
+/** These are illustrative, not verified client results — flagged inline so
+ * nobody mistakes them for real case studies. */
+function ConceptBadge() {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        marginLeft: 10,
+        padding: "3px 9px",
+        borderRadius: 999,
+        border: "1px solid rgba(255,255,255,0.14)",
+        color: "#7C8492",
+        fontFamily: "'Geist Mono',monospace",
+        fontSize: 10,
+        letterSpacing: "0.1em",
+        textTransform: "uppercase",
+      }}
+    >
+      Concept Project
+    </span>
+  );
+}
+
 const CASE1_PHOTO = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
 const CASE2_PHOTO = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80";
 
@@ -55,33 +79,26 @@ export default function CaseStudies() {
               <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(8,8,11,0.15), rgba(8,8,11,0.75))" }} />
             </div>
             <div>
-              <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>London Estate Agency</span>
-              <h3 style={{ margin: "14px 0 0", fontSize: "clamp(1.5rem,2.4vw,2rem)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em" }}>
-                From missed enquiries to a full viewing diary
-              </h3>
-              <div style={{ display: "flex", gap: 26, marginTop: 26, flexWrap: "wrap" }}>
-                <div>
-                  <div style={{ fontFamily: "'Satoshi'", fontWeight: 900, fontSize: "1.9rem", color: "#B3A6FF", letterSpacing: "-0.02em" }}>+185%</div>
-                  <div style={{ color: "#7C8492", fontSize: 12.5, marginTop: 4 }}>qualified enquiries</div>
-                </div>
-                <div>
-                  <div style={{ fontFamily: "'Satoshi'", fontWeight: 900, fontSize: "1.9rem", color: "#B3A6FF", letterSpacing: "-0.02em" }}>3×</div>
-                  <div style={{ color: "#7C8492", fontSize: 12.5, marginTop: 4 }}>viewings booked</div>
-                </div>
+              <div>
+                <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>Real Estate Website</span>
+                <ConceptBadge />
               </div>
+              <h3 style={{ margin: "14px 0 0", fontSize: "clamp(1.5rem,2.4vw,2rem)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+                From outdated website to a premium digital sales platform
+              </h3>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
               <div>
                 <div style={LABEL}>Challenge</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>200+ portal enquiries a month but under 4% ever booked a viewing. Follow-up lived in inboxes and nothing was tracked.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>The agency&apos;s website looked dated, performed poorly on mobile and wasn&apos;t effectively converting property traffic into enquiries.</p>
               </div>
               <div>
                 <div style={LABEL}>Strategy</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>Unified enquiry capture, built automated instant response and multi-touch nurture, and wired the CRM to a clear viewing-to-offer pipeline.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>Redesign the complete digital experience around property discovery, local SEO, conversion-focused pages and integrated lead capture.</p>
               </div>
               <div>
                 <div style={LABEL}>Outcome</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>Qualified enquiries nearly tripled, viewings booked rose sharply, and 15 hours of manual follow-up vanished from the team&apos;s week.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 15, lineHeight: 1.6 }}>Faster experience, clearer customer journeys, stronger brand positioning and an integrated enquiry process.</p>
               </div>
             </div>
           </div>
@@ -99,22 +116,25 @@ export default function CaseStudies() {
               />
               <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(8,8,11,0.1), rgba(8,8,11,0.6))" }} />
             </div>
-            <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>Manchester Estate Agency</span>
+            <div>
+              <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#3B2FE0" }}>Manchester Estate Agency</span>
+              <ConceptBadge />
+            </div>
             <h3 style={{ margin: "14px 0 22px", fontSize: "clamp(1.35rem,2vw,1.7rem)", fontWeight: 800, color: "#fff", lineHeight: 1.2, letterSpacing: "-0.02em" }}>
-              Turning portal leads into booked valuations
+              Turning property enquiries into booked viewings
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               <div>
                 <div style={{ ...LABEL, marginBottom: 6 }}>Challenge</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Seller enquiries came in fast but replies took hours, so most valuations went to the agent who called first.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Enquiries came in fast but replies took hours, so interest cooled before anyone followed up.</p>
               </div>
               <div>
                 <div style={{ ...LABEL, marginBottom: 6 }}>Strategy</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Automated instant response, an AI qualifier, and one-tap valuation booking wired straight into the CRM.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Automated instant response, AI qualification, and one-tap viewing booking wired straight into the CRM.</p>
               </div>
               <div>
                 <div style={{ ...LABEL, marginBottom: 6 }}>Outcome</div>
-                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Sub-minute response times, more valuations won, and a pipeline that finally became predictable.</p>
+                <p style={{ margin: 0, color: "#B7BCC5", fontSize: 14.5, lineHeight: 1.6 }}>Faster response times, more viewings booked, and a follow-up process the team can finally rely on.</p>
               </div>
             </div>
           </div>

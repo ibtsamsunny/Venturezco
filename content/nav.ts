@@ -1,10 +1,12 @@
+// Website Development is the primary service and must stay first wherever
+// this list is rendered (nav dropdown, footer). Digital Marketing and
+// GoHighLevel still exist as pages but aren't part of the primary 4-service
+// hierarchy, so they're intentionally left out of this list.
 export const SERVICE_LINKS = [
-  { href: "/services/website-development", label: "Website Development", dot: "#EC4899" },
-  { href: "/services/digital-marketing", label: "Digital Marketing", dot: "#3B2FE0" },
+  { href: "/real-estate-website-development", label: "Custom Website Development", dot: "#EC4899" },
   { href: "/services/lead-generation", label: "Lead Generation", dot: "#8B5CF6" },
-  { href: "/services/ai-automation", label: "AI Automation", dot: "#22D3EE" },
-  { href: "/services/gohighlevel", label: "GoHighLevel", dot: "#22C55E" },
-  { href: "/services/growth-consulting", label: "Growth Consulting", dot: "#F59E0B" },
+  { href: "/services/ai-automation", label: "CRM & AI Automation", dot: "#22D3EE" },
+  { href: "/services/growth-consulting", label: "Growth Strategy", dot: "#F59E0B" },
 ] as const;
 
 export const WA_NUMBER = "447463361502";

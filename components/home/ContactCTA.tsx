@@ -46,13 +46,13 @@ export default function ContactCTA() {
             }}
           />
           <h2 style={{ position: "relative", margin: "0 auto", maxWidth: 780, fontWeight: 900, fontSize: "clamp(2.3rem,5.5vw,4rem)", lineHeight: 1.04, letterSpacing: "-0.03em", color: "#fff", textWrap: "balance" }}>
-            Ready to book more property viewings?
+            Ready to build a website that grows your agency?
           </h2>
           <p style={{ position: "relative", maxWidth: 560, margin: "22px auto 0", color: "#B9C0CC", fontSize: "clamp(1.05rem,1.4vw,1.22rem)", lineHeight: 1.6 }}>
-            Book your free strategy session and discover how automation can help your agency generate more enquiries, schedule more viewings, and close
-            more deals.
+            Let&apos;s build a premium website and growth system designed to attract more buyers and sellers, capture more enquiries, and turn more
+            opportunities into business.
           </p>
-          <div style={{ position: "relative", marginTop: 38, display: "flex", justifyContent: "center" }}>
+          <div style={{ position: "relative", marginTop: 38, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 14 }}>
             <a
               href="#top"
               onClick={openBooking}
@@ -77,6 +77,24 @@ export default function ContactCTA() {
                 <path d="M5 12h14" />
                 <path d="M13 6l6 6-6 6" />
               </svg>
+            </a>
+            <a
+              href="/real-estate-website-development"
+              style={{
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                background: "rgba(255,255,255,0.04)",
+                color: "#fff",
+                fontSize: 17,
+                fontWeight: 600,
+                padding: "18px 32px",
+                borderRadius: 999,
+                border: "1px solid rgba(255,255,255,0.16)",
+              }}
+            >
+              View Our Web Solutions
             </a>
           </div>
           <div style={{ position: "relative", marginTop: 28, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "16px 30px" }}>

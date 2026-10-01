@@ -1,160 +1,57 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Reveal from "@/components/shared/Reveal";
+import { useRevealGroup } from "@/hooks/useRevealGroup";
 
-const TESTIMONIALS = [
+// No testimonial content lives here — the site doesn't have verified client
+// quotes yet, and the brand stance is not to invent names, photos, or
+// reviews. This value-proposition section stands in until real
+// testimonials exist; see VALUES below for the content to restore it with.
+const VALUES = [
   {
-    quote:
-      "VenturezCo rebuilt our follow-up as a system — every property enquiry now gets an instant response and our viewing diary is finally full.",
-    name: "Sarah Lin",
-    role: "Director, Prime London Estates",
-    photo: "https://randomuser.me/api/portraits/women/44.jpg",
+    title: "Built Around Real Estate",
+    body: "Every website, campaign, and system we build is designed specifically for how estate agencies attract buyers, sellers, and listings — not a generic template.",
   },
   {
-    quote: "The audit alone paid for itself. They found enquiries leaking in three places we never checked, then fixed it inside a month.",
-    name: "Marcus Reed",
-    role: "Managing Director, Reed & Co",
-    photo: "https://randomuser.me/api/portraits/men/32.jpg",
+    title: "Everything Connected",
+    body: "Your website, marketing, CRM, and follow-up work as one connected system, not a pile of disconnected tools fighting each other.",
   },
   {
-    quote: "It was never about more leads — it was better systems. We book almost three times the viewings without spending more on ads.",
-    name: "Priya Nair",
-    role: "Owner, Nair Residential",
-    photo: "https://randomuser.me/api/portraits/women/68.jpg",
-  },
-  {
-    quote: "Every portal lead used to go cold in a spreadsheet. Now qualification and follow-up happen automatically and our valuations are up.",
-    name: "Daniel Ortiz",
-    role: "Founder, Ortiz Property Group",
-    photo: "https://randomuser.me/api/portraits/men/54.jpg",
-  },
-  {
-    quote: "One dashboard instead of six disconnected tools. My negotiators finally trust the pipeline and nothing slips.",
-    name: "Emily Chao",
-    role: "Sales Manager, Meridian Homes",
-    photo: "https://randomuser.me/api/portraits/women/21.jpg",
-  },
-  {
-    quote: "They didn't just build automations — they rebuilt how our agency handles enquiries. Predictable viewings, every single week.",
-    name: "Ben Whitfield",
-    role: "Director, Whitfield & Partners",
-    photo: "https://randomuser.me/api/portraits/men/71.jpg",
+    title: "Focused On Business Outcomes",
+    body: "We build for enquiries, viewings, and deals — not vanity metrics that look good in a report but don't move your agency forward.",
   },
 ];
 
-const STAR = (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="#9F91FF">
-    <path d="M12 2l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17.8 6.1 20.8l1.3-6.6L2.5 9l6.6-.8z" />
-  </svg>
-);
-const STAR_SM = (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="#9F91FF">
-    <path d="M12 2l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17.8 6.1 20.8l1.3-6.6L2.5 9l6.6-.8z" />
-  </svg>
-);
-
 export default function Testimonials() {
-  const doubled = [...TESTIMONIALS, ...TESTIMONIALS];
+  const groupRef = useRevealGroup<HTMLDivElement>();
   return (
     <section style={{ position: "relative", padding: "clamp(46px,6vw,78px) 0" }}>
       <Reveal style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(20px,5vw,32px)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20, marginBottom: "clamp(32px,4vw,48px)" }}>
-          <div style={{ maxWidth: 620 }}>
-            <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3B2FE0" }}>
-              In their words
-            </span>
-            <h2 style={{ margin: "16px 0 0", fontWeight: 900, fontSize: "clamp(2rem,4.6vw,3.4rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#fff", textWrap: "balance" }}>
-              Trusted by teams who stopped guessing.
-            </h2>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <span key={i}>{STAR}</span>
-              ))}
-            </div>
-            <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12.5, letterSpacing: "0.04em", color: "#7C8492" }}>5.0 average · 40+ clients</span>
-          </div>
+        <div style={{ maxWidth: 640, marginBottom: "clamp(32px,4vw,48px)" }}>
+          <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3B2FE0" }}>
+            Why estate agencies work with us
+          </span>
+          <h2 style={{ margin: "16px 0 0", fontWeight: 900, fontSize: "clamp(2rem,4.6vw,3.4rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#fff", textWrap: "balance" }}>
+            A growth partner built for one industry.
+          </h2>
         </div>
-        <div
-          className="vz-marquee"
-          style={{
-            position: "relative",
-            overflow: "hidden",
-            WebkitMaskImage: "linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent)",
-            maskImage: "linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent)",
-          }}
-        >
-          <div className="vz-marquee-track vz-marquee-track-reviews" style={{ gap: 22, alignItems: "stretch", padding: "6px 4px" }}>
-            {doubled.map((r, i) => (
-              <TestimonialCard key={i} review={r} dupe={i >= TESTIMONIALS.length} />
-            ))}
-          </div>
+        <div ref={groupRef} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20 }}>
+          {VALUES.map((v) => (
+            <div
+              key={v.title}
+              style={{
+                background: "rgba(255,255,255,0.025)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 20,
+                padding: "clamp(26px,3vw,32px)",
+              }}
+            >
+              <h3 style={{ margin: 0, fontSize: 18.5, fontWeight: 700, color: "#fff", letterSpacing: "-0.01em" }}>{v.title}</h3>
+              <p style={{ margin: "12px 0 0", color: "#9AA1AD", fontSize: 14.5, lineHeight: 1.6 }}>{v.body}</p>
+            </div>
+          ))}
         </div>
       </Reveal>
     </section>
-  );
-}
-
-type Review = { quote: string; name: string; role: string; photo: string };
-
-function TestimonialCard({ review: r, dupe }: { review: Review; dupe: boolean }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const onMove = (ev: PointerEvent) => {
-      const rect = el.getBoundingClientRect();
-      el.style.setProperty("--mx", `${ev.clientX - rect.left}px`);
-      el.style.setProperty("--my", `${ev.clientY - rect.top}px`);
-    };
-    el.addEventListener("pointermove", onMove);
-    return () => el.removeEventListener("pointermove", onMove);
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      aria-hidden={dupe}
-      className="vz-hoverable"
-      style={{
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        gap: 20,
-        background: "rgba(255,255,255,0.025)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        borderRadius: 24,
-        padding: "clamp(26px,3vw,34px)",
-        width: "min(88vw,380px)",
-        flexShrink: 0,
-        whiteSpace: "normal",
-      }}
-    >
-      <div className="vz-spot" />
-      <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
-        {Array.from({ length: 5 }).map((_, si) => (
-          <span key={si}>{STAR_SM}</span>
-        ))}
-      </div>
-      <p style={{ margin: 0, fontFamily: "'Satoshi'", fontWeight: 500, fontSize: "clamp(1.02rem,1.5vw,1.15rem)", lineHeight: 1.55, letterSpacing: "-0.01em", color: "#E4E7EC", textWrap: "pretty", flex: 1 }}>
-        {r.quote}
-      </p>
-      <div style={{ display: "flex", alignItems: "center", gap: 14, paddingTop: 4, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element -- external placeholder photos, arbitrary hosts */}
-        <img
-          src={r.photo}
-          alt={r.name}
-          width={52}
-          height={52}
-          style={{ width: 52, height: 52, flexShrink: 0, border: "1px solid rgba(255,255,255,0.12)", borderRadius: "50%", objectFit: "cover" }}
-        />
-        <div>
-          <div style={{ fontSize: 15.5, fontWeight: 700, color: "#fff", letterSpacing: "-0.01em" }}>{r.name}</div>
-          <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 11.5, letterSpacing: "0.05em", color: "#7C8492", marginTop: 4 }}>{r.role}</div>
-        </div>
-      </div>
-    </div>
   );
 }

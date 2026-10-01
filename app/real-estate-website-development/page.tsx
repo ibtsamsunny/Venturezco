@@ -8,16 +8,16 @@ import CTABanner from "@/components/shared/CTABanner";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Website Development — VenturezCo",
+  title: "Real Estate Website Development — VenturezCo",
   description:
-    "High-end, conversion-focused websites built for estate agencies — fast, mobile-perfect, and wired straight into your booking and CRM systems.",
+    "Bespoke, high-performance real estate website development for estate agencies — premium design, property search, and conversion-focused pages wired straight into your CRM.",
 };
 
-export default function WebsiteDevelopmentPage() {
+export default function RealEstateWebsiteDevelopmentPage() {
   return (
     <>
       <ServiceHeader
-        badgeLabel="Website Development"
+        badgeLabel="Custom Website Development"
         badgeBg="rgba(236,72,153,0.14)"
         badgeBorder="rgba(236,72,153,0.34)"
         badgeColor="#F9A8D4"
@@ -62,7 +62,7 @@ export default function WebsiteDevelopmentPage() {
       <StatsBar
         accent="#F9A8D4"
         stats={[
-          { value: "<2s", label: "average page load time" },
+          { value: "Fast", label: "page performance engineered in from day one" },
           { value: "100%", label: "mobile-optimized, every page" },
           { value: "Built-in", label: "lead capture on every listing page" },
         ]}

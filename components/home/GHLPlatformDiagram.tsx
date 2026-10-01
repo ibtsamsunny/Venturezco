@@ -23,9 +23,28 @@ const NODES: Node[] = [
     top: "6.25%",
     badgeSide: "left",
     color: "#4A9EFF",
-    title: "Property Enquiries",
-    desc: "Portals, Google Ads, Meta Ads & Referrals",
-    tag: "CAPTURE",
+    title: "Website",
+    desc: "Premium Website, Property Search, Lead Capture",
+    tag: "BUILD",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+        <line x1="2.5" y1="9" x2="21.5" y2="9" />
+        <circle cx="5.3" cy="6.7" r="0.6" fill="currentColor" stroke="none" />
+        <circle cx="7.3" cy="6.7" r="0.6" fill="currentColor" stroke="none" />
+        <path d="M6 13.5h6M6 16.5h9" />
+      </svg>
+    ),
+  },
+  {
+    num: "02",
+    left: "73.03%",
+    top: "6.25%",
+    badgeSide: "right",
+    color: "#5B8DEF",
+    title: "Traffic",
+    desc: "Google, Meta, SEO",
+    tag: "ATTRACT",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="9" cy="8" r="3" />
@@ -36,33 +55,17 @@ const NODES: Node[] = [
     ),
   },
   {
-    num: "02",
-    left: "73.03%",
-    top: "6.25%",
-    badgeSide: "right",
-    color: "#5B8DEF",
-    title: "Buyer Qualification",
-    desc: "Landing Pages, Forms, Enquiry Capture",
-    tag: "CONVERT",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 5h18l-7 8v5l-4 2v-7z" />
-      </svg>
-    ),
-  },
-  {
     num: "03",
     left: "75.66%",
     top: "29.17%",
     badgeSide: "right",
     color: "#4A9EFF",
-    title: "Buyer & Seller CRM",
-    desc: "Contacts, Pipelines, Opportunities",
-    tag: "TRACK",
+    title: "Enquiries",
+    desc: "Forms, Calls, Property Portals",
+    tag: "CAPTURE",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="8.5" r="3" />
-        <path d="M5.5 19a6.5 6.5 0 0 1 13 0" />
+        <path d="M3 5h18l-7 8v5l-4 2v-7z" />
       </svg>
     ),
   },
@@ -72,13 +75,13 @@ const NODES: Node[] = [
     top: "52.08%",
     badgeSide: "right",
     color: "#A855F7",
-    title: "Instant Follow-up",
-    desc: "Email, SMS, Workflows, Follow-up Sequences",
-    tag: "NURTURE",
+    title: "CRM",
+    desc: "Contacts, Buyers, Sellers, Opportunities",
+    tag: "TRACK",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="M3 7l9 6 9-6" />
+        <circle cx="12" cy="8.5" r="3" />
+        <path d="M5.5 19a6.5 6.5 0 0 1 13 0" />
       </svg>
     ),
   },
@@ -88,9 +91,9 @@ const NODES: Node[] = [
     top: "75%",
     badgeSide: "right",
     color: "#EC4899",
-    title: "AI Property Assistant",
-    desc: "Qualification, Replies, Lead Routing",
-    tag: "QUALIFY",
+    title: "Automation",
+    desc: "Email, SMS, WhatsApp, AI Follow-Up",
+    tag: "NURTURE",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="8" width="16" height="11" rx="2.5" />
@@ -125,8 +128,8 @@ const NODES: Node[] = [
     top: "52.08%",
     badgeSide: "left",
     color: "#22C55E",
-    title: "Property Pipeline",
-    desc: "Offers, Tasks, Follow-ups, Closing",
+    title: "Sales Pipeline",
+    desc: "Enquiry, Viewing, Offer, Completion",
     tag: "CLOSE",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -142,8 +145,8 @@ const NODES: Node[] = [
     top: "29.17%",
     badgeSide: "left",
     color: "#4A9EFF",
-    title: "Deal Reporting",
-    desc: "Revenue, Conversions, Enquiry Sources",
+    title: "Reporting",
+    desc: "Traffic, Leads, Viewings, Deals",
     tag: "REPORT",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -407,11 +410,14 @@ export default function GHLPlatformDiagram() {
           Powered by GoHighLevel
         </span>
         <h2 style={{ margin: "16px 0 0", fontWeight: 900, fontSize: "clamp(2rem,4.6vw,3.4rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#fff", textWrap: "balance" }}>
-          One platform. <span style={{ background: "linear-gradient(100deg,#9F91FF,#8B5CF6)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>Every growth system.</span>
+          Your website. Your leads.{" "}
+          <span style={{ background: "linear-gradient(100deg,#9F91FF,#8B5CF6)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
+            One connected system.
+          </span>
         </h2>
         <p style={{ maxWidth: 640, margin: "22px auto 0", color: "#9AA1AD", fontSize: "clamp(1.05rem,1.4vw,1.2rem)", lineHeight: 1.6 }}>
-          We connect your marketing, sales, automation, and reporting into one revenue system — so every enquiry is captured, followed up, qualified, booked,
-          and tracked.
+          We connect your website, marketing, CRM, automation and sales pipeline so every enquiry can be captured, tracked, followed up and moved towards a
+          viewing.
         </p>
       </Reveal>
 
@@ -510,7 +516,8 @@ export default function GHLPlatformDiagram() {
               Stop running your growth on <span style={{ color: "#9F91FF" }}>disconnected tools.</span>
             </h3>
             <p style={{ margin: 0, color: "#9AA1AD", fontSize: 14.5, lineHeight: 1.6, maxWidth: 340 }}>
-              We build GoHighLevel systems that replace scattered software, manual follow-up, and messy sales processes with one connected growth engine.
+              Your website, marketing, CRM and follow-up shouldn&apos;t operate separately. We connect them into one system built around how your estate
+              agency actually works.
             </p>
           </div>
           <div style={{ flex: "2 1 440px", display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: "clamp(14px,2vw,28px)" }}>

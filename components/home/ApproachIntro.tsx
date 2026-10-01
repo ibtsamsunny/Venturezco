@@ -30,14 +30,14 @@ export default function ApproachIntro() {
             textWrap: "balance",
           }}
         >
-          We build the systems behind{" "}
+          We build the digital foundations behind{" "}
           <span style={{ background: "linear-gradient(100deg,#9F91FF,#8B5CF6)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
             high-performing estate agencies.
           </span>
         </h2>
         <p style={{ maxWidth: 620, margin: "24px auto 0", color: "#9AA1AD", fontSize: "clamp(1.05rem,1.4vw,1.22rem)", lineHeight: 1.6 }}>
-          Every property enquiry deserves an instant response. Every follow-up should happen automatically. Every viewing should be easier to book. Our
-          systems make that happen.
+          From your website and lead generation to CRM, AI follow-up and sales automation, we connect every part of your digital journey into one growth
+          system.
         </p>
       </Reveal>
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SERVICE_LINKS } from "@/content/nav";
 
 const navLink = { textDecoration: "none", color: "#B7BCC5", fontSize: "14.5px" } as const;
 const social = {
@@ -34,12 +35,12 @@ export default function Footer() {
                   Venturez<span style={{ color: "#3B2FE0" }}>Co</span>
                 </span>
                 <span style={{ display: "block", marginTop: 4, fontFamily: "'Geist Mono',monospace", fontSize: 9, letterSpacing: "0.22em", textTransform: "uppercase", color: "#6B7280" }}>
-                  Growth &amp; Automation Agency
+                  Real Estate Growth Systems
                 </span>
               </div>
             </div>
             <p style={{ margin: 0, color: "#7C8492", fontSize: 14, lineHeight: 1.6 }}>
-              Growth &amp; Automation Agency. We build the systems behind predictable revenue.
+              VenturezCo builds high-performance websites and connected growth systems for modern estate agencies.
             </p>
             <div style={{ display: "flex", gap: 12, marginTop: 22 }}>
               <Link href="/#contact" aria-label="LinkedIn" className="vz-social" style={social}>
@@ -70,10 +71,21 @@ export default function Footer() {
           </div>
           <div>
             <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#5B6270", marginBottom: 16 }}>
+              Services
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
+              {SERVICE_LINKS.map((s) => (
+                <Link key={s.href} href={s.href} style={navLink}>
+                  {s.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "#5B6270", marginBottom: 16 }}>
               Navigate
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
-              <Link href="/#services" style={navLink}>Services</Link>
               <Link href="/#cases" style={navLink}>Case Studies</Link>
               <Link href="/insights" style={navLink}>Insights</Link>
               <Link href="/how-we-work" style={navLink}>How We Work</Link>
@@ -203,7 +215,7 @@ export default function Footer() {
         >
           <span style={{ color: "#5B6270", fontSize: 13 }}>&copy; 2026 VenturezCo. All rights reserved.</span>
           <span style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, letterSpacing: "0.08em", color: "#5B6270" }}>
-            Precision. Automation. Predictable revenue.
+            Websites. Marketing. Automation.
           </span>
         </div>
       </div>
