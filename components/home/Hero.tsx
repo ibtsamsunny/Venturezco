@@ -16,18 +16,16 @@ const HERO_L2 = "More sales.";
 
 const HERO_PHOTO = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
 
-// Owner-supplied figures — update here as the real numbers change.
-const STAT_TARGETS = { sites: 260, lift: 3.2, growth: 100 };
+// Owner-chosen business-result figures — update here as the real numbers change.
+const STAT_TARGETS = { enquiries: 2.5, response: 60, cpl: 45, listed: 50 };
 
-type StatEntry =
-  | { kind: "count"; key: keyof typeof STAT_TARGETS; label: string; format: (v: number) => string }
-  | { kind: "static"; label: string; value: string };
+type StatEntry = { key: keyof typeof STAT_TARGETS; label: string; format: (v: number) => string };
 
 const STATS: StatEntry[] = [
-  { kind: "count", key: "sites", label: "Custom Websites Built", format: (v) => `${Math.round(v)}+` },
-  { kind: "count", key: "lift", label: "Avg Conversion Lift", format: (v) => `${v.toFixed(1)}x` },
-  { kind: "static", label: "Automated Meeting Scheduling", value: "24/7" },
-  { kind: "count", key: "growth", label: "Business Growth", format: (v) => `${Math.round(v)}%` },
+  { key: "enquiries", label: "More Property Enquiries", format: (v) => `${v.toFixed(1)}x` },
+  { key: "response", label: "Faster Lead Response", format: (v) => `${Math.round(v)}%` },
+  { key: "cpl", label: "Lower Cost per Lead", format: (v) => `${Math.round(v)}%` },
+  { key: "listed", label: "Property Listed Through Our Sites", format: (v) => `£${Math.round(v)}M+` },
 ];
 
 // The left-near floating card cycles through these live "events" every 3.8s.
@@ -132,7 +130,7 @@ function StatsBand() {
                 color: "transparent",
               }}
             >
-              {s.kind === "static" ? s.value : s.format(values[s.key])}
+              {s.format(values[s.key])}
             </div>
             <div style={{ marginTop: 10, color: "#9AA1AD", fontSize: 14, fontWeight: 500 }}>{s.label}</div>
           </div>
