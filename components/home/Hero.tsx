@@ -1,10 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Reveal from "@/components/shared/Reveal";
 import { useMagnetic } from "@/hooks/useMagnetic";
 import { useParallax } from "@/hooks/useParallax";
+import { useCountUpGroup } from "@/hooks/useCountUpGroup";
 import { useRevealGroup } from "@/hooks/useRevealGroup";
 import { useBookingModal } from "@/components/booking/BookingModalProvider";
 
@@ -15,13 +16,16 @@ const HERO_L2 = "More sales.";
 
 const HERO_PHOTO = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
 
-// Capability statements, not performance claims — these aren't backed by
-// client data (yet), so they describe what we do, not a fabricated result.
-const STATS: { value: string; label: string }[] = [
-  { value: "High-End", label: "Custom Websites" },
-  { value: "24/7", label: "Lead Capture" },
-  { value: "Instant", label: "Automated Follow-Up" },
-  { value: "One System", label: "Website to Closing" },
+// Owner-chosen business-result figures — update here as the real numbers change.
+const STAT_TARGETS = { enquiries: 2.5, response: 60, cpl: 45, listed: 50 };
+
+type StatEntry = { key: keyof typeof STAT_TARGETS; label: string; format: (v: number) => string };
+
+const STATS: StatEntry[] = [
+  { key: "enquiries", label: "More Property Enquiries", format: (v) => `${v.toFixed(1)}x` },
+  { key: "response", label: "Faster Lead Response", format: (v) => `${Math.round(v)}%` },
+  { key: "cpl", label: "Lower Cost per Lead", format: (v) => `${Math.round(v)}%` },
+  { key: "listed", label: "Property Listed Through Our Sites", format: (v) => `£${Math.round(v)}M+` },
 ];
 
 // The left-near floating card cycles through these live "events" every 3.8s.
@@ -86,12 +90,20 @@ function HeroHeadline() {
 }
 
 function StatsBand() {
+  const { values, ref: countUpRef } = useCountUpGroup(STAT_TARGETS);
   const revealGroupRef = useRevealGroup<HTMLDivElement>();
+  const setGridRef = useCallback(
+    (el: HTMLDivElement | null) => {
+      countUpRef(el);
+      revealGroupRef(el);
+    },
+    [countUpRef, revealGroupRef]
+  );
   return (
     <Reveal style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "clamp(48px,6vw,72px) auto 0", padding: "0 clamp(20px,5vw,32px)" }}>
       <div
         id="vz-results"
-        ref={revealGroupRef}
+        ref={setGridRef}
         style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16 }}
       >
         {STATS.map((s) => (
@@ -118,7 +130,7 @@ function StatsBand() {
                 color: "transparent",
               }}
             >
-              {s.value}
+              {s.format(values[s.key])}
             </div>
             <div style={{ marginTop: 10, color: "#9AA1AD", fontSize: 14, fontWeight: 500 }}>{s.label}</div>
           </div>
