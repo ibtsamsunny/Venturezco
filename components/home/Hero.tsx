@@ -1,10 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Reveal from "@/components/shared/Reveal";
 import { useMagnetic } from "@/hooks/useMagnetic";
 import { useParallax } from "@/hooks/useParallax";
+import { useCountUpGroup } from "@/hooks/useCountUpGroup";
 import { useRevealGroup } from "@/hooks/useRevealGroup";
 import { useBookingModal } from "@/components/booking/BookingModalProvider";
 
@@ -15,13 +16,20 @@ const HERO_L2 = "More sales.";
 
 const HERO_PHOTO = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
 
-// Capability statements, not performance claims — these aren't backed by
-// client data (yet), so they describe what we do, not a fabricated result.
-const STATS: { value: string; label: string }[] = [
-  { value: "High-End", label: "Custom Websites" },
-  { value: "24/7", label: "Lead Capture" },
-  { value: "Instant", label: "Automated Follow-Up" },
-  { value: "One System", label: "Website to Closing" },
+// The 200+ figure is the owner-supplied claim; "24/7" and "3 countries" match
+// copy already on the site (capture flow, footer), and "4-6 weeks" matches the
+// website-development FAQ. Swap in real numbers here as they change.
+const STAT_TARGETS = { sites: 200, countries: 3 };
+
+type StatEntry =
+  | { kind: "count"; key: keyof typeof STAT_TARGETS; label: string; format: (v: number) => string }
+  | { kind: "static"; label: string; value: string };
+
+const STATS: StatEntry[] = [
+  { kind: "count", key: "sites", label: "Custom Websites Built", format: (v) => `${Math.round(v)}+` },
+  { kind: "static", label: "Typical Launch Time", value: "4–6 Weeks" },
+  { kind: "static", label: "Lead Capture", value: "24/7" },
+  { kind: "count", key: "countries", label: "Countries Served", format: (v) => `${Math.round(v)}` },
 ];
 
 // The left-near floating card cycles through these live "events" every 3.8s.
@@ -86,12 +94,20 @@ function HeroHeadline() {
 }
 
 function StatsBand() {
+  const { values, ref: countUpRef } = useCountUpGroup(STAT_TARGETS);
   const revealGroupRef = useRevealGroup<HTMLDivElement>();
+  const setGridRef = useCallback(
+    (el: HTMLDivElement | null) => {
+      countUpRef(el);
+      revealGroupRef(el);
+    },
+    [countUpRef, revealGroupRef]
+  );
   return (
     <Reveal style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "clamp(48px,6vw,72px) auto 0", padding: "0 clamp(20px,5vw,32px)" }}>
       <div
         id="vz-results"
-        ref={revealGroupRef}
+        ref={setGridRef}
         style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16 }}
       >
         {STATS.map((s) => (
@@ -118,7 +134,7 @@ function StatsBand() {
                 color: "transparent",
               }}
             >
-              {s.value}
+              {s.kind === "static" ? s.value : s.format(values[s.key])}
             </div>
             <div style={{ marginTop: 10, color: "#9AA1AD", fontSize: 14, fontWeight: 500 }}>{s.label}</div>
           </div>
