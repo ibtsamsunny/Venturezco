@@ -16,10 +16,8 @@ const HERO_L2 = "More sales.";
 
 const HERO_PHOTO = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
 
-// The 200+ figure is the owner-supplied claim; "24/7" and "3 countries" match
-// copy already on the site (capture flow, footer), and "4-6 weeks" matches the
-// website-development FAQ. Swap in real numbers here as they change.
-const STAT_TARGETS = { sites: 200, countries: 3 };
+// Owner-supplied figures — update here as the real numbers change.
+const STAT_TARGETS = { sites: 260, lift: 3.2, growth: 100 };
 
 type StatEntry =
   | { kind: "count"; key: keyof typeof STAT_TARGETS; label: string; format: (v: number) => string }
@@ -27,9 +25,9 @@ type StatEntry =
 
 const STATS: StatEntry[] = [
   { kind: "count", key: "sites", label: "Custom Websites Built", format: (v) => `${Math.round(v)}+` },
-  { kind: "static", label: "Typical Launch Time", value: "4–6 Weeks" },
-  { kind: "static", label: "Lead Capture", value: "24/7" },
-  { kind: "count", key: "countries", label: "Countries Served", format: (v) => `${Math.round(v)}` },
+  { kind: "count", key: "lift", label: "Avg Conversion Lift", format: (v) => `${v.toFixed(1)}x` },
+  { kind: "static", label: "Automated Meeting Scheduling", value: "24/7" },
+  { kind: "count", key: "growth", label: "Business Growth", format: (v) => `${Math.round(v)}%` },
 ];
 
 // The left-near floating card cycles through these live "events" every 3.8s.
